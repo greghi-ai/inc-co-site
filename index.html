@@ -382,8 +382,7 @@ footer{border-top:1px solid var(--line);padding-block:clamp(48px,6vw,80px) calc(
 [data-scramble] a{font-variant-numeric:tabular-nums}
 
 @media (prefers-reduced-motion:reduce){
-  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
-  .marquee-track{animation:none}
+  .marquee-track{animation-duration:90s}
 }
 </style>
 </head>
@@ -619,7 +618,9 @@ footer{border-top:1px solid var(--line);padding-block:clamp(48px,6vw,80px) calc(
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
 <script>
 (function(){
-  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  /* O site anima mesmo com "reduzir movimento" ligado no sistema (pedido da Inc&Co); só a faixa infinita respeita essa preferência. */
+  var prefersReduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var reduce = false;
   var root = document.documentElement;
   var y = document.getElementById('year'); if (y) y.textContent = new Date().getFullYear();
 
