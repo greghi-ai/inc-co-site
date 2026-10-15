@@ -94,7 +94,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;paddin
 .js.is-loaded .hero h1 .line:nth-child(2) > span{transition-delay:.08s}
 .js.is-loaded .hero h1 .line:nth-child(3) > span{transition-delay:.16s}
 .js.is-loaded .hero h1 .line:nth-child(4) > span{transition-delay:.24s}
-.js .hero h1 .line > span{animation:heroSafety 1s var(--ease) 3.4s forwards}
+.js:not(.is-loaded) .hero h1 .line > span{animation:heroSafety 1s var(--ease) 3.4s forwards}
 @keyframes heroSafety{to{transform:none}}
 .hero h1 .indent{padding-left:12vw}
 .hero-amp{position:absolute;z-index:1;right:-4vw;top:50%;translate:0 -58%;font-size:clamp(18rem,58vw,62rem);line-height:.7;pointer-events:none;will-change:transform;color:transparent;-webkit-text-stroke:3px var(--accent)}
@@ -268,6 +268,11 @@ footer{border-top:1px solid var(--line);padding-block:clamp(48px,6vw,80px) calc(
 .cursor.big{width:88px;height:88px;margin:-44px 0 0 -44px;mix-blend-mode:normal;background:var(--accent);color:var(--accent-ink)}
 .cursor.link{width:40px;height:40px;margin:-20px 0 0 -20px}
 
+/* Textura orgânica revelada pelo cursor */
+.organic{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;display:block}
+.hero > .hero-tag,.hero > .scroll-hint{position:relative;z-index:1}
+.organic-fallback{position:absolute;inset:0;z-index:0;pointer-events:none;background:radial-gradient(circle 22vmax at var(--mx,70%) var(--my,45%),#FFF6C2 0%,#FFDD00 18%,#8A6A00 42%,rgba(0,0,0,0) 70%);filter:blur(30px);opacity:.9}
+
 /* Conteúdo real da apresentação */
 .brand-tag{letter-spacing:.32em;text-transform:uppercase;font-size:11px;font-weight:600}
 .hero .brand-tag{color:var(--accent)}
@@ -337,6 +342,7 @@ footer{border-top:1px solid var(--line);padding-block:clamp(48px,6vw,80px) calc(
 
 <main>
   <section class="hero wrap" id="inicio">
+    <canvas class="organic" id="organic" aria-hidden="true"></canvas>
     <div class="hero-tag small"><span class="brand-tag">Strategic marketing for brands</span><span>Santos/SP</span></div>
     <span class="hero-amp amp" aria-hidden="true">&amp;</span>
     <h1 class="d">
@@ -693,6 +699,87 @@ footer{border-top:1px solid var(--line);padding-block:clamp(48px,6vw,80px) calc(
       else { cur.className = 'cursor link'; cur.textContent = ''; }
     });
   }
+
+
+  /* Textura orgânica: fundo preto, a textura aparece só onde o cursor passa */
+  (function organic(){
+    var heroEl = document.querySelector('.hero'), cv = document.getElementById('organic');
+    if (!heroEl || !cv) return;
+    var gl = null;
+    try { gl = cv.getContext('webgl', { antialias:false, premultipliedAlpha:false, alpha:false }); } catch(e) {}
+    var N = 40;
+    var pts = []; // {x,y,s}
+    var mouse = { x: 0.68, y: 0.45, tx: 0.68, ty: 0.45, active:false, last:0 };
+    function rel(e){ var r = heroEl.getBoundingClientRect(); return { x:(e.clientX - r.left)/r.width, y:(e.clientY - r.top)/r.height, inside: e.clientY>=r.top && e.clientY<=r.bottom }; }
+    addEventListener('pointermove', function(e){ var p = rel(e); if (!p.inside) return; mouse.tx=p.x; mouse.ty=p.y; if(!mouse.active){ mouse.x=p.x; mouse.y=p.y; } mouse.active=true; mouse.last=performance.now(); }, { passive:true });
+    addEventListener('touchmove', function(e){ var t=e.touches[0]; if(!t) return; var p=rel(t); if(!p.inside) return; mouse.tx=p.x; mouse.ty=p.y; mouse.active=true; mouse.last=performance.now(); }, { passive:true });
+
+    if (!gl) {
+      cv.remove(); var fb = document.createElement('div'); fb.className='organic-fallback'; heroEl.prepend(fb);
+      addEventListener('pointermove', function(e){ var p=rel(e); if(!p.inside) return; fb.style.setProperty('--mx',(p.x*100)+'%'); fb.style.setProperty('--my',(p.y*100)+'%'); }, { passive:true });
+      return;
+    }
+
+    var vs = 'attribute vec2 p;void main(){gl_Position=vec4(p,0.,1.);}';
+    var fs = [
+      'precision highp float;',
+      'uniform vec2 R;uniform float T;uniform vec3 P['+N+'];uniform float A;',
+      'vec3 mod289(vec3 x){return x-floor(x*(1./289.))*289.;}vec2 mod289(vec2 x){return x-floor(x*(1./289.))*289.;}vec3 perm(vec3 x){return mod289(((x*34.)+1.)*x);}',
+      'float sn(vec2 v){const vec4 C=vec4(.211324865405187,.366025403784439,-.577350269189626,.024390243902439);vec2 i=floor(v+dot(v,C.yy));vec2 x0=v-i+dot(i,C.xx);vec2 i1=(x0.x>x0.y)?vec2(1.,0.):vec2(0.,1.);vec4 x12=x0.xyxy+C.xxzz;x12.xy-=i1;i=mod289(i);vec3 p=perm(perm(i.y+vec3(0.,i1.y,1.))+i.x+vec3(0.,i1.x,1.));vec3 m=max(.5-vec3(dot(x0,x0),dot(x12.xy,x12.xy),dot(x12.zw,x12.zw)),0.);m=m*m;m=m*m;vec3 x=2.*fract(p*C.www)-1.;vec3 h=abs(x)-.5;vec3 ox=floor(x+.5);vec3 a0=x-ox;m*=1.79284291400159-.85373472095314*(a0*a0+h*h);vec3 g;g.x=a0.x*x0.x+h.x*x0.y;g.yz=a0.yz*x12.xz+h.yz*x12.yw;return 130.*dot(m,g);}',
+      'float fbm(vec2 p){float v=0.,a=.5;for(int i=0;i<5;i++){v+=a*sn(p);p=p*2.02+vec2(1.7,9.2);a*=.5;}return v;}',
+      'float fbm3(vec2 p){float v=0.,a=.55;for(int i=0;i<3;i++){v+=a*sn(p);p=p*1.9+vec2(1.7,9.2);a*=.45;}return v;}',
+      'float h21(vec2 p){p=fract(p*vec2(123.34,456.21));p+=dot(p,p+45.32);return fract(p.x*p.y);}',
+      'void main(){',
+      ' vec2 uv=gl_FragCoord.xy/R; vec2 q=vec2(uv.x*R.x/R.y,uv.y)*.62; float t=T*.05;',
+      ' vec2 w=vec2(fbm3(q+vec2(0.,t)),fbm3(q+vec2(5.2,1.3)-t));',
+      ' float f=fbm3(q+1.5*w+vec2(t*.7,-t*.5));',
+      ' float d=abs(f-.05);',
+      ' float halo=1.-smoothstep(.0,.42,d); float body=1.-smoothstep(.0,.2,d); float core=1.-smoothstep(.0,.07,d);',
+      ' vec3 amber=vec3(.55,.22,0.); vec3 gold=vec3(1.,.867,0.); vec3 hot=vec3(1.,.98,.86);',
+      ' vec3 col=amber*halo*halo; col=mix(col,gold,body*body); col=mix(col,hot,core*.85);',
+      // mask from cursor trail
+      ' float m=0.; vec2 asp=vec2(R.x/R.y,1.);',
+      ' float wob=sn(q*5.+t*6.)*.05;',
+      ' for(int i=0;i<'+N+';i++){ vec3 pp=P[i]; if(pp.z<=0.001) continue; vec2 d=(uv-pp.xy)*asp; float r=.10+.06*pp.z; m+=pp.z*exp(-dot(d,d)/(r*r)*(1.+wob*8.)); }',
+      ' m=smoothstep(0.,1.,clamp(m*A,0.,1.));',
+      ' float g=(h21(gl_FragCoord.xy+fract(T)*97.)-.5)*.10;',
+      ' vec3 o=col*m; o+=g*m;',
+      ' gl_FragColor=vec4(max(o,0.),1.);',
+      '}'
+    ].join('\n');
+    function sh(type, src){ var x=gl.createShader(type); gl.shaderSource(x,src); gl.compileShader(x); if(!gl.getShaderParameter(x,gl.COMPILE_STATUS)) throw new Error(gl.getShaderInfoLog(x)); return x; }
+    var pr;
+    try { pr=gl.createProgram(); gl.attachShader(pr,sh(gl.VERTEX_SHADER,vs)); gl.attachShader(pr,sh(gl.FRAGMENT_SHADER,fs)); gl.linkProgram(pr); if(!gl.getProgramParameter(pr,gl.LINK_STATUS)) throw new Error('link'); }
+    catch(err){ cv.style.display='none'; return; }
+    gl.useProgram(pr);
+    var buf=gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER,buf); gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,1,-1,-1,1,1,1]),gl.STATIC_DRAW);
+    var loc=gl.getAttribLocation(pr,'p'); gl.enableVertexAttribArray(loc); gl.vertexAttribPointer(loc,2,gl.FLOAT,false,0,0);
+    var uR=gl.getUniformLocation(pr,'R'), uT=gl.getUniformLocation(pr,'T'), uP=gl.getUniformLocation(pr,'P'), uA=gl.getUniformLocation(pr,'A');
+    var arr=new Float32Array(N*3);
+    var scale = Math.min(window.devicePixelRatio||1, 1.5) * 0.6;
+    function resize(){ var r=heroEl.getBoundingClientRect(); cv.width=Math.max(2,Math.round(r.width*scale)); cv.height=Math.max(2,Math.round(r.height*scale)); gl.viewport(0,0,cv.width,cv.height); }
+    resize(); addEventListener('resize', resize);
+    var visible=true; if ('IntersectionObserver' in window) new IntersectionObserver(function(en){ visible=en[0].isIntersecting; if(visible) req(); }).observe(heroEl);
+    var t0=performance.now(), raf=0, frame=0;
+    var touchOnly = !window.matchMedia('(hover:hover) and (pointer:fine)').matches;
+    function req(){ if(!raf) raf=requestAnimationFrame(tick); }
+    function tick(now){
+      raf=0; if(!visible || document.hidden) return;
+      var t=(now-t0)/1000, idle = !mouse.active || (now-mouse.last>2600);
+      if (idle) { // passeio automático quando ninguém mexe (e sempre no celular sem toque)
+        mouse.tx = .62 + .26*Math.sin(t*.23) ; mouse.ty = .45 + .22*Math.sin(t*.31+1.3);
+      }
+      mouse.x += (mouse.tx-mouse.x)*(idle?.04:.16); mouse.y += (mouse.ty-mouse.y)*(idle?.04:.16);
+      if ((frame++ % 2)===0) { pts.unshift({x:mouse.x, y:1-mouse.y, s:idle?.55:1}); if(pts.length>N) pts.length=N; }
+      for (var i=0;i<N;i++){ var p=pts[i]; if(p){ p.s*=.95; arr[i*3]=p.x; arr[i*3+1]=p.y; arr[i*3+2]=p.s; } else { arr[i*3+2]=0; } }
+      gl.uniform2f(uR,cv.width,cv.height); gl.uniform1f(uT,reduce?12.0:t); gl.uniform3fv(uP,arr); gl.uniform1f(uA,.6);
+      gl.drawArrays(gl.TRIANGLE_STRIP,0,4);
+      if (!reduce) req();
+    }
+    document.addEventListener('visibilitychange', function(){ if(!document.hidden) req(); });
+    if (reduce) { for (var k=0;k<N;k++) pts.push({x:.68,y:.55,s:.9}); }
+    req();
+  })();
 
   /* Wordmark fills the footer width whatever font loads */
   var wm = document.querySelector('.wordmark');
