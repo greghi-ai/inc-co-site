@@ -878,13 +878,13 @@ footer{border-top:1px solid var(--line);padding-block:clamp(48px,6vw,80px) calc(
     if (root.classList.contains('is-loaded')) intro();
     setTimeout(intro, 3600);
 
-    var heroTl = gsap.timeline({ scrollTrigger: { trigger: '.hero', start: 'top top', end: '+=70%', pin: true, scrub: .6 } });
+    var heroTl = gsap.timeline({ scrollTrigger: { trigger: '.hero', start: 'top top', end: '+=110%', pin: true, scrub: .8 } });
     units.forEach(function(u){
-      heroTl.to(u, { y: rand(-320, 220), x: rand(-60, 60), rotate: rand(-35, 35), opacity: 0, ease: 'none', duration: rand(.35, .7) }, rand(0, .45));
+      heroTl.fromTo(u, { y: 0, x: 0, rotate: 0, opacity: 1 }, { y: rand(-320, 220), x: rand(-60, 60), rotate: rand(-35, 35), opacity: 0, ease: 'none', duration: rand(.35, .7), immediateRender: false }, rand(0, .45));
     });
-    heroTl.to('.hero-amp', { scale: 1.7, xPercent: 18, rotate: -24, ease: 'none', duration: 1 }, 0)
-          .to('.rings i', { scale: 1.35, ease: 'none', duration: 1, stagger: .05 }, 0)
-          .to('.hero-foot, .hero-tag, .scroll-hint', { opacity: 0, y: -40, ease: 'none', duration: .4 }, 0);
+    heroTl.fromTo('.hero-amp', { scale: 1, xPercent: 0, rotate: 0, opacity: 1 }, { scale: 1.7, xPercent: 18, rotate: -24, ease: 'none', duration: 1, immediateRender: false }, 0)
+          .fromTo('.rings i', { scale: 1, opacity: 1 }, { scale: 1.35, ease: 'none', duration: 1, stagger: .05, immediateRender: false }, 0)
+          .fromTo('.hero-foot, .hero-tag, .scroll-hint', { opacity: 1, y: 0 }, { opacity: 0, y: -40, ease: 'none', duration: .4, immediateRender: false }, 0);
 
     /* Sobre: palavras acendem com a rolagem */
     var st = document.getElementById('statement');
