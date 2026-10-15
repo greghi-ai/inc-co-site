@@ -52,9 +52,6 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;paddin
 .js .loader{display:flex;position:fixed;inset:0;z-index:90;background:var(--accent);color:var(--accent-ink);flex-direction:column;justify-content:space-between;padding-block:calc(24px + env(safe-area-inset-top,0px)) calc(24px + env(safe-area-inset-bottom,0px));animation:loaderSafety .6s ease 3.2s forwards}
 .is-loaded .loader{opacity:0;visibility:hidden;transition:opacity .6s ease,visibility 0s .6s}
 @keyframes loaderSafety{to{opacity:0;visibility:hidden}}
-.loader-top{display:flex;justify-content:space-between;font-size:14px}
-.loader-num{font-family:var(--f-display);font-weight:800;font-stretch:62%;font-size:clamp(7rem,30vw,26rem);line-height:.8;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
-.loader-num sup{font-size:.25em;vertical-align:top;margin-left:.1em}
 
 /* Nav */
 .nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding-block:calc(18px + env(safe-area-inset-top,0px)) 18px;color:var(--paper);transition:background .4s,padding .4s}
@@ -90,7 +87,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;paddin
 .hero h1 .line{display:block;overflow:hidden;padding-bottom:.02em}
 .hero h1 .line > span{display:inline-block}
 .js .hero h1{opacity:0;transition:opacity .8s ease .1s}
-.js.is-loaded .hero h1{opacity:1}
+.js.is-loaded .hero h1,.js.split-ready .hero h1{opacity:1}
 .js:not(.is-loaded) .hero h1{animation:heroSafety .6s ease 3.4s forwards}
 @keyframes heroSafety{to{opacity:1}}
 .hero h1 .indent{padding-left:12vw}
@@ -303,6 +300,87 @@ footer{border-top:1px solid var(--line);padding-block:clamp(48px,6vw,80px) calc(
 .case-gallery{grid-column:1/-1;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:12px}
 .case-gallery img{width:100%;height:auto;display:block;border-radius:4px}
 @media (max-width:760px){.proj-grid{grid-template-columns:1fr}.card-wide .card-media{aspect-ratio:16/10}.clients-grid{grid-template-columns:1fr 1fr}}
+/* ===== Movimentos inspirados na OFF+BRAND ===== */
+/* Abertura */
+.js .loader{background:var(--ink);color:var(--paper);justify-content:center;align-items:center}
+.loader-amp{width:min(34vmin,260px);height:auto;fill:none;stroke:var(--accent);stroke-width:5;overflow:visible}
+.loader-amp path{stroke-dasharray:var(--len,4000);stroke-dashoffset:var(--len,4000);animation:ampDraw 1.6s cubic-bezier(.65,0,.35,1) .1s forwards}
+@keyframes ampDraw{to{stroke-dashoffset:0}}
+.loader-foot{position:absolute;left:max(var(--pad-x),env(safe-area-inset-left,0px));right:max(var(--pad-x),env(safe-area-inset-right,0px));bottom:calc(24px + env(safe-area-inset-bottom,0px));display:flex;justify-content:space-between;align-items:flex-end;gap:16px}
+.loader-foot .brand-tag{color:var(--mute)}
+.loader .loader-num{font-family:var(--f-body);font-weight:500;font-size:14px;letter-spacing:.04em;line-height:1;font-stretch:100%;color:var(--paper);font-variant-numeric:tabular-nums}
+
+/* Topo: anéis e letras soltas */
+.rings{position:absolute;inset:0;z-index:0;pointer-events:none;display:grid;place-items:center}
+.rings i{position:absolute;border:1px solid rgba(255,255,255,.09);border-radius:50%;aspect-ratio:1;width:min(78vmax,1200px);left:50%;top:50%;translate:-50% -50%}
+.rings i:nth-child(2){width:min(56vmax,860px);translate:-30% -46%}
+.rings i:nth-child(3){width:min(104vmax,1600px);translate:-62% -54%}
+.hero h1 .line{overflow:visible}
+.wd{display:inline-block;white-space:nowrap}
+.ch{display:inline-block}
+.hl{display:inline-block}
+
+/* Quem já confia */
+.trusted{padding-block:clamp(56px,8vw,120px) clamp(72px,10vw,150px);display:grid;grid-template-columns:minmax(0,220px) minmax(0,1fr);gap:24px 48px;align-items:start}
+.trusted-head{display:flex;flex-direction:column;gap:8px;position:sticky;top:96px}
+.pill-label{display:inline-block;width:max-content;border:1px solid var(--paper);border-radius:999px;padding:.3em .8em;font-size:12px;letter-spacing:.12em;text-transform:uppercase}
+.logo-grid{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
+.logo-grid li{position:relative;min-height:clamp(110px,11vw,160px);border-left:1px solid var(--line);border-top:1px solid var(--line);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:18px;text-align:center}
+.logo-grid li::before{content:"+";position:absolute;left:-.42em;top:-.62em;color:var(--mute);font:300 16px/1 var(--f-body)}
+.logo-grid li em{font-style:normal;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
+.lg{font-size:clamp(20px,2vw,30px);line-height:1;color:var(--paper)}
+.lg-a{font-family:var(--f-body);font-weight:500;font-size:clamp(14px,1.2vw,17px)}
+.lg-a b{display:block;font-family:var(--f-display);font-weight:800;font-stretch:90%;font-size:clamp(24px,2.4vw,36px);letter-spacing:-.01em}
+.lg-b{font-family:var(--f-body);font-weight:600;letter-spacing:.06em}
+.lg-c{font-family:var(--f-display);font-weight:900;font-style:italic;font-stretch:110%;letter-spacing:-.04em}
+.lg-c i{font-style:italic;color:transparent;-webkit-text-stroke:1.2px var(--paper)}
+.lg-d{font-family:var(--f-serif);font-style:italic;font-size:clamp(26px,2.6vw,40px)}
+.lg-e{font-family:var(--f-display);font-weight:900;font-stretch:80%;font-size:clamp(28px,2.8vw,44px)}
+.lg-f{font-family:var(--f-display);font-weight:800;font-stretch:72%;text-transform:uppercase;letter-spacing:.02em}
+.lg-g{font-family:var(--f-body);font-weight:400;font-size:clamp(17px,1.5vw,22px)}
+.lg-you a{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;background:var(--accent);color:var(--accent-ink);transition:background .3s}
+.lg-you .lg{color:var(--accent-ink);font-family:var(--f-display);font-weight:800;font-stretch:80%;text-transform:uppercase}
+.lg-you em{color:var(--accent-ink)!important}
+.lg-you a:hover{background:var(--paper)}
+@media (max-width:860px){.trusted{grid-template-columns:1fr}.trusted-head{position:static;flex-direction:row;align-items:center}.logo-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* Cases: lateral fixa + duas colunas em velocidades diferentes */
+.work{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.6fr);gap:32px clamp(24px,4vw,64px);align-items:start}
+.work-side{position:sticky;top:110px;display:flex;flex-direction:column;gap:18px}
+.work-side h2{font-size:clamp(2.6rem,5.2vw,6.2rem)}
+.work-side p{margin:0;color:var(--mute);max-width:30ch}
+.work-cols{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(16px,2vw,28px);align-items:start}
+.col{display:flex;flex-direction:column;gap:clamp(16px,2vw,28px)}
+.col-b{margin-top:clamp(0px,14vw,220px)}
+.work .card-media{aspect-ratio:4/5}
+.card-label{position:absolute;left:16px;bottom:14px;z-index:1;font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#fff;text-shadow:0 1px 12px rgba(0,0,0,.6)}
+.card-plus{position:absolute;right:14px;bottom:8px;z-index:1;font:300 34px/1 var(--f-body);color:#fff;transition:transform .5s var(--ease)}
+.card:hover .card-plus{transform:rotate(90deg)}
+.work .card-meta p{margin:0;color:var(--mute);font-size:14px}
+.work .card-meta .kind{color:var(--accent)}
+.work .card-next{flex-direction:column;align-items:flex-start;aspect-ratio:4/5;justify-content:space-between}
+.work .card-next .d{font-size:clamp(2rem,3.4vw,3.6rem)}
+@media (max-width:860px){.work{grid-template-columns:1fr}.work-side{position:static}.col-b{margin-top:48px}}
+@media (max-width:520px){.work-cols{grid-template-columns:1fr}.col-b{margin-top:0}}
+
+/* Assinatura: "&" gigante que enche a tela */
+.zoom{position:relative;background:var(--ink)}
+.zoom-stage{position:relative;height:100vh;height:100svh;overflow:hidden;background:var(--ink)}
+.zoom-fill{position:absolute;inset:0;
+  background:url("assets/organic.jpg") center/cover no-repeat,radial-gradient(120% 90% at 50% 45%,#FFF7C4 0%,#FFDD00 45%,#E9B800 100%);
+  background-blend-mode:screen;
+  -webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%2233.74647887323944 -716 657.2535211267606 732%22%3E%3Cpath transform=%22scale%281,-1%29%22 d=%22M286 -16Q213 -16 154.5 6.0Q96 28 63.5 72.5Q31 117 34 185Q37 232 58.5 274.5Q80 317 121.5 347.0Q163 377 223 385Q139 403 110.5 443.5Q82 484 86 536Q90 592 120.0 632.5Q150 673 198.5 694.5Q247 716 307 716Q361 716 399.5 700.0Q438 684 458.5 659.0Q479 634 479 605Q479 587 468.5 573.0Q458 559 438 558Q422 557 409.0 567.0Q396 577 396 594Q395 602 397.5 611.0Q400 620 404 627Q400 648 374.0 664.5Q348 681 310 681Q268 681 238.5 662.0Q209 643 192.5 612.0Q176 581 174 544Q173 526 176.5 502.0Q180 478 192.5 455.0Q205 432 230.5 416.5Q256 401 298 401Q319 401 324.0 401.0Q329 401 338 402L336 358L298 359Q250 359 218.0 343.0Q186 327 167.0 302.5Q148 278 139.0 251.5Q130 225 129 205Q126 145 152.5 106.5Q179 68 219.5 49.5Q260 31 299 31Q377 31 425.0 60.5Q473 90 495.0 138.5Q517 187 517 243Q491 243 470.0 243.0Q449 243 428.5 236.0Q408 229 381 208L361 228Q384 262 407.0 278.5Q430 295 460.0 301.0Q490 307 532 307Q572 307 604.5 312.5Q637 318 669 349L691 332Q675 308 660.0 289.5Q645 271 622.5 260.0Q600 249 560 245Q561 205 548.0 159.5Q535 114 504.0 74.0Q473 34 420.0 9.0Q367 -16 286 -16Z%22/%3E%3C/svg%3E");mask-image:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%2233.74647887323944 -716 657.2535211267606 732%22%3E%3Cpath transform=%22scale%281,-1%29%22 d=%22M286 -16Q213 -16 154.5 6.0Q96 28 63.5 72.5Q31 117 34 185Q37 232 58.5 274.5Q80 317 121.5 347.0Q163 377 223 385Q139 403 110.5 443.5Q82 484 86 536Q90 592 120.0 632.5Q150 673 198.5 694.5Q247 716 307 716Q361 716 399.5 700.0Q438 684 458.5 659.0Q479 634 479 605Q479 587 468.5 573.0Q458 559 438 558Q422 557 409.0 567.0Q396 577 396 594Q395 602 397.5 611.0Q400 620 404 627Q400 648 374.0 664.5Q348 681 310 681Q268 681 238.5 662.0Q209 643 192.5 612.0Q176 581 174 544Q173 526 176.5 502.0Q180 478 192.5 455.0Q205 432 230.5 416.5Q256 401 298 401Q319 401 324.0 401.0Q329 401 338 402L336 358L298 359Q250 359 218.0 343.0Q186 327 167.0 302.5Q148 278 139.0 251.5Q130 225 129 205Q126 145 152.5 106.5Q179 68 219.5 49.5Q260 31 299 31Q377 31 425.0 60.5Q473 90 495.0 138.5Q517 187 517 243Q491 243 470.0 243.0Q449 243 428.5 236.0Q408 229 381 208L361 228Q384 262 407.0 278.5Q430 295 460.0 301.0Q490 307 532 307Q572 307 604.5 312.5Q637 318 669 349L691 332Q675 308 660.0 289.5Q645 271 622.5 260.0Q600 249 560 245Q561 205 548.0 159.5Q535 114 504.0 74.0Q473 34 420.0 9.0Q367 -16 286 -16Z%22/%3E%3C/svg%3E");
+  -webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;
+  -webkit-mask-size:var(--ms,300px) auto;mask-size:var(--ms,300px) auto;
+  -webkit-mask-position:var(--mx,center) var(--my,center);mask-position:var(--mx,center) var(--my,center)}
+.zoom-line{position:absolute;top:50%;left:0;translate:0 -50%;margin:0;white-space:nowrap;font-size:clamp(3rem,9vw,10rem);color:var(--ink);opacity:0;padding-left:100vw}
+.zoom-line .amp{color:var(--ink)}
+.no-gsap .zoom-fill{-webkit-mask-image:none;mask-image:none}
+.no-gsap .zoom-line{opacity:1;padding-left:4vw;padding-right:4vw;white-space:normal}
+
+/* Rodapé: letras embaralhando */
+[data-scramble] a{font-variant-numeric:tabular-nums}
+
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
   .marquee-track{animation:none}
@@ -314,8 +392,8 @@ footer{border-top:1px solid var(--line);padding-block:clamp(48px,6vw,80px) calc(
 <a class="skip" href="#sobre">Pular para o conteúdo</a>
 
 <div class="loader wrap" id="loader" aria-hidden="true">
-  <div class="loader-top"><span>Inc&amp;Co.</span><span class="brand-tag">Strategic marketing for brands</span></div>
-  <div class="loader-num"><span id="loaderNum">000</span><sup>%</sup></div>
+  <svg class="loader-amp" viewBox="33.74647887323944 -716 657.2535211267606 732"><path transform="scale(1,-1)" d="M286 -16Q213 -16 154.5 6.0Q96 28 63.5 72.5Q31 117 34 185Q37 232 58.5 274.5Q80 317 121.5 347.0Q163 377 223 385Q139 403 110.5 443.5Q82 484 86 536Q90 592 120.0 632.5Q150 673 198.5 694.5Q247 716 307 716Q361 716 399.5 700.0Q438 684 458.5 659.0Q479 634 479 605Q479 587 468.5 573.0Q458 559 438 558Q422 557 409.0 567.0Q396 577 396 594Q395 602 397.5 611.0Q400 620 404 627Q400 648 374.0 664.5Q348 681 310 681Q268 681 238.5 662.0Q209 643 192.5 612.0Q176 581 174 544Q173 526 176.5 502.0Q180 478 192.5 455.0Q205 432 230.5 416.5Q256 401 298 401Q319 401 324.0 401.0Q329 401 338 402L336 358L298 359Q250 359 218.0 343.0Q186 327 167.0 302.5Q148 278 139.0 251.5Q130 225 129 205Q126 145 152.5 106.5Q179 68 219.5 49.5Q260 31 299 31Q377 31 425.0 60.5Q473 90 495.0 138.5Q517 187 517 243Q491 243 470.0 243.0Q449 243 428.5 236.0Q408 229 381 208L361 228Q384 262 407.0 278.5Q430 295 460.0 301.0Q490 307 532 307Q572 307 604.5 312.5Q637 318 669 349L691 332Q675 308 660.0 289.5Q645 271 622.5 260.0Q600 249 560 245Q561 205 548.0 159.5Q535 114 504.0 74.0Q473 34 420.0 9.0Q367 -16 286 -16Z"/></svg>
+  <div class="loader-foot"><span class="brand-tag">Inc&amp;Co · Strategic marketing for brands</span><span class="loader-num"><span id="loaderNum">0</span>%</span></div>
 </div>
 
 <header class="nav wrap">
@@ -344,6 +422,7 @@ footer{border-top:1px solid var(--line);padding-block:clamp(48px,6vw,80px) calc(
   <section class="hero wrap" id="inicio">
     <div class="organic" id="organic" aria-hidden="true"><div class="organic-tex"></div></div>
     <div class="hero-tag small"><span class="brand-tag">Strategic marketing for brands</span><span>Santos/SP</span></div>
+    <span class="rings" aria-hidden="true"><i></i><i></i><i></i></span>
     <span class="hero-amp amp" aria-hidden="true">&amp;</span>
     <h1 class="d">
       <span class="line"><span>Onde a <span class="hl">essência</span></span></span>
@@ -380,6 +459,56 @@ footer{border-top:1px solid var(--line);padding-block:clamp(48px,6vw,80px) calc(
     </div>
   </section>
 
+  <section class="trusted wrap" aria-labelledby="trustedT">
+    <div class="trusted-head"><span id="trustedT" class="small">Quem já confia</span><span class="pill-label">Marcas</span></div>
+    <ul class="logo-grid">
+      <li><span class="lg lg-a">Prefeitura de <b>Guarujá</b></span><em>Público</em></li>
+      <li><span class="lg lg-b">IBAM</span><em>Público</em></li>
+      <li><span class="lg lg-c">OJR<i>7</i></span><em>Esporte</em></li>
+      <li><span class="lg lg-d">La Nota</span><em>Franquia</em></li>
+      <li><span class="lg lg-e">ayo!</span><em>Franquia</em></li>
+      <li><span class="lg lg-f">Nonna’s</span><em>Franquia</em></li>
+      <li><span class="lg lg-g">Casa de Saúde</span><em>Saúde</em></li>
+      <li class="lg-you"><a href="#contato" data-cursor="link"><span class="lg">Sua marca</span><em>Próximo case →</em></a></li>
+    </ul>
+  </section>
+
+  <section class="sec work wrap" id="projetos">
+    <aside class="work-side">
+      <span class="small">Cases</span>
+      <h2 class="d">Principais<br><span class="hl">cases</span></h2>
+      <p>Público, esporte, franquia e saúde. Clique para ver o desafio, a solução e o resultado.</p>
+      <div class="filters" role="group" aria-label="Filtrar cases">
+        <button type="button" data-filter="all" aria-pressed="true">Todos</button>
+        <button type="button" data-filter="publico" aria-pressed="false">Público</button>
+        <button type="button" data-filter="esporte" aria-pressed="false">Esporte</button>
+        <button type="button" data-filter="franquia" aria-pressed="false">Franquia</button>
+      </div>
+    </aside>
+    <div class="work-cols">
+      <div class="col col-a">
+        <button class="card" data-cat="publico" data-case="guaruja" data-cursor="Ver case">
+          <div class="card-media"><img src="assets/guaruja-capa.jpg" alt="Vista aérea da orla de Guarujá com filtro azul e o logotipo da Prefeitura" loading="lazy"><span class="card-label">Prefeitura de Guarujá</span><span class="card-plus" aria-hidden="true">+</span></div>
+          <div class="card-meta"><p>Campanha “Guarujá + Compromisso com Você”</p><span class="kind">Público</span></div>
+        </button>
+        <button class="card" data-cat="franquia" data-case="lanota" data-cursor="Ver case">
+          <div class="card-media"><img src="assets/lanota-capa.jpg" alt="Logotipo La Nota em creme sobre textura de gelato de chocolate" loading="lazy"><span class="card-label">La Nota</span><span class="card-plus" aria-hidden="true">+</span></div>
+          <div class="card-meta"><p>Branding e expansão no Mercadão e na Liberdade</p><span class="kind">Franquia</span></div>
+        </button>
+      </div>
+      <div class="col col-b">
+        <button class="card" data-cat="esporte" data-case="robinho" data-cursor="Ver case">
+          <div class="card-media"><img src="assets/robinho-capa.jpg" alt="Robinho Jr. dominando a bola sob o letreiro ROBINHO JR e a marca OJR7" loading="lazy"><span class="card-label">Robinho Jr. · OJR7</span><span class="card-plus" aria-hidden="true">+</span></div>
+          <div class="card-meta"><p>Marca, mídia kit e gestão de imagem</p><span class="kind">Esporte</span></div>
+        </button>
+        <a class="card-next" href="#contato" data-cursor="link">
+          <span class="d">O próximo case pode ser o seu.</span>
+          <span class="arrow" aria-hidden="true">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
   <section class="sec services wrap" id="servicos">
     <div class="sec-head"><span>O que fazemos</span><span class="k">Quatro frentes, um mesmo time</span></div>
     <div class="svc-intro">
@@ -388,28 +517,28 @@ footer{border-top:1px solid var(--line);padding-block:clamp(48px,6vw,80px) calc(
     </div>
     <div class="svc-list" id="svcList">
       <div class="svc" data-open>
-        <button class="svc-btn" aria-expanded="true" aria-controls="svc1" id="svc1b"><span class="svc-name"><span class="ast" aria-hidden="true">✱</span>Branding</span><span class="svc-plus" aria-hidden="true"></span></button>
+        <button class="svc-btn" aria-expanded="true" aria-controls="svc1" id="svc1b"><span class="svc-name" data-split><span class="ast" aria-hidden="true">✱</span>Branding</span><span class="svc-plus" aria-hidden="true"></span></button>
         <div class="svc-panel" id="svc1" role="region" aria-labelledby="svc1b"><div><div class="svc-body">
           <p>Construção de marca e propósito. Da identidade visual à expansão da marca em novos pontos e franquias.</p>
           <ul class="tags"><li>Identidade visual</li><li>Naming e logotipo</li><li>Expansão de marca</li><li>Trade marketing</li></ul>
         </div></div></div>
       </div>
       <div class="svc">
-        <button class="svc-btn" aria-expanded="false" aria-controls="svc2" id="svc2b"><span class="svc-name"><span class="ast" aria-hidden="true">✱</span>Audiovisual</span><span class="svc-plus" aria-hidden="true"></span></button>
+        <button class="svc-btn" aria-expanded="false" aria-controls="svc2" id="svc2b"><span class="svc-name" data-split><span class="ast" aria-hidden="true">✱</span>Audiovisual</span><span class="svc-plus" aria-hidden="true"></span></button>
         <div class="svc-panel" id="svc2" role="region" aria-labelledby="svc2b"><div><div class="svc-body">
           <p>Foto, vídeo, motion graphics e 3D. Roteiro e identidade para filmes de 30 e 60 segundos, TV e redes sociais.</p>
           <ul class="tags"><li>Foto</li><li>Vídeo</li><li>Motion graphics</li><li>3D</li></ul>
         </div></div></div>
       </div>
       <div class="svc">
-        <button class="svc-btn" aria-expanded="false" aria-controls="svc3" id="svc3b"><span class="svc-name"><span class="ast" aria-hidden="true">✱</span>Sports</span><span class="svc-plus" aria-hidden="true"></span></button>
+        <button class="svc-btn" aria-expanded="false" aria-controls="svc3" id="svc3b"><span class="svc-name" data-split><span class="ast" aria-hidden="true">✱</span>Sports</span><span class="svc-plus" aria-hidden="true"></span></button>
         <div class="svc-panel" id="svc3" role="region" aria-labelledby="svc3b"><div><div class="svc-body">
           <p>Gestão de imagem e patrocínios. Marca pessoal de atletas, mídia kit, media training e licenciamento de produtos.</p>
           <ul class="tags"><li>Personal branding</li><li>Mídia kit</li><li>Media training</li><li>Licenciamento</li></ul>
         </div></div></div>
       </div>
       <div class="svc">
-        <button class="svc-btn" aria-expanded="false" aria-controls="svc4" id="svc4b"><span class="svc-name"><span class="ast" aria-hidden="true">✱</span>Public</span><span class="svc-plus" aria-hidden="true"></span></button>
+        <button class="svc-btn" aria-expanded="false" aria-controls="svc4" id="svc4b"><span class="svc-name" data-split><span class="ast" aria-hidden="true">✱</span>Public</span><span class="svc-plus" aria-hidden="true"></span></button>
         <div class="svc-panel" id="svc4" role="region" aria-labelledby="svc4b"><div><div class="svc-body">
           <p>Comunicação para prefeituras e governos: marketing territorial, prestação de contas e campanhas multicanal.</p>
           <ul class="tags"><li>Comunicação pública</li><li>Marketing territorial</li><li>Prestação de contas</li><li>Campanhas multicanal</li></ul>
@@ -418,49 +547,19 @@ footer{border-top:1px solid var(--line);padding-block:clamp(48px,6vw,80px) calc(
     </div>
   </section>
 
-  <section class="sec wrap" id="projetos">
-    <div class="sec-head"><span>Cases</span><span class="k">Público, esporte, franquia e saúde</span></div>
-    <div class="proj-intro">
-      <h2 class="d">Principais<br><span class="hl">cases</span></h2>
-      <div class="filters" role="group" aria-label="Filtrar cases">
-        <button type="button" data-filter="all" aria-pressed="true">Todos</button>
-        <button type="button" data-filter="publico" aria-pressed="false">Público</button>
-        <button type="button" data-filter="esporte" aria-pressed="false">Esporte</button>
-        <button type="button" data-filter="franquia" aria-pressed="false">Franquia</button>
-      </div>
-    </div>
-    <div class="proj-grid">
-      <button class="card card-wide" data-cat="publico" data-case="guaruja" data-cursor="Ver case">
-        <div class="card-media"><img src="assets/guaruja-capa.jpg" alt="Vista aérea da orla de Guarujá com filtro azul e o logotipo da Prefeitura" data-parallax loading="lazy"></div>
-        <div class="card-meta"><div><h3>Prefeitura de Guarujá</h3><p>Campanha “Guarujá + Compromisso com Você”</p></div><span class="kind">Público</span></div>
-      </button>
-      <button class="card" data-cat="esporte" data-case="robinho" data-cursor="Ver case">
-        <div class="card-media"><img src="assets/robinho-capa.jpg" alt="Robinho Jr. dominando a bola sob o letreiro ROBINHO JR e a marca OJR7" data-parallax loading="lazy"></div>
-        <div class="card-meta"><div><h3>Robinho Jr. · Santos FC</h3><p>Marca OJR7, mídia kit e gestão de imagem</p></div><span class="kind">Esporte</span></div>
-      </button>
-      <button class="card" data-cat="franquia" data-case="lanota" data-cursor="Ver case">
-        <div class="card-media"><img src="assets/lanota-capa.jpg" alt="Logotipo La Nota em creme sobre textura de gelato de chocolate" data-parallax loading="lazy"></div>
-        <div class="card-meta"><div><h3>La Nota, gelato italiano</h3><p>Branding e expansão no Mercadão e na Liberdade</p></div><span class="kind">Franquia</span></div>
-      </button>
-      <a class="card-next" href="#contato" data-cursor="link">
-        <span class="d">O próximo case<br>pode ser o seu.</span>
-        <span class="arrow" aria-hidden="true">→</span>
-      </a>
-    </div>
-    <div class="clients">
-      <h3 class="clients-title">Marcas que já trabalharam com a gente</h3>
-      <div class="clients-grid">
-        <div><span class="k">Público</span><ul><li>Prefeitura de Guarujá</li><li>IBAM, Instituto Brasileiro de Administração Municipal</li></ul></div>
-        <div><span class="k">Esporte</span><ul><li>Robinho Jr. (OJR7)</li></ul></div>
-        <div><span class="k">Franquia</span><ul><li>La Nota</li><li>ayo! açaí yogurt</li><li>Nonna’s Pasta</li></ul></div>
-        <div><span class="k">Saúde</span><ul><li>Hospital Casa de Saúde</li></ul></div>
-      </div>
+  <section class="zoom" id="assinatura" aria-label="Onde a diferença é o padrão. Escolha Inc&amp;Co.">
+    <div class="zoom-stage">
+      <div class="zoom-fill" aria-hidden="true"></div>
+      <p class="zoom-line d" aria-hidden="true">Onde a diferença é o padrão. Escolha Inc<span class="amp">&amp;</span>Co.</p>
     </div>
   </section>
 
+
+
+
   <section class="contact wrap" id="contato">
     <div class="sec-head"><span>Vamos conversar</span><span class="k">Abertos a novas conexões</span></div>
-    <h2 class="d contact-big">
+    <h2 class="d contact-big" data-split-rows>
       <span class="row">Grandes marcas</span>
       <span class="row">começam com</span>
       <span class="row">uma boa <span class="amp">&amp;</span> conversa.</span>
@@ -485,7 +584,7 @@ footer{border-top:1px solid var(--line);padding-block:clamp(48px,6vw,80px) calc(
   </section>
 </main>
 
-<footer class="wrap">
+<footer class="wrap" data-scramble>
   <div class="foot-grid">
     <p class="foot-tag">Onde a essência da marca encontra a estratégia de alta performance.</p>
     <div><h4>Explore</h4><ul><li><a href="#sobre">A Inc&amp;Co</a></li><li><a href="#servicos">Pilares</a></li><li><a href="#projetos">Cases</a></li></ul></div>
@@ -526,21 +625,23 @@ footer{border-top:1px solid var(--line);padding-block:clamp(48px,6vw,80px) calc(
 
   /* Loader 000 → 100 */
   var numEl = document.getElementById('loaderNum');
+  var lp = document.querySelector('.loader-amp path'); if (lp && lp.getTotalLength) { try { lp.style.setProperty('--len', Math.ceil(lp.getTotalLength())); } catch(e){} }
   function done(){ root.classList.add('is-loaded'); }
   if (reduce) { done(); }
   else {
-    var t0 = performance.now(), dur = 1400;
+    var t0 = performance.now(), dur = 1700;
     (function tick(now){
       var p = Math.min(1, (now - t0) / dur), e = 1 - Math.pow(1 - p, 3);
-      numEl.textContent = String(Math.round(e * 100)).padStart(3, '0');
+      numEl.textContent = String(Math.round(e * 20) * 5);
       if (p < 1) requestAnimationFrame(tick); else setTimeout(done, 200);
     })(t0);
   }
 
   /* Smooth scroll */
   var hasG = !!(window.gsap && window.ScrollTrigger);
+  if (!hasG || reduce) root.classList.add('no-gsap');
   var lenis = null;
-  if (false) { /* rolagem suave desligada: causava rastros sobre a textura */
+  if (!reduce && window.Lenis) {
     try {
       lenis = new Lenis({ lerp: 0.09, prevent: function(node){ return !!(node.closest && node.closest('dialog')); } });
       if (hasG) {
@@ -732,26 +833,142 @@ footer{border-top:1px solid var(--line);padding-block:clamp(48px,6vw,80px) calc(
   fitWord(); addEventListener('resize', fitWord);
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(function(){ fitWord(); if (hasG) ScrollTrigger.refresh(); });
 
-  /* Scroll-linked motion */
-  if (hasG && !reduce) {
+  /* ===== Movimentos inspirados na OFF+BRAND ===== */
+  function splitChars(el, skipSel){
+    var units = [];
+    (function walk(node){
+      Array.prototype.slice.call(node.childNodes).forEach(function(n){
+        if (n.nodeType === 3) {
+          var parts = n.textContent.split(/(\s+)/), frag = document.createDocumentFragment();
+          parts.forEach(function(p){
+            if (!p) return;
+            if (/^\s+$/.test(p)) { frag.appendChild(document.createTextNode(p)); return; }
+            var w = document.createElement('span'); w.className = 'wd';
+            Array.from(p).forEach(function(c){ var ch = document.createElement('span'); ch.className = 'ch'; ch.textContent = c; w.appendChild(ch); units.push(ch); });
+            frag.appendChild(w);
+          });
+          n.parentNode.replaceChild(frag, n);
+        } else if (n.nodeType === 1) {
+          if (skipSel && n.matches(skipSel)) { units.push(n); return; }
+          walk(n);
+        }
+      });
+    })(el);
+    return units;
+  }
+  function rand(a, b){ return a + Math.random() * (b - a); }
 
+  if (hasG && !reduce) {
+    var mm = gsap.matchMedia();
+
+    /* Topo: letras entram uma a uma e se espalham ao rolar */
+    var h1 = document.querySelector('.hero h1');
+    var units = splitChars(h1, '.hl');
+    root.classList.add('split-ready');
+    gsap.set(units, { yPercent: 110, opacity: 0 });
+    var introPlayed = false;
+    function intro(){
+      if (introPlayed) return; introPlayed = true;
+      gsap.to(units, { yPercent: 0, opacity: 1, duration: 1.1, ease: 'expo.out', stagger: { each: .018, from: 'start' } });
+      gsap.from('.hero-amp', { scale: .6, rotate: -30, opacity: 0, duration: 1.8, ease: 'expo.out' });
+      gsap.from('.rings i', { scale: .6, opacity: 0, duration: 2, ease: 'expo.out', stagger: .12 });
+    }
+    new MutationObserver(function(){ if (root.classList.contains('is-loaded')) intro(); }).observe(root, { attributes: true, attributeFilter: ['class'] });
+    if (root.classList.contains('is-loaded')) intro();
+    setTimeout(intro, 3600);
+
+    var heroTl = gsap.timeline({ scrollTrigger: { trigger: '.hero', start: 'top top', end: '+=70%', pin: true, scrub: .6 } });
+    units.forEach(function(u){
+      heroTl.to(u, { y: rand(-320, 220), x: rand(-60, 60), rotate: rand(-35, 35), opacity: 0, ease: 'none', duration: rand(.35, .7) }, rand(0, .45));
+    });
+    heroTl.to('.hero-amp', { scale: 1.7, xPercent: 18, rotate: -24, ease: 'none', duration: 1 }, 0)
+          .to('.rings i', { scale: 1.35, ease: 'none', duration: 1, stagger: .05 }, 0)
+          .to('.hero-foot, .hero-tag, .scroll-hint', { opacity: 0, y: -40, ease: 'none', duration: .4 }, 0);
+
+    /* Sobre: palavras acendem com a rolagem */
     var st = document.getElementById('statement');
     st.innerHTML = st.textContent.split(' ').map(function(w){ return '<span class="w">' + esc(w) + '</span>'; }).join(' ');
-    gsap.fromTo(st.querySelectorAll('.w'), { opacity: .2 }, { opacity: 1, stagger: .1, ease: 'none', scrollTrigger: { trigger: st, start: 'top 80%', end: 'bottom 40%', scrub: true } });
+    gsap.fromTo(st.querySelectorAll('.w'), { opacity: .15 }, { opacity: 1, stagger: .1, ease: 'none', scrollTrigger: { trigger: st, start: 'top 80%', end: 'bottom 45%', scrub: true } });
+    gsap.from('.about-grid > *', { y: 60, opacity: 0, duration: 1.2, ease: 'expo.out', stagger: .12, scrollTrigger: { trigger: '.about-grid', start: 'top 85%' } });
 
-    document.querySelectorAll('[data-parallax]').forEach(function(el){
-      gsap.fromTo(el, { yPercent: -4, scale: 1.1 }, { yPercent: 4, scale: 1.1, ease: 'none', scrollTrigger: { trigger: el.parentNode, start: 'top bottom', end: 'bottom top', scrub: true } });
+    /* Quem já confia: células aparecem em sequência */
+    gsap.from('.logo-grid li', { opacity: 0, y: 24, duration: .9, ease: 'expo.out', stagger: { each: .07, grid: 'auto', from: 'start' }, scrollTrigger: { trigger: '.logo-grid', start: 'top 85%' } });
+
+    /* Cases: imagens reveladas por cortina e colunas em velocidades diferentes */
+    document.querySelectorAll('.work .card-media').forEach(function(m){
+      var img = m.querySelector('img');
+      gsap.fromTo(m, { clipPath: 'inset(100% 0% 0% 0%)' }, { clipPath: 'inset(0% 0% 0% 0%)', duration: 1.3, ease: 'expo.inOut', scrollTrigger: { trigger: m, start: 'top 88%' } });
+      if (img) gsap.fromTo(img, { scale: 1.25 }, { scale: 1.05, ease: 'none', scrollTrigger: { trigger: m, start: 'top bottom', end: 'bottom top', scrub: true } });
+    });
+    mm.add('(min-width: 521px)', function(){
+      gsap.fromTo('.col-b', { y: 120 }, { y: -160, ease: 'none', scrollTrigger: { trigger: '.work-cols', start: 'top bottom', end: 'bottom top', scrub: true } });
+      gsap.fromTo('.col-a', { y: 40 }, { y: -40, ease: 'none', scrollTrigger: { trigger: '.work-cols', start: 'top bottom', end: 'bottom top', scrub: true } });
     });
 
-    gsap.from('.wordmark span', { yPercent: 100, opacity: 0, stagger: .08, duration: 1.1, ease: 'expo.out', scrollTrigger: { trigger: '.wordmark', start: 'top 92%' } });
-    gsap.from('.contact-big .amp', { rotate: -90, scale: .4, duration: 1.4, ease: 'expo.out', scrollTrigger: { trigger: '.contact-big', start: 'top 75%' } });
+    /* Pilares: nomes sobem letra a letra */
+    document.querySelectorAll('[data-split]').forEach(function(el){
+      var ch = splitChars(el, '.ast');
+      gsap.from(ch, { yPercent: 100, opacity: 0, duration: .9, ease: 'expo.out', stagger: .025, scrollTrigger: { trigger: el, start: 'top 90%' } });
+    });
 
-    /* Marquee speeds up with scroll velocity */
+    /* Assinatura: "&" cresce até encher a tela */
+    var zf = document.querySelector('.zoom-fill'), stage = document.querySelector('.zoom-stage');
+    if (zf && stage) {
+      var AW = 657.25, AH = 732, P0 = [.5, .5], P1 = [.070, .743];
+      var z = { p: 0 };
+      function drawZoom(){
+        var w = stage.clientWidth, h = stage.clientHeight, p = z.p;
+        var start = Math.min(w, h) * .42, end = Math.hypot(w, h) * 7.5;
+        var k = start * Math.pow(end / start, p);
+        var e = Math.min(1, p * 1.6), ax = P0[0] + (P1[0] - P0[0]) * e, ay = P0[1] + (P1[1] - P0[1]) * e;
+        var mh = k * AH / AW;
+        zf.style.setProperty('--ms', k.toFixed(1) + 'px');
+        zf.style.setProperty('--mx', (w / 2 - k * ax).toFixed(1) + 'px');
+        zf.style.setProperty('--my', (h / 2 - mh * ay).toFixed(1) + 'px');
+      }
+      drawZoom(); addEventListener('resize', drawZoom);
+      var ztl = gsap.timeline({ scrollTrigger: { trigger: '.zoom', start: 'top top', end: '+=260%', pin: '.zoom-stage', scrub: .5 } });
+      ztl.to(z, { p: 1, ease: 'power2.in', duration: 1, onUpdate: drawZoom }, 0)
+         .to('.zoom-line', { opacity: 1, duration: .05 }, .72)
+         .fromTo('.zoom-line', { x: 0 }, { x: function(){ var l = document.querySelector('.zoom-line'); return -(l.scrollWidth); }, ease: 'none', duration: 1 }, .72)
+         .to('.zoom-stage', { clipPath: 'inset(3vh 2.5vw 14vh 2.5vw round 32px)', ease: 'power2.inOut', duration: .35 }, 1.5);
+    }
+
+    /* Contato: título letra a letra */
+    document.querySelectorAll('[data-split-rows] .row').forEach(function(row){
+      var ch = splitChars(row, '.amp');
+      gsap.from(ch, { yPercent: 110, opacity: 0, duration: 1, ease: 'expo.out', stagger: .02, scrollTrigger: { trigger: row, start: 'top 88%' } });
+    });
+    gsap.from('.contact-big .amp', { rotate: -90, scale: .4, duration: 1.4, ease: 'expo.out', scrollTrigger: { trigger: '.contact-big', start: 'top 70%' } });
+
+    /* Rodapé */
+    gsap.from('.wordmark span', { yPercent: 100, opacity: 0, stagger: .08, duration: 1.1, ease: 'expo.out', scrollTrigger: { trigger: '.wordmark', start: 'top 95%' } });
+
+    /* Faixa acelera com a velocidade da rolagem */
     var track = document.querySelector('.marquee-track');
     if (track && track.getAnimations) {
       var anim = track.getAnimations()[0];
       if (anim && lenis) lenis.on('scroll', function(l){ var v = Math.min(6, 1 + Math.abs(l.velocity) * .25); anim.playbackRate = l.direction < 0 ? -v : v; });
     }
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(function(){ ScrollTrigger.refresh(); });
+  }
+
+  /* Links do rodapé e menu embaralham as letras no hover */
+  if (!reduce) {
+    var glyphs = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ&+*#%';
+    document.querySelectorAll('[data-scramble] a, .nav .pill, .menu-links a span').forEach(function(a){
+      var label = a.childNodes.length === 1 && a.firstChild.nodeType === 3 ? a : null;
+      if (!label) return;
+      var orig = a.textContent, timer = 0;
+      a.addEventListener('mouseenter', function(){
+        var f = 0; clearInterval(timer);
+        timer = setInterval(function(){
+          a.textContent = orig.split('').map(function(c, i){ if (c === ' ' || i < f / 2) return c; return glyphs[(Math.random() * glyphs.length) | 0]; }).join('');
+          if (++f > orig.length * 2) { clearInterval(timer); a.textContent = orig; }
+        }, 28);
+      });
+      a.addEventListener('mouseleave', function(){ clearInterval(timer); a.textContent = orig; });
+    });
   }
 })();
 </script>
