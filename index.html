@@ -1,0 +1,729 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Inc&amp;Co — Strategic marketing for brands</title>
+<meta name="description" content="Onde a essência da marca encontra a estratégia de alta performance. Branding, audiovisual, sports e comunicação pública. Santos/SP.">
+<meta name="theme-color" content="#000000">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Instrument+Sans:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap">
+<style>
+/* Layout: tipografia condensada gigante em blocos que ocupam a largura; o "&" em serifa itálica é o elemento-assinatura que costura as seções. */
+:root{
+  --ink:#000000;
+  --ink-2:#121212;
+  --paper:#FFFFFF;
+  --mute:#8F8F8F;
+  --line:rgba(255,255,255,.16);
+  --accent:#FFDD00;
+  --accent-ink:#000000;
+  --mute-on-accent:#5C4F00;
+  --f-display:"Archivo","Arial Narrow",Impact,sans-serif;
+  --f-body:"Instrument Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-serif:"Instrument Serif",Georgia,"Times New Roman",serif;
+  --gutter-l:max(16px, env(safe-area-inset-left, 0px));
+  --gutter-r:max(16px, env(safe-area-inset-right, 0px));
+  --pad-x:clamp(16px,4vw,56px);
+  --ease:cubic-bezier(.77,0,.18,1);
+  color-scheme:dark;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{background:var(--ink);-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--ink);color:var(--paper);font-family:var(--f-body);font-size:16px;line-height:1.55;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--ink)}
+img{max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;padding:0}
+:focus-visible{outline:2px solid var(--accent);outline-offset:4px;border-radius:2px}
+::selection{background:var(--accent);color:var(--accent-ink)}
+.wrap{padding-left:max(var(--pad-x), env(safe-area-inset-left, 0px));padding-right:max(var(--pad-x), env(safe-area-inset-right, 0px))}
+.skip{position:absolute;left:-999px;top:8px;background:var(--paper);color:var(--ink);padding:8px 12px;z-index:100}
+.skip:focus{left:16px}
+
+/* Display type */
+.d{font-family:var(--f-display);font-weight:800;font-stretch:72%;text-transform:uppercase;line-height:.86;letter-spacing:-.015em;margin:0;text-wrap:balance}
+.amp{font-family:var(--f-serif);font-style:italic;font-weight:400;text-transform:none;letter-spacing:0;color:var(--accent)}
+.small{font-size:13px;letter-spacing:.04em;color:var(--mute)}
+
+/* Loader */
+.loader{display:none}
+.js .loader{display:flex;position:fixed;inset:0;z-index:90;background:var(--accent);color:var(--accent-ink);flex-direction:column;justify-content:space-between;padding-block:calc(24px + env(safe-area-inset-top,0px)) calc(24px + env(safe-area-inset-bottom,0px));transition:transform 1s var(--ease);animation:loaderSafety .9s var(--ease) 3.2s forwards}
+.is-loaded .loader{transform:translateY(-100%)}
+@keyframes loaderSafety{to{transform:translateY(-100%)}}
+.loader-top{display:flex;justify-content:space-between;font-size:14px}
+.loader-num{font-family:var(--f-display);font-weight:800;font-stretch:62%;font-size:clamp(7rem,30vw,26rem);line-height:.8;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.loader-num sup{font-size:.25em;vertical-align:top;margin-left:.1em}
+
+/* Nav */
+.nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding-block:calc(18px + env(safe-area-inset-top,0px)) 18px;color:var(--paper);transition:background .4s,padding .4s}
+.nav.solid{background:var(--ink);padding-block:calc(12px + env(safe-area-inset-top,0px)) 12px}
+.nav .logo .amp{color:var(--accent)}
+.logo{font-family:var(--f-display);font-weight:800;font-stretch:80%;font-size:22px;letter-spacing:-.01em}
+.logo .amp{color:inherit}
+.nav-right{display:flex;gap:10px;align-items:center}
+.pill{display:inline-flex;align-items:center;gap:.6em;border:1px solid currentColor;border-radius:999px;padding:.6em 1.1em;font-size:14px;font-weight:500;transition:background .3s,color .3s}
+.pill:hover{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.pill .dot{width:7px;height:7px;border-radius:50%;background:currentColor}
+@media (max-width:640px){.nav .hide-sm{display:none}}
+
+/* Menu overlay */
+.menu{position:fixed;inset:0;z-index:70;background:var(--accent);color:var(--accent-ink);clip-path:inset(0 0 100% 0);transition:clip-path .8s var(--ease);display:flex;flex-direction:column;justify-content:space-between;padding-block:calc(18px + env(safe-area-inset-top,0px)) calc(28px + env(safe-area-inset-bottom,0px));visibility:hidden}
+.menu.open{clip-path:inset(0 0 0 0);visibility:visible}
+.menu-head{display:flex;justify-content:space-between;align-items:center}
+.menu .pill:hover{background:var(--accent-ink);color:var(--accent)}
+.menu-links{display:flex;flex-direction:column}
+.menu-links a{font-family:var(--f-display);font-weight:800;font-stretch:70%;text-transform:uppercase;font-size:clamp(3rem,11vw,9rem);line-height:.92;display:flex;align-items:baseline;gap:.3em;overflow:hidden}
+.menu-links a span{display:inline-block;transform:translateY(105%);transition:transform .8s var(--ease)}
+.menu.open .menu-links a span{transform:none}
+.menu.open .menu-links a:nth-child(2) span{transition-delay:.06s}
+.menu.open .menu-links a:nth-child(3) span{transition-delay:.12s}
+.menu.open .menu-links a:nth-child(4) span{transition-delay:.18s}
+.menu-links a:hover span{font-style:italic;font-family:var(--f-serif);text-transform:none;font-weight:400}
+.menu-foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;font-size:14px}
+
+/* Hero */
+.hero{position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;padding-block:120px 32px;overflow:hidden}
+.hero-tag{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;margin-bottom:clamp(20px,4vh,48px)}
+.hero h1{font-size:clamp(3.4rem,13.5vw,15rem);position:relative;z-index:2}
+.hero h1 .line{display:block;overflow:hidden;padding-bottom:.02em}
+.hero h1 .line > span{display:inline-block}
+.js .hero h1 .line > span{transform:translateY(105%);transition:transform 1.1s var(--ease)}
+.js.is-loaded .hero h1 .line > span{transform:none}
+.js.is-loaded .hero h1 .line:nth-child(2) > span{transition-delay:.08s}
+.js.is-loaded .hero h1 .line:nth-child(3) > span{transition-delay:.16s}
+.js.is-loaded .hero h1 .line:nth-child(4) > span{transition-delay:.24s}
+.js .hero h1 .line > span{animation:heroSafety 1s var(--ease) 3.4s forwards}
+@keyframes heroSafety{to{transform:none}}
+.hero h1 .indent{padding-left:12vw}
+.hero-amp{position:absolute;z-index:1;right:-4vw;top:50%;translate:0 -58%;font-size:clamp(18rem,58vw,62rem);line-height:.7;pointer-events:none;will-change:transform;color:transparent;-webkit-text-stroke:3px var(--accent)}
+.hl{background:var(--accent);color:var(--accent-ink);padding:0 .08em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.hero-foot{position:relative;z-index:2;display:grid;grid-template-columns:minmax(0,1.1fr) auto;gap:24px 40px;align-items:end;margin-top:clamp(28px,5vh,56px);border-top:1px solid var(--line);padding-top:24px}
+.hero-foot p{margin:0;max-width:34ch;font-size:clamp(17px,1.5vw,21px);line-height:1.4}
+.ctas{display:flex;flex-wrap:wrap;gap:10px}
+.btn{display:inline-flex;align-items:center;gap:.7em;border-radius:999px;padding:1em 1.5em;font-weight:600;font-size:15px;border:1px solid var(--paper);transition:background .3s,color .3s,border-color .3s}
+.btn-solid{background:var(--paper);color:var(--ink)}
+.btn-solid:hover{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.btn-ghost:hover{background:var(--paper);color:var(--ink)}
+.scroll-hint{position:relative;z-index:2;margin-top:28px;display:flex;justify-content:space-between;gap:12px}
+@media (max-width:760px){.hero-foot{grid-template-columns:1fr}.hero h1 .indent{padding-left:0}.hero-amp{right:-18vw;top:38%;opacity:.9}}
+
+/* Marquee */
+.marquee{border-block:1px solid var(--line);overflow:hidden;padding-block:clamp(14px,2vw,26px);white-space:nowrap}
+.marquee-track{display:inline-flex;animation:marq 30s linear infinite}
+.marquee span{font-family:var(--f-display);font-weight:800;font-stretch:72%;text-transform:uppercase;font-size:clamp(2.6rem,7vw,7rem);line-height:1;padding-inline:.25em}
+.marquee .o{color:transparent;-webkit-text-stroke:1px var(--paper)}
+.marquee .star{font-family:var(--f-body);font-weight:700;color:var(--accent);font-size:.6em;vertical-align:.25em}
+@keyframes marq{to{transform:translateX(-50%)}}
+
+/* Section scaffolding */
+section{position:relative}
+.sec{padding-block:clamp(88px,14vw,200px)}
+.sec-head{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:18px;margin-bottom:clamp(40px,7vw,96px)}
+.sec-head .k{font-size:14px;color:var(--mute)}
+
+/* About */
+.statement{font-family:var(--f-display);font-weight:700;font-stretch:78%;text-transform:uppercase;font-size:clamp(2.3rem,6.2vw,6.6rem);line-height:.95;letter-spacing:-.01em;margin:0;max-width:18ch;text-wrap:balance}
+.statement .w{display:inline-block}
+.about-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px clamp(32px,6vw,96px);margin-top:clamp(48px,8vw,110px)}
+.about-grid p{margin:0;font-size:clamp(17px,1.4vw,20px);max-width:44ch}
+.about-grid p.lead{font-family:var(--f-serif);font-size:clamp(26px,2.6vw,38px);line-height:1.15;max-width:22ch}
+.beliefs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin-top:clamp(56px,8vw,120px);border-top:1px solid var(--line)}
+.belief{padding:28px 28px 0 0;display:flex;flex-direction:column;gap:10px}
+.belief + .belief{padding-left:28px;border-left:1px solid var(--line)}
+.belief h3{font-family:var(--f-display);font-weight:800;font-stretch:75%;text-transform:uppercase;font-size:clamp(1.6rem,2.6vw,2.4rem);line-height:.95;margin:0}
+.belief p{margin:0;color:var(--mute)}
+.link-arrow{display:inline-flex;gap:.5em;align-items:center;border-bottom:1px solid currentColor;padding-bottom:3px;font-weight:600;margin-top:28px}
+.link-arrow:hover{color:var(--accent)}
+@media (max-width:760px){.about-grid{grid-template-columns:1fr}.beliefs{grid-template-columns:1fr}.belief + .belief{padding-left:0;border-left:0;border-top:1px solid var(--line)}.belief{padding-bottom:24px}}
+
+/* Services */
+.services{background:var(--accent);color:var(--accent-ink)}
+.services .sec-head{border-color:rgba(0,0,0,.25)}
+.services .sec-head .k{color:var(--mute-on-accent)}
+.services :focus-visible{outline-color:var(--ink)}
+.services h2{font-size:clamp(3rem,10vw,11rem)}
+.services h2 .amp{color:var(--paper)}
+.svc-intro{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:clamp(40px,6vw,80px)}
+.svc-intro p{margin:0;max-width:36ch;font-size:18px}
+.svc-list{border-top:1px solid var(--ink)}
+.svc{border-bottom:1px solid var(--ink)}
+.svc-btn{width:100%;display:flex;justify-content:space-between;align-items:center;gap:20px;text-align:left;padding-block:clamp(16px,2.4vw,30px);position:relative;overflow:hidden}
+.svc-btn::before{content:"";position:absolute;inset:0;background:var(--ink);transform:scaleY(0);transform-origin:bottom;transition:transform .55s var(--ease);z-index:0}
+.svc-name{position:relative;z-index:1;font-family:var(--f-display);font-weight:800;font-stretch:70%;text-transform:uppercase;font-size:clamp(2.2rem,7.4vw,8rem);line-height:.88;transition:transform .55s var(--ease),color .3s}
+.svc-plus{position:relative;z-index:1;width:clamp(40px,5vw,64px);aspect-ratio:1;border:1px solid currentColor;border-radius:50%;display:grid;place-items:center;flex:none;transition:transform .5s var(--ease)}
+.svc-plus::before,.svc-plus::after{content:"";position:absolute;width:38%;height:1.5px;background:currentColor}
+.svc-plus::after{transform:rotate(90deg);transition:transform .5s var(--ease)}
+@media (hover:hover){.svc-btn:hover::before{transform:scaleY(1)}.svc-btn:hover{color:var(--accent)}.svc-btn:hover .svc-name{transform:translateX(clamp(8px,1.5vw,24px))}}
+.svc[data-open] .svc-plus::after{transform:rotate(0)}
+.svc[data-open] .svc-plus{transform:rotate(180deg)}
+.svc-panel{display:grid;grid-template-rows:0fr;transition:grid-template-rows .6s var(--ease)}
+.svc[data-open] .svc-panel{grid-template-rows:1fr}
+.svc-panel > div{overflow:hidden}
+.svc-body{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px 48px;padding-bottom:clamp(24px,3vw,40px)}
+.svc-body p{margin:0;font-size:clamp(17px,1.4vw,20px);max-width:40ch}
+.tags{display:flex;flex-wrap:wrap;gap:8px;align-content:flex-start}
+.tags li{list-style:none;border:1px solid var(--ink);border-radius:999px;padding:.4em .9em;font-size:14px}
+.tags{margin:0;padding:0}
+@media (max-width:760px){.svc-body{grid-template-columns:1fr}}
+
+/* Projects */
+.proj-intro{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:clamp(36px,5vw,64px)}
+.proj-intro h2{font-size:clamp(3rem,9vw,10rem)}
+.filters{display:flex;gap:8px;flex-wrap:wrap}
+.filters button{border:1px solid var(--line);border-radius:999px;padding:.55em 1.1em;font-size:14px;transition:background .3s,color .3s,border-color .3s}
+.filters button[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.filters button:hover{border-color:var(--paper)}
+.proj-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(16px,2.5vw,36px)}
+.proj-grid .card:nth-child(2){margin-top:clamp(0px,10vw,160px)}
+.card{display:flex;flex-direction:column;gap:16px;text-align:left;width:100%}
+.card[hidden]{display:none!important}
+.card-media{position:relative;aspect-ratio:4/5;max-width:100%;overflow:hidden;border-radius:4px}
+.card-art{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;padding:clamp(18px,3vw,36px);transition:transform 1.2s var(--ease)}
+@media (hover:hover){.card:hover .card-art{transform:scale(1.04)}}
+.card-meta{display:flex;justify-content:space-between;gap:16px;align-items:baseline}
+.card-meta h3{font-family:var(--f-display);font-weight:800;font-stretch:75%;text-transform:uppercase;font-size:clamp(1.5rem,2.4vw,2.2rem);line-height:1;margin:0}
+.card-meta p{margin:4px 0 0;color:var(--mute);font-size:15px}
+.card-meta .kind{font-size:13px;color:var(--mute);white-space:nowrap}
+/* Terra art */
+.art-terra{background:radial-gradient(120% 80% at 70% 110%,#7A4A26 0%,#A8693A 40%,#C9925C 75%,#D9B184 100%);color:#2A1A0E}
+.art-terra .t-word{font-family:var(--f-serif);font-size:clamp(4rem,11vw,10rem);line-height:.8;letter-spacing:-.03em}
+.art-terra .t-word sup{font-family:var(--f-body);font-size:.18em;vertical-align:top;margin-left:.1em}
+.art-terra .t-sun{position:absolute;width:42%;aspect-ratio:1;border-radius:50%;background:#EAD2A8;right:12%;top:20%;mix-blend-mode:soft-light}
+.art-terra .t-row{display:flex;justify-content:space-between;font-size:13px;letter-spacing:.06em;position:relative}
+/* Move art */
+.art-move{background:var(--accent);color:var(--accent-ink);overflow:hidden}
+.art-move .m-stripes{position:absolute;inset:0;background:repeating-linear-gradient(100deg,transparent 0 22px,rgba(0,0,0,.08) 22px 23px);animation:stripes 6s linear infinite}
+@keyframes stripes{to{background-position:240px 0}}
+.art-move .m-word{position:relative;font-family:var(--f-display);font-weight:900;font-stretch:125%;font-size:clamp(4rem,11vw,10.5rem);line-height:.8;letter-spacing:-.04em;transform:skewX(-12deg);transform-origin:left bottom;transition:font-stretch .8s var(--ease),letter-spacing .8s var(--ease)}
+@media (hover:hover){.card:hover .art-move .m-word{font-stretch:62%;letter-spacing:.02em}}
+.art-move .m-row{position:relative;display:flex;justify-content:space-between;font-size:13px;letter-spacing:.06em}
+/* CTA card */
+.card-next{grid-column:1/-1;border:1px solid var(--line);border-radius:4px;padding:clamp(24px,4vw,56px);display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;transition:background .4s,border-color .4s}
+.card-next .d{font-size:clamp(2.2rem,6vw,6rem)}
+.card-next:hover{background:var(--ink-2);border-color:var(--paper)}
+.card-next .arrow{width:clamp(56px,7vw,96px);aspect-ratio:1;border-radius:50%;background:var(--paper);color:var(--ink);display:grid;place-items:center;font-size:clamp(22px,2.6vw,36px);transition:transform .5s var(--ease),background .3s}
+.card-next:hover .arrow{transform:rotate(-45deg);background:var(--accent);color:var(--accent-ink)}
+.proj-note{margin-top:24px;color:var(--mute);font-size:14px}
+@media (max-width:760px){.proj-grid{grid-template-columns:1fr}.proj-grid .card:nth-child(2){margin-top:0}}
+
+/* Dialog */
+dialog.case{border:0;padding:0;max-width:min(960px,calc(100vw - 32px));width:100%;max-height:calc(100svh - 32px);background:var(--paper);color:var(--ink);border-radius:6px;overflow:auto}
+dialog.case::backdrop{background:rgba(0,0,0,.78);backdrop-filter:blur(4px)}
+.case-media{height:clamp(200px,38vh,380px);position:relative;overflow:hidden}
+.case-media .card-art{inset:0}
+.case-body{padding:clamp(20px,4vw,48px);display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:24px 48px}
+.case-body h3{font-family:var(--f-display);font-weight:800;font-stretch:72%;text-transform:uppercase;font-size:clamp(2.2rem,5vw,4.4rem);line-height:.9;margin:6px 0 0}
+.case-body p{margin:0 0 14px;max-width:46ch}
+.case-body dl{margin:0;display:grid;gap:14px;align-content:start}
+.case-body dt{font-size:13px;color:#5b5f66}
+.case-body dd{margin:2px 0 0;font-weight:500}
+.case-close{position:absolute;top:14px;right:14px;z-index:2;width:44px;height:44px;border-radius:50%;background:var(--ink);color:var(--paper);font-size:20px;display:grid;place-items:center}
+.case-actions{grid-column:1/-1;display:flex;gap:10px;flex-wrap:wrap;border-top:1px solid rgba(11,14,17,.18);padding-top:20px}
+.case .btn{border-color:var(--ink)}
+.case .btn-solid{background:var(--ink);color:var(--paper)}
+@media (max-width:760px){.case-body{grid-template-columns:1fr}}
+
+/* Contact */
+.contact{padding-block:clamp(88px,12vw,180px) clamp(64px,8vw,120px)}
+.contact-big{font-size:clamp(3.2rem,12vw,13rem)}
+.contact-big .row{display:flex;align-items:center;gap:.15em;flex-wrap:wrap}
+.contact-big .amp{font-size:1.25em;line-height:.6;display:inline-block}
+.contact-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:40px clamp(32px,6vw,96px);margin-top:clamp(48px,7vw,96px);border-top:1px solid var(--line);padding-top:32px}
+.contact-grid > div > p{margin:0 0 24px;font-size:clamp(18px,1.5vw,22px);max-width:32ch}
+.mail-row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.mail{font-family:var(--f-serif);font-size:clamp(22px,2.4vw,32px);word-break:break-all;user-select:all}
+.copy{border:1px solid var(--line);border-radius:999px;padding:.45em .9em;font-size:13px}
+.copy:hover{border-color:var(--paper)}
+form{display:grid;gap:22px}
+.field{display:grid;gap:6px}
+.field label{font-size:14px;color:var(--mute)}
+.field input,.field textarea{font:inherit;font-size:clamp(18px,1.6vw,22px);color:var(--paper);background:transparent;border:0;border-bottom:1px solid var(--line);padding:8px 0 12px;border-radius:0;width:100%;transition:border-color .3s}
+.field textarea{resize:vertical;min-height:110px}
+.field input:focus,.field textarea:focus{outline:none;border-color:var(--accent)}
+.field input::placeholder,.field textarea::placeholder{color:#5a5a5a}
+.form-foot{display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between}
+.form-foot .small{max-width:34ch}
+.status{min-height:1.5em;font-size:15px;color:var(--paper)}
+.status.err{color:#FF8A8A}
+@media (max-width:760px){.contact-grid{grid-template-columns:1fr}}
+
+/* Footer */
+footer{border-top:1px solid var(--line);padding-block:clamp(48px,6vw,80px) calc(24px + env(safe-area-inset-bottom,0px));overflow:hidden}
+.foot-grid{display:grid;grid-template-columns:minmax(0,1.4fr) repeat(3,minmax(0,1fr));gap:32px}
+.foot-grid h4{margin:0 0 12px;font-size:13px;font-weight:500;color:var(--mute)}
+.foot-grid ul{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.foot-grid a:hover{color:var(--accent)}
+.foot-tag{font-family:var(--f-serif);font-size:clamp(24px,2.4vw,34px);line-height:1.1;margin:0;max-width:16ch}
+.wordmark{font-family:var(--f-display);font-weight:900;font-stretch:66%;text-transform:uppercase;font-size:24vw;line-height:.78;letter-spacing:-.03em;margin:clamp(40px,6vw,80px) 0 18px;white-space:nowrap;display:flex;justify-content:space-between}
+.wordmark .amp{font-weight:400}
+.foot-bottom{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;font-size:13px;color:var(--mute)}
+.foot-bottom a:hover{color:var(--paper)}
+@media (max-width:860px){.foot-grid{grid-template-columns:1fr 1fr}.foot-grid > :first-child{grid-column:1/-1}}
+
+/* Cursor */
+.cursor{position:fixed;left:0;top:0;z-index:80;width:12px;height:12px;margin:-6px 0 0 -6px;border-radius:50%;background:var(--paper);pointer-events:none;mix-blend-mode:difference;transition:width .35s var(--ease),height .35s var(--ease),margin .35s var(--ease),background .3s;display:none;align-items:center;justify-content:center;font-size:13px;font-weight:600;color:transparent}
+@media (hover:hover) and (pointer:fine){.js .cursor{display:flex}}
+.cursor.big{width:88px;height:88px;margin:-44px 0 0 -44px;mix-blend-mode:normal;background:var(--accent);color:var(--accent-ink)}
+.cursor.link{width:40px;height:40px;margin:-20px 0 0 -20px}
+
+/* Conteúdo real da apresentação */
+.brand-tag{letter-spacing:.32em;text-transform:uppercase;font-size:11px;font-weight:600}
+.hero .brand-tag{color:var(--accent)}
+.hero h1{font-size:clamp(2.7rem,8.4vw,9.4rem)}
+.hl-w{background:var(--paper);color:var(--ink)}
+.services .hl-w{background:var(--paper);color:var(--ink);padding:0 .12em}
+.hl-dark{color:var(--accent)}
+.about-grid p.lead{max-width:18ch}
+.svc-name{display:inline-flex;align-items:center;gap:.25em}
+.ast{font-family:var(--f-body);font-weight:700;font-size:.62em;line-height:1;transform:translateY(-.05em)}
+.proj-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.proj-grid .card:nth-child(2){margin-top:0}
+.card-wide{grid-column:1/-1}
+.card-media{aspect-ratio:16/9;background:var(--ink-2)}
+.card-wide .card-media{aspect-ratio:21/9}
+.card-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
+@media (hover:hover){.card:hover .card-media img{transform:scale(1.04)}}
+.clients{margin-top:clamp(64px,8vw,120px);border-top:1px solid var(--line);padding-top:24px}
+.clients-title{font-family:var(--f-serif);font-weight:400;font-size:clamp(24px,2.4vw,34px);margin:0 0 32px;max-width:24ch}
+.clients-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px}
+.clients-grid .k{font-size:13px;color:var(--accent);display:block;margin-bottom:10px}
+.clients-grid ul{list-style:none;margin:0;padding:0;display:grid;gap:6px;font-size:17px}
+.addr{font-style:normal;color:var(--mute);margin-top:22px;line-height:1.5}
+.case-media img{width:100%;height:100%;object-fit:cover;display:block}
+.case-seg{color:#5b5f66}
+.case-text h4{margin:18px 0 4px;font-size:13px;font-weight:600;letter-spacing:.04em;color:#5b5f66}
+.case-text p{margin:0}
+.case-gallery{grid-column:1/-1;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:12px}
+.case-gallery img{width:100%;height:auto;display:block;border-radius:4px}
+@media (max-width:760px){.proj-grid{grid-template-columns:1fr}.card-wide .card-media{aspect-ratio:16/10}.clients-grid{grid-template-columns:1fr 1fr}}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  .marquee-track{animation:none}
+}
+</style>
+</head>
+<body>
+<script>document.documentElement.classList.add('js')</script>
+<a class="skip" href="#sobre">Pular para o conteúdo</a>
+
+<div class="loader wrap" id="loader" aria-hidden="true">
+  <div class="loader-top"><span>Inc&amp;Co.</span><span class="brand-tag">Strategic marketing for brands</span></div>
+  <div class="loader-num"><span id="loaderNum">000</span><sup>%</sup></div>
+</div>
+
+<header class="nav wrap">
+  <a class="logo" href="#inicio" aria-label="Inc&amp;Co, início">Inc<span class="amp">&amp;</span>Co.</a>
+  <div class="nav-right">
+    <a class="pill hide-sm" href="#contato" data-cursor="link">Vamos conversar</a>
+    <button class="pill" id="menuBtn" aria-expanded="false" aria-controls="menu" data-cursor="link"><span class="dot"></span>Menu</button>
+  </div>
+</header>
+
+<div class="menu wrap" id="menu" aria-hidden="true">
+  <div class="menu-head">
+    <span class="logo">Inc<span class="amp" style="color:inherit">&amp;</span>Co.</span>
+    <button class="pill" id="menuClose">Fechar</button>
+  </div>
+  <nav class="menu-links" aria-label="Principal">
+    <a href="#sobre"><span>A Inc&amp;Co</span></a>
+    <a href="#servicos"><span>Pilares</span></a>
+    <a href="#projetos"><span>Cases</span></a>
+    <a href="#contato"><span>Vamos conversar</span></a>
+  </nav>
+  <div class="menu-foot"><span>agenciaavengers@hotmail.com</span><span>Av. Senador Feijó, 686 · Cj. 1910 · Santos/SP</span></div>
+</div>
+
+<main>
+  <section class="hero wrap" id="inicio">
+    <div class="hero-tag small"><span class="brand-tag">Strategic marketing for brands</span><span>Santos/SP</span></div>
+    <span class="hero-amp amp" aria-hidden="true">&amp;</span>
+    <h1 class="d">
+      <span class="line"><span>Onde a <span class="hl">essência</span></span></span>
+      <span class="line"><span>da marca encontra</span></span>
+      <span class="line"><span>a <span class="hl">estratégia</span> de</span></span>
+      <span class="line"><span><span class="hl hl-w">alta performance.</span></span></span>
+    </h1>
+    <div class="hero-foot">
+      <p>Marketing estratégico para marcas, atletas e governos. Branding, audiovisual, sports e comunicação pública no mesmo time.</p>
+      <div class="ctas">
+        <a class="btn btn-solid" href="#contato" data-cursor="link">Vamos conversar</a>
+        <a class="btn btn-ghost" href="#projetos" data-cursor="link">Ver cases ↓</a>
+      </div>
+    </div>
+    <div class="scroll-hint small"><span>Inc&amp;Co · The Blue Offices</span><a href="#sobre">Role para descobrir ↓</a></div>
+  </section>
+
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>Branding</span><span class="star">✱</span><span class="o">Audiovisual</span><span class="star">✱</span><span>Sports</span><span class="star">✱</span><span class="o">Public</span><span class="star">✱</span><span>Estratégia</span><span class="star">✱</span>
+      <span>Branding</span><span class="star">✱</span><span class="o">Audiovisual</span><span class="star">✱</span><span>Sports</span><span class="star">✱</span><span class="o">Public</span><span class="star">✱</span><span>Estratégia</span><span class="star">✱</span>
+    </div>
+  </div>
+
+  <section class="sec wrap" id="sobre">
+    <div class="sec-head"><span>A Inc&amp;Co</span><span class="k">DNA novo, bagagem consolidada</span></div>
+    <h2 class="statement" id="statement">DNA novo, bagagem consolidada. Nossa equipe soma mais de 20 anos de mercado, passou por grandes players e já geriu orçamentos de alta complexidade.</h2>
+    <div class="about-grid">
+      <p class="lead"><span class="hl-dark">A Inc&amp;Co é a destilação dessa experiência.</span></p>
+      <div>
+        <p>Somos uma agência de marketing estratégico de Santos. Juntamos branding, audiovisual, esporte e comunicação pública para que a essência de cada marca vire resultado.</p>
+        <a class="link-arrow" href="#servicos" data-cursor="link">Conheça nossos pilares ↓</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec services wrap" id="servicos">
+    <div class="sec-head"><span>O que fazemos</span><span class="k">Quatro frentes, um mesmo time</span></div>
+    <div class="svc-intro">
+      <h2 class="d">Nossos <span class="hl hl-w">pilares</span><br>de atuação.</h2>
+      <p>Do propósito da marca à execução em campo, na tela e na cidade.</p>
+    </div>
+    <div class="svc-list" id="svcList">
+      <div class="svc" data-open>
+        <button class="svc-btn" aria-expanded="true" aria-controls="svc1" id="svc1b"><span class="svc-name"><span class="ast" aria-hidden="true">✱</span>Branding</span><span class="svc-plus" aria-hidden="true"></span></button>
+        <div class="svc-panel" id="svc1" role="region" aria-labelledby="svc1b"><div><div class="svc-body">
+          <p>Construção de marca e propósito. Da identidade visual à expansão da marca em novos pontos e franquias.</p>
+          <ul class="tags"><li>Identidade visual</li><li>Naming e logotipo</li><li>Expansão de marca</li><li>Trade marketing</li></ul>
+        </div></div></div>
+      </div>
+      <div class="svc">
+        <button class="svc-btn" aria-expanded="false" aria-controls="svc2" id="svc2b"><span class="svc-name"><span class="ast" aria-hidden="true">✱</span>Audiovisual</span><span class="svc-plus" aria-hidden="true"></span></button>
+        <div class="svc-panel" id="svc2" role="region" aria-labelledby="svc2b"><div><div class="svc-body">
+          <p>Foto, vídeo, motion graphics e 3D. Roteiro e identidade para filmes de 30 e 60 segundos, TV e redes sociais.</p>
+          <ul class="tags"><li>Foto</li><li>Vídeo</li><li>Motion graphics</li><li>3D</li></ul>
+        </div></div></div>
+      </div>
+      <div class="svc">
+        <button class="svc-btn" aria-expanded="false" aria-controls="svc3" id="svc3b"><span class="svc-name"><span class="ast" aria-hidden="true">✱</span>Sports</span><span class="svc-plus" aria-hidden="true"></span></button>
+        <div class="svc-panel" id="svc3" role="region" aria-labelledby="svc3b"><div><div class="svc-body">
+          <p>Gestão de imagem e patrocínios. Marca pessoal de atletas, mídia kit, media training e licenciamento de produtos.</p>
+          <ul class="tags"><li>Personal branding</li><li>Mídia kit</li><li>Media training</li><li>Licenciamento</li></ul>
+        </div></div></div>
+      </div>
+      <div class="svc">
+        <button class="svc-btn" aria-expanded="false" aria-controls="svc4" id="svc4b"><span class="svc-name"><span class="ast" aria-hidden="true">✱</span>Public</span><span class="svc-plus" aria-hidden="true"></span></button>
+        <div class="svc-panel" id="svc4" role="region" aria-labelledby="svc4b"><div><div class="svc-body">
+          <p>Comunicação para prefeituras e governos: marketing territorial, prestação de contas e campanhas multicanal.</p>
+          <ul class="tags"><li>Comunicação pública</li><li>Marketing territorial</li><li>Prestação de contas</li><li>Campanhas multicanal</li></ul>
+        </div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec wrap" id="projetos">
+    <div class="sec-head"><span>Cases</span><span class="k">Público, esporte, franquia e saúde</span></div>
+    <div class="proj-intro">
+      <h2 class="d">Principais<br><span class="hl">cases</span></h2>
+      <div class="filters" role="group" aria-label="Filtrar cases">
+        <button type="button" data-filter="all" aria-pressed="true">Todos</button>
+        <button type="button" data-filter="publico" aria-pressed="false">Público</button>
+        <button type="button" data-filter="esporte" aria-pressed="false">Esporte</button>
+        <button type="button" data-filter="franquia" aria-pressed="false">Franquia</button>
+      </div>
+    </div>
+    <div class="proj-grid">
+      <button class="card card-wide" data-cat="publico" data-case="guaruja" data-cursor="Ver case">
+        <div class="card-media"><img src="assets/guaruja-capa.jpg" alt="Vista aérea da orla de Guarujá com filtro azul e o logotipo da Prefeitura" data-parallax loading="lazy"></div>
+        <div class="card-meta"><div><h3>Prefeitura de Guarujá</h3><p>Campanha “Guarujá + Compromisso com Você”</p></div><span class="kind">Público</span></div>
+      </button>
+      <button class="card" data-cat="esporte" data-case="robinho" data-cursor="Ver case">
+        <div class="card-media"><img src="assets/robinho-capa.jpg" alt="Robinho Jr. dominando a bola sob o letreiro ROBINHO JR e a marca OJR7" data-parallax loading="lazy"></div>
+        <div class="card-meta"><div><h3>Robinho Jr. · Santos FC</h3><p>Marca OJR7, mídia kit e gestão de imagem</p></div><span class="kind">Esporte</span></div>
+      </button>
+      <button class="card" data-cat="franquia" data-case="lanota" data-cursor="Ver case">
+        <div class="card-media"><img src="assets/lanota-capa.jpg" alt="Logotipo La Nota em creme sobre textura de gelato de chocolate" data-parallax loading="lazy"></div>
+        <div class="card-meta"><div><h3>La Nota, gelato italiano</h3><p>Branding e expansão no Mercadão e na Liberdade</p></div><span class="kind">Franquia</span></div>
+      </button>
+      <a class="card-next" href="#contato" data-cursor="link">
+        <span class="d">O próximo case<br>pode ser o seu.</span>
+        <span class="arrow" aria-hidden="true">→</span>
+      </a>
+    </div>
+    <div class="clients">
+      <h3 class="clients-title">Marcas que já trabalharam com a gente</h3>
+      <div class="clients-grid">
+        <div><span class="k">Público</span><ul><li>Prefeitura de Guarujá</li><li>IBAM, Instituto Brasileiro de Administração Municipal</li></ul></div>
+        <div><span class="k">Esporte</span><ul><li>Robinho Jr. (OJR7)</li></ul></div>
+        <div><span class="k">Franquia</span><ul><li>La Nota</li><li>ayo! açaí yogurt</li><li>Nonna’s Pasta</li></ul></div>
+        <div><span class="k">Saúde</span><ul><li>Hospital Casa de Saúde</li></ul></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact wrap" id="contato">
+    <div class="sec-head"><span>Vamos conversar</span><span class="k">Abertos a novas conexões</span></div>
+    <h2 class="d contact-big">
+      <span class="row">Grandes marcas</span>
+      <span class="row">começam com</span>
+      <span class="row">uma boa <span class="amp">&amp;</span> conversa.</span>
+    </h2>
+    <div class="contact-grid">
+      <div>
+        <p>Tem um desafio, uma ideia ou um novo começo? Conta pra gente. O próximo passo é juntos.</p>
+        <div class="mail-row"><span class="mail" id="mailText">agenciaavengers@hotmail.com</span><button class="copy" id="copyBtn" type="button">Copiar e-mail</button></div>
+        <address class="addr">Av. Senador Feijó, 686 · Cj. 1910<br>The Blue Offices · Santos/SP</address>
+      </div>
+      <form id="contactForm" novalidate>
+        <div class="field"><label for="fName">Como podemos te chamar?</label><input id="fName" name="name" autocomplete="name" placeholder="Seu nome" required></div>
+        <div class="field"><label for="fEmail">Seu e-mail</label><input id="fEmail" name="email" type="email" autocomplete="email" placeholder="voce@empresa.com" required></div>
+        <div class="field"><label for="fMsg">O que vamos construir juntos?</label><textarea id="fMsg" name="message" placeholder="Conte o desafio, a ideia ou o começo." required></textarea></div>
+        <div class="form-foot">
+          <span class="small">Você revisa a mensagem no seu aplicativo de e-mail antes de enviar.</span>
+          <button class="btn btn-solid" type="submit" data-cursor="link">Preparar minha mensagem</button>
+        </div>
+        <div class="status" id="formStatus" role="status" aria-live="polite"></div>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap">
+  <div class="foot-grid">
+    <p class="foot-tag">Onde a essência da marca encontra a estratégia de alta performance.</p>
+    <div><h4>Explore</h4><ul><li><a href="#sobre">A Inc&amp;Co</a></li><li><a href="#servicos">Pilares</a></li><li><a href="#projetos">Cases</a></li></ul></div>
+    <div><h4>Pilares</h4><ul><li><a href="#servicos">Branding</a></li><li><a href="#servicos">Audiovisual</a></li><li><a href="#servicos">Sports</a></li><li><a href="#servicos">Public</a></li></ul></div>
+    <div><h4>Contato</h4><ul><li>agenciaavengers@hotmail.com</li><li>Av. Senador Feijó, 686 · Cj. 1910</li><li>The Blue Offices · Santos/SP</li></ul></div>
+  </div>
+  <div class="wordmark" aria-hidden="true"><span>Inc</span><span class="amp">&amp;</span><span>Co.</span></div>
+  <div class="foot-bottom"><span>© <span id="year">2026</span> Inc&amp;Co. Todos os direitos reservados.</span><span class="brand-tag">Strategic marketing for brands</span><a href="#inicio">Voltar ao topo ↑</a></div>
+</footer>
+
+<dialog class="case" id="caseDialog" aria-labelledby="caseTitle">
+  <button class="case-close" id="caseClose" aria-label="Fechar">×</button>
+  <div class="case-media" id="caseMedia"></div>
+  <div class="case-body">
+    <div>
+      <span class="small case-seg" id="caseSeg"></span>
+      <h3 id="caseTitle"></h3>
+      <div id="caseText" class="case-text"></div>
+    </div>
+    <dl id="caseFacts"></dl>
+    <div class="case-gallery" id="caseGallery"></div>
+    <div class="case-actions">
+      <a class="btn btn-solid" href="#contato" id="caseCta">Quero um case assim</a>
+    </div>
+  </div>
+</dialog>
+
+<div class="cursor" id="cursor" aria-hidden="true"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script>
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var root = document.documentElement;
+  var y = document.getElementById('year'); if (y) y.textContent = new Date().getFullYear();
+
+  /* Loader 000 → 100 */
+  var numEl = document.getElementById('loaderNum');
+  function done(){ root.classList.add('is-loaded'); }
+  if (reduce) { done(); }
+  else {
+    var t0 = performance.now(), dur = 1400;
+    (function tick(now){
+      var p = Math.min(1, (now - t0) / dur), e = 1 - Math.pow(1 - p, 3);
+      numEl.textContent = String(Math.round(e * 100)).padStart(3, '0');
+      if (p < 1) requestAnimationFrame(tick); else setTimeout(done, 200);
+    })(t0);
+  }
+
+  /* Smooth scroll */
+  var hasG = !!(window.gsap && window.ScrollTrigger);
+  var lenis = null;
+  if (!reduce && window.Lenis) {
+    try {
+      lenis = new Lenis({ lerp: 0.09, prevent: function(node){ return !!(node.closest && node.closest('dialog')); } });
+      if (hasG) {
+        gsap.registerPlugin(ScrollTrigger);
+        lenis.on('scroll', ScrollTrigger.update);
+        gsap.ticker.add(function(t){ lenis.raf(t * 1000); });
+        gsap.ticker.lagSmoothing(0);
+      } else {
+        (function raf(t){ lenis.raf(t); requestAnimationFrame(raf); })(performance.now());
+      }
+    } catch (e) { lenis = null; }
+  } else if (hasG) { gsap.registerPlugin(ScrollTrigger); }
+
+  function goTo(sel){
+    var el = sel === '#inicio' ? document.body : document.querySelector(sel);
+    if (!el) return;
+    if (lenis) lenis.scrollTo(sel === '#inicio' ? 0 : el, { duration: 1.4 });
+    else (sel === '#inicio' ? window.scrollTo({top:0, behavior: reduce ? 'auto' : 'smooth'}) : el.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' }));
+  }
+  document.addEventListener('click', function(e){
+    var a = e.target.closest('a[href^="#"]');
+    if (!a) return;
+    var href = a.getAttribute('href');
+    if (href.length < 2) return;
+    e.preventDefault();
+    var wasOpen = menu.classList.contains('open');
+    closeMenu(); closeCase();
+    setTimeout(function(){ goTo(href); }, wasOpen ? 350 : 0);
+  });
+
+  /* Nav ganha fundo preto depois do topo */
+  var navEl = document.querySelector('.nav');
+  function navState(y){ navEl.classList.toggle('solid', y > 40); }
+  if (lenis) lenis.on('scroll', function(l){ navState(l.scroll); });
+  addEventListener('scroll', function(){ navState(window.scrollY); }, { passive: true });
+
+  /* Menu */
+  var menu = document.getElementById('menu'), menuBtn = document.getElementById('menuBtn');
+  function openMenu(){ menu.classList.add('open'); menu.setAttribute('aria-hidden','false'); menuBtn.setAttribute('aria-expanded','true'); if (lenis) lenis.stop(); setTimeout(function(){ document.getElementById('menuClose').focus(); }, 50); }
+  function closeMenu(){ if (!menu.classList.contains('open')) return; menu.classList.remove('open'); menu.setAttribute('aria-hidden','true'); menuBtn.setAttribute('aria-expanded','false'); if (lenis) lenis.start(); menuBtn.focus({preventScroll:true}); }
+  menuBtn.addEventListener('click', openMenu);
+  document.getElementById('menuClose').addEventListener('click', closeMenu);
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeMenu(); });
+
+  /* Services accordion */
+  document.querySelectorAll('.svc-btn').forEach(function(b){
+    b.addEventListener('click', function(){
+      var item = b.closest('.svc'), open = item.hasAttribute('data-open');
+      document.querySelectorAll('.svc[data-open]').forEach(function(s){ s.removeAttribute('data-open'); s.querySelector('.svc-btn').setAttribute('aria-expanded','false'); });
+      if (!open) { item.setAttribute('data-open',''); b.setAttribute('aria-expanded','true'); }
+      if (hasG) setTimeout(function(){ ScrollTrigger.refresh(); }, 650);
+    });
+  });
+
+  /* Project filters */
+  var filterBtns = document.querySelectorAll('[data-filter]');
+  filterBtns.forEach(function(b){
+    b.addEventListener('click', function(){
+      var f = b.getAttribute('data-filter');
+      filterBtns.forEach(function(x){ x.setAttribute('aria-pressed', String(x === b)); });
+      document.querySelectorAll('.card[data-cat]').forEach(function(c){ c.hidden = !(f === 'all' || c.getAttribute('data-cat') === f); });
+      if (hasG) ScrollTrigger.refresh();
+    });
+  });
+
+  /* Case study dialog */
+  var cases = {
+    guaruja: {
+      title: 'Prefeitura de Guarujá', seg: 'Público · Comunicação pública, marketing territorial e prestação de contas',
+      cover: 'assets/guaruja-capa.jpg', gallery: [['assets/guaruja-pecas.jpg','Anúncio de jornal e banners da campanha Guarujá + Compromisso com Você']],
+      parts: [
+        ['O desafio','Comunicar de forma transparente, ágil e marcante as principais entregas e obras da administração municipal, resgatando o orgulho da população pela cidade.'],
+        ['A solução','Direção estratégica e identidade visual com uma linguagem digital humana, acessível e transparente. O símbolo “+” vira elemento de adição e progresso, a tipografia itálica traz velocidade e o contorno do mapa de Guarujá funciona como grafismo, container de texto e transição de vídeo.'],
+        ['O resultado','Padronização visual da comunicação pública com linguagem moderna, dinamismo institucional e alta fixação de mensagem junto à população da região.']
+      ],
+      facts: [['Campanha','Guarujá + Compromisso com Você'],['Entregas','Banners web, anúncios de jornal, redes sociais e filmes de 30” e 60” para TV'],['Pilares','Public · Audiovisual']]
+    },
+    robinho: {
+      title: 'Robinho Jr. · Santos FC', seg: 'Esporte · Personal branding & sports marketing',
+      cover: 'assets/robinho-capa.jpg', gallery: [['assets/robinho-midiakit.jpg','Capa do mídia kit Robinho Jr. com o atleta e a frase The future is here'],['assets/robinho-produtos.jpg','Camisetas e moletom com a marca OJR7 e o ícone do atleta']],
+      parts: [
+        ['O desafio','Construir uma identidade sólida para um atleta profissional do Santos FC, preparando sua imagem para patrocínios, imprensa e mercado internacional.'],
+        ['A solução','Criação da marca OJR, com as letras R e B escondidas no O e a variação OJR7. O ícone do atleta esconde o número 7 no espaço entre as pernas. Somamos gestão de imagem fora de campo e nas redes, mídia kit oficial para atrair patrocinadores e media training.'],
+        ['O resultado','Consolidação do atleta como ativo de alto valor no mercado publicitário esportivo.']
+      ],
+      facts: [['Marca','OJR7 · by Robinho Jr'],['Entregas','Logotipo, ícone, mídia kit, linha de produtos, media training'],['Pilares','Sports · Branding']]
+    },
+    lanota: {
+      title: 'La Nota, gelato italiano', seg: 'Franquia · Branding, varejo, gastronomia & expansão de marca',
+      cover: 'assets/lanota-capa.jpg', gallery: [['assets/lanota-cartazes.jpg','Cartazes Prove o show e Sinta o tom na parede da loja'],['assets/lanota-loja.jpg','Quiosque La Nota no Mercadão de São Paulo, copos e vitrine de gelatos']],
+      parts: [
+        ['O desafio','Destacar a autenticidade do gelato italiano premium em dois dos pontos gastronômicos e culturais mais movimentados de São Paulo: o Mercadão e a Liberdade.'],
+        ['A solução','No Mercadão, estratégia voltada ao turismo e à experiência gastronômica. Na Liberdade, ativação de marca para o público jovem, cultura pop e alto fluxo de pedestres. Nos dois, tráfego hiperlocal e trade marketing no ponto de venda.'],
+        ['O resultado','Aumento do ticket médio, recorrência de clientes e consolidação do plano de expansão com franquias e novas unidades.']
+      ],
+      facts: [['Assinatura','Spettacolo di gelato'],['Entregas','Identidade visual, cartazes, embalagens, quiosque e ativações'],['Pilares','Branding · Audiovisual']]
+    }
+  };
+  var dlg = document.getElementById('caseDialog');
+  function esc(s){ return String(s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+  document.querySelectorAll('.card[data-case]').forEach(function(card){
+    card.addEventListener('click', function(){
+      var c = cases[card.getAttribute('data-case')]; if (!c) return;
+      document.getElementById('caseTitle').textContent = c.title;
+      document.getElementById('caseSeg').textContent = c.seg;
+      document.getElementById('caseText').innerHTML = c.parts.map(function(p){ return '<h4>' + esc(p[0]) + '</h4><p>' + esc(p[1]) + '</p>'; }).join('');
+      document.getElementById('caseFacts').innerHTML = c.facts.map(function(f){ return '<div><dt>' + esc(f[0]) + '</dt><dd>' + esc(f[1]) + '</dd></div>'; }).join('');
+      document.getElementById('caseMedia').innerHTML = '<img src="' + c.cover + '" alt="">';
+      document.getElementById('caseGallery').innerHTML = c.gallery.map(function(g){ return '<img src="' + g[0] + '" alt="' + esc(g[1]) + '" loading="lazy">'; }).join('');
+      if (lenis) lenis.stop();
+      if (dlg.showModal) dlg.showModal(); else dlg.setAttribute('open','');
+      dlg.scrollTop = 0;
+    });
+  });
+  function closeCase(){ if (dlg.open) dlg.close(); }
+  document.getElementById('caseClose').addEventListener('click', closeCase);
+  dlg.addEventListener('close', function(){ if (lenis) lenis.start(); });
+  dlg.addEventListener('click', function(e){ if (e.target === dlg) closeCase(); });
+
+  /* Copy e-mail */
+  var copyBtn = document.getElementById('copyBtn'), mailText = document.getElementById('mailText');
+  copyBtn.addEventListener('click', function(){
+    function fallback(){ var r = document.createRange(); r.selectNodeContents(mailText); var s = getSelection(); s.removeAllRanges(); s.addRange(r); copyBtn.textContent = 'Selecionado, use Ctrl+C'; }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(mailText.textContent).then(function(){ copyBtn.textContent = 'E-mail copiado'; setTimeout(function(){ copyBtn.textContent = 'Copiar e-mail'; }, 2200); }, fallback);
+    } else fallback();
+  });
+
+  /* Contact form → mailto */
+  var form = document.getElementById('contactForm'), status = document.getElementById('formStatus');
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var n = form.name.value.trim(), m = form.email.value.trim(), msg = form.message.value.trim();
+    status.className = 'status err';
+    if (!n) { status.textContent = 'Escreva seu nome para a gente saber com quem está falando.'; form.name.focus(); return; }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(m)) { status.textContent = 'Confira o e-mail: ele precisa ter o formato voce@empresa.com.'; form.email.focus(); return; }
+    if (!msg) { status.textContent = 'Conte em poucas linhas o que você quer construir.'; form.message.focus(); return; }
+    var subject = 'Novo projeto: ' + n;
+    var body = msg + '\n\n' + n + '\n' + m;
+    status.className = 'status';
+    status.textContent = 'Abrindo seu aplicativo de e-mail com a mensagem pronta. Se nada abrir, copie o endereço ao lado e cole o texto lá.';
+    window.location.href = 'mailto:agenciaavengers@hotmail.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+  });
+
+  /* Custom cursor */
+  var cur = document.getElementById('cursor');
+  if (window.matchMedia('(hover:hover) and (pointer:fine)').matches && !reduce) {
+    var mx = innerWidth/2, my = innerHeight/2, cx = mx, cy = my;
+    addEventListener('mousemove', function(e){ mx = e.clientX; my = e.clientY; });
+    (function loop(){ cx += (mx - cx) * .2; cy += (my - cy) * .2; cur.style.transform = 'translate(' + cx + 'px,' + cy + 'px)'; requestAnimationFrame(loop); })();
+    document.addEventListener('mouseover', function(e){
+      var t = e.target.closest('[data-cursor], a, button');
+      if (!t) { cur.className = 'cursor'; cur.textContent = ''; return; }
+      var v = t.getAttribute('data-cursor');
+      if (v && v !== 'link') { cur.className = 'cursor big'; cur.textContent = v; }
+      else { cur.className = 'cursor link'; cur.textContent = ''; }
+    });
+  }
+
+  /* Wordmark fills the footer width whatever font loads */
+  var wm = document.querySelector('.wordmark');
+  function fitWord(){ if (!wm) return; wm.style.fontSize = '100px'; wm.style.justifyContent = 'flex-start'; var w = 0; Array.prototype.forEach.call(wm.children, function(c){ w += c.getBoundingClientRect().width; }); var avail = wm.clientWidth; wm.style.fontSize = Math.floor(100 * avail / w * 0.99) + 'px'; wm.style.justifyContent = ''; }
+  fitWord(); addEventListener('resize', fitWord);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(function(){ fitWord(); if (hasG) ScrollTrigger.refresh(); });
+
+  /* Scroll-linked motion */
+  if (hasG && !reduce) {
+    gsap.to('.hero-amp', { rotate: -28, yPercent: 18, scale: .85, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
+    gsap.to('.hero h1', { yPercent: -12, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
+
+    var st = document.getElementById('statement');
+    st.innerHTML = st.textContent.split(' ').map(function(w){ return '<span class="w">' + esc(w) + '</span>'; }).join(' ');
+    gsap.fromTo(st.querySelectorAll('.w'), { opacity: .2 }, { opacity: 1, stagger: .1, ease: 'none', scrollTrigger: { trigger: st, start: 'top 80%', end: 'bottom 40%', scrub: true } });
+
+    document.querySelectorAll('[data-parallax]').forEach(function(el){
+      gsap.fromTo(el, { yPercent: -4, scale: 1.1 }, { yPercent: 4, scale: 1.1, ease: 'none', scrollTrigger: { trigger: el.parentNode, start: 'top bottom', end: 'bottom top', scrub: true } });
+    });
+
+    gsap.from('.wordmark span', { yPercent: 100, opacity: 0, stagger: .08, duration: 1.1, ease: 'expo.out', scrollTrigger: { trigger: '.wordmark', start: 'top 92%' } });
+    gsap.from('.contact-big .amp', { rotate: -90, scale: .4, duration: 1.4, ease: 'expo.out', scrollTrigger: { trigger: '.contact-big', start: 'top 75%' } });
+
+    /* Marquee speeds up with scroll velocity */
+    var track = document.querySelector('.marquee-track');
+    if (track && track.getAnimations) {
+      var anim = track.getAnimations()[0];
+      if (anim && lenis) lenis.on('scroll', function(l){ var v = Math.min(6, 1 + Math.abs(l.velocity) * .25); anim.playbackRate = l.direction < 0 ? -v : v; });
+    }
+  }
+})();
+</script>
+</body>
+</html>
