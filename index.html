@@ -448,7 +448,7 @@ footer::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.
       </radialGradient>
       <clipPath id="ampClip"><path transform="scale(1,-1)" d="M286 -16Q213 -16 154.5 6.0Q96 28 63.5 72.5Q31 117 34 185Q37 232 58.5 274.5Q80 317 121.5 347.0Q163 377 223 385Q139 403 110.5 443.5Q82 484 86 536Q90 592 120.0 632.5Q150 673 198.5 694.5Q247 716 307 716Q361 716 399.5 700.0Q438 684 458.5 659.0Q479 634 479 605Q479 587 468.5 573.0Q458 559 438 558Q422 557 409.0 567.0Q396 577 396 594Q395 602 397.5 611.0Q400 620 404 627Q400 648 374.0 664.5Q348 681 310 681Q268 681 238.5 662.0Q209 643 192.5 612.0Q176 581 174 544Q173 526 176.5 502.0Q180 478 192.5 455.0Q205 432 230.5 416.5Q256 401 298 401Q319 401 324.0 401.0Q329 401 338 402L336 358L298 359Q250 359 218.0 343.0Q186 327 167.0 302.5Q148 278 139.0 251.5Q130 225 129 205Q126 145 152.5 106.5Q179 68 219.5 49.5Q260 31 299 31Q377 31 425.0 60.5Q473 90 495.0 138.5Q517 187 517 243Q491 243 470.0 243.0Q449 243 428.5 236.0Q408 229 381 208L361 228Q384 262 407.0 278.5Q430 295 460.0 301.0Q490 307 532 307Q572 307 604.5 312.5Q637 318 669 349L691 332Q675 308 660.0 289.5Q645 271 622.5 260.0Q600 249 560 245Q561 205 548.0 159.5Q535 114 504.0 74.0Q473 34 420.0 9.0Q367 -16 286 -16Z"/></clipPath>
       <filter id="ampWave" x="-25%" y="-25%" width="150%" height="150%" color-interpolation-filters="sRGB">
-        <feTurbulence id="ampTurb" type="fractalNoise" baseFrequency="0.006 0.018" numOctaves="2" seed="7" result="n"/>
+        <feTurbulence id="ampTurb" type="fractalNoise" baseFrequency="0.003 0.009" numOctaves="1" seed="7" result="n"/>
         <feDisplacementMap id="ampDisp" in="SourceGraphic" in2="n" scale="0" xChannelSelector="R" yChannelSelector="G"/>
       </filter>
     </defs>
@@ -684,6 +684,7 @@ footer::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.
       numEl.textContent = String(Math.round(e * 20) * 5);
       if (p < 1) requestAnimationFrame(tick); else setTimeout(done, 200);
     })(t0);
+    setTimeout(done, 2600);
   }
 
   /* Smooth scroll */
@@ -1010,8 +1011,8 @@ footer::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.
       gsap.set(amp, { x: '22vw', y: '2vh', rotation: 0, scale: 1 });
       gsap.to(amp, { opacity: 1, duration: 1.4, ease: 'power2.out', delay: 1.9 });
       var stops = [
-        { t: '#sobre',     v: { x: '-24vw', y: '6vh',  rotation: -16, scale: 1.25, opacity: 1 } },
-        { t: '.trusted',   v: { x: '30vw',  y: '-4vh', rotation: 12,  scale: .78,  opacity: 1 } },
+        { t: '#sobre',     v: { x: '32vw',  y: '8vh',  rotation: 14,  scale: 1.15, opacity: 1 } },
+        { t: '.trusted',   v: { x: '-30vw', y: '-2vh', rotation: -12, scale: .85,  opacity: 1 } },
         { t: '#projetos',  v: { x: '-6vw',  y: '0vh',  rotation: -6,  scale: 1.7,  opacity: .55 } },
         { t: '#servicos',  v: { x: '-6vw',  y: '0vh',  rotation: -6,  scale: 1.7,  opacity: 0 } }
       ];
@@ -1031,7 +1032,7 @@ footer::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.
         var t = (now - t0) / 1000;
         if (wave.s > .5) {
           if (!filterOn) { fx.setAttribute('filter', 'url(#ampWave)'); filterOn = true; }
-          turb.setAttribute('baseFrequency', (0.006 + Math.sin(t * 1.3) * .002).toFixed(4) + ' ' + (0.018 + Math.cos(t * 1.7) * .006).toFixed(4));
+          turb.setAttribute('baseFrequency', (0.003 + Math.sin(t * 1.1) * .0012).toFixed(4) + ' ' + (0.009 + Math.cos(t * 1.5) * .004).toFixed(4));
           disp.setAttribute('scale', wave.s.toFixed(1));
         } else if (filterOn && target === 0) { fx.removeAttribute('filter'); filterOn = false; disp.setAttribute('scale', '0'); }
         if (target > 0 || wave.s > .5) raf = requestAnimationFrame(loop);
@@ -1041,7 +1042,7 @@ footer::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.
         var r = inner.getBoundingClientRect();
         var inside = e.clientX > r.left && e.clientX < r.right && e.clientY > r.top && e.clientY < r.bottom && +getComputedStyle(amp).opacity > .1;
         var dx = (e.clientX - (r.left + r.width / 2)) / (r.width / 2), dy = (e.clientY - (r.top + r.height / 2)) / (r.height / 2);
-        target = inside ? Math.max(0, 1 - Math.hypot(dx, dy) * .6) * 90 + 25 : 0;
+        target = inside ? Math.max(0, 1 - Math.hypot(dx, dy) * .6) * 45 + 18 : 0;
         if (!raf) raf = requestAnimationFrame(loop);
       }, { passive: true });
     })();
