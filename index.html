@@ -399,7 +399,7 @@ main,footer{position:relative;z-index:1}
 /* Letreiro derretido no rodapé */
 .liquid{position:relative;margin:clamp(40px,6vw,80px) 0 18px}
 .liquid .wordmark{margin:0;filter:url(#liquid)}
-.wordmark-echo{position:absolute;left:0;right:0;top:62%;filter:blur(14px)!important;opacity:.42;transform:scaleY(.82);transform-origin:top;pointer-events:none}
+.wordmark-echo{position:absolute;left:0;right:0;top:48%;filter:blur(16px)!important;opacity:.38;z-index:-1;transform:scaleY(.82);transform-origin:top;pointer-events:none}
 .fx-defs{position:absolute;width:0;height:0;overflow:hidden}
 footer::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.07;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E")}
 
@@ -635,7 +635,7 @@ footer::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.
   </div>
   <svg class="fx-defs" width="0" height="0" aria-hidden="true" focusable="false"><defs>
     <filter id="liquid" x="-5%" y="-20%" width="110%" height="140%" color-interpolation-filters="sRGB">
-      <feTurbulence id="liqTurb" type="fractalNoise" baseFrequency="0.004 0.022" numOctaves="2" seed="11" result="n"/>
+      <feTurbulence id="liqTurb" type="fractalNoise" baseFrequency="0.0025 0.008" numOctaves="1" seed="11" result="n"/>
       <feDisplacementMap id="liqDisp" in="SourceGraphic" in2="n" scale="26" xChannelSelector="R" yChannelSelector="G"/>
     </filter>
   </defs></svg>
@@ -1070,14 +1070,14 @@ footer::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.
     (function(){
       var ld = document.getElementById('liqDisp'), lt = document.getElementById('liqTurb'), box = document.querySelector('.liquid');
       if (!ld || !box) return;
-      var st = { s: 140 };
+      var st = { s: 160 };
       function set(){ ld.setAttribute('scale', st.s.toFixed(1)); }
       set();
-      gsap.to(st, { s: 22, ease: 'none', onUpdate: set, scrollTrigger: { trigger: box, start: 'top bottom', end: 'bottom bottom', scrub: 1 } });
+      gsap.to(st, { s: 34, ease: 'none', onUpdate: set, scrollTrigger: { trigger: box, start: 'top bottom', end: 'bottom bottom', scrub: 1 } });
       var hov = 0, raf = 0, t0 = performance.now(), base = 22;
       function loop(now){
         raf = 0; var t = (now - t0) / 1000;
-        lt.setAttribute('baseFrequency', (0.004 + Math.sin(t * .9) * .0015).toFixed(4) + ' ' + (0.022 + Math.cos(t * 1.1) * .008).toFixed(4));
+        lt.setAttribute('baseFrequency', (0.0025 + Math.sin(t * .9) * .001).toFixed(4) + ' ' + (0.008 + Math.cos(t * 1.1) * .003).toFixed(4));
         if (hov) { ld.setAttribute('scale', (base + 30 + Math.sin(t * 3) * 10).toFixed(1)); raf = requestAnimationFrame(loop); }
         else { set(); }
       }
