@@ -429,6 +429,7 @@ main,footer{position:relative;z-index:1}
 .hero h1 .line + .line{margin-top:.03em}
 .logo-grid li .lg,.logo-grid li .lg *{color:#4a4a4a!important;-webkit-text-stroke-color:#4a4a4a!important;transition:color .35s,-webkit-text-stroke-color .35s}
 .logo-grid li em{transition:color .35s}
+.logo-grid li{background:var(--ink)}
 @media (hover:hover){.logo-grid li:hover .lg,.logo-grid li:hover .lg *{color:var(--paper)!important;-webkit-text-stroke-color:var(--paper)!important}.logo-grid li:hover em{color:var(--accent)}}
 .logo-grid li.lg-you .lg,.logo-grid li.lg-you .lg *{color:var(--accent-ink)!important}
 .trusted-head .pill-label{display:inline-block;transition:opacity .14s,transform .14s;max-width:100%;white-space:nowrap}
@@ -1005,7 +1006,7 @@ main,footer{position:relative;z-index:1}
     var zc = document.getElementById('zfx'), stage = document.querySelector('.zoom-stage'); if (!zc || !stage) return;
     var vis = false;
     var f = particleField(zc, { shape: 'sphere', mode: 'onYellow', dot: 1.15, active: function(){ return vis; },
-      place: function(W, H){ return { x: W * .5, y: H * .5, r: Math.min(W, H) * .3 }; } });
+      place: function(W, H){ var full = Math.min(W, H) * .3, ms = window.__zms; return { x: W * .5, y: H * .5, r: ms ? Math.min(full, ms * .34) : full }; } });
     if ('IntersectionObserver' in window) new IntersectionObserver(function(en){ vis = en[0].isIntersecting; if (vis && f) f.wake(); }).observe(stage);
     else vis = true;
   })();
@@ -1144,7 +1145,7 @@ main,footer{position:relative;z-index:1}
         var k = start * Math.pow(end / start, p);
         var e = Math.min(1, p * 1.6), ax = P0[0] + (P1[0] - P0[0]) * e, ay = P0[1] + (P1[1] - P0[1]) * e;
         var mh = k * AH / AW;
-        zf.style.setProperty('--ms', k.toFixed(1) + 'px');
+        zf.style.setProperty('--ms', k.toFixed(1) + 'px'); window.__zms = k;
         zf.style.setProperty('--mx', (w / 2 - k * ax).toFixed(1) + 'px');
         zf.style.setProperty('--my', (h / 2 - mh * ay).toFixed(1) + 'px');
       }
