@@ -1077,6 +1077,7 @@ main,footer{position:relative;z-index:1}
 
     /* Topo: linhas se separam em direções opostas e as letras esticam e derretem */
     var lines = Array.prototype.slice.call(h1.querySelectorAll('.line'));
+    lines.forEach(function(l){ l.style.width = 'max-content'; l.style.maxWidth = 'none'; });
     var lineUnits = lines.map(function(l){ return units.filter(function(u){ return l.contains(u); }); });
     var heroState = { p: 0 };
     function clamp01(v){ return v < 0 ? 0 : v > 1 ? 1 : v; }
@@ -1085,13 +1086,13 @@ main,footer{position:relative;z-index:1}
       var p = heroState.p, vw = innerWidth;
       lines.forEach(function(l, li){
         var dir = li % 2 ? 1 : -1, us = lineUnits[li], nU = us.length;
-        var lp = clamp01((p - li * .06) / .8), e = lp * lp;
-        l.style.transform = 'translate(' + (dir * e * vw * .55).toFixed(1) + 'px,0)';
+        var lp = clamp01((p - li * .05) / .7), e = lp * lp;
+        l.style.transform = 'translate(' + (dir * e * (vw + l.scrollWidth) * 1.05).toFixed(1) + 'px,0)';
         us.forEach(function(u, ui){
           var ord = dir < 0 ? ui / nU : 1 - ui / nU;
-          var cp = clamp01((p - li * .06 - ord * .28) / .55), ce = cp * cp * (3 - 2 * cp);
+          var cp = clamp01((p - li * .05 - ord * .25) / .5), ce = cp * cp * (3 - 2 * cp);
           u.style.transformOrigin = '50% ' + (li % 2 ? '0%' : '100%');
-          u.style.transform = 'translate(0,' + (ce * (li % 2 ? 40 : -40)).toFixed(1) + 'px) scaleY(' + (1 + ce * 2.2).toFixed(3) + ') skewX(' + (dir * ce * 18).toFixed(1) + 'deg)';
+          u.style.transform = 'translate(0,' + (ce * (li % 2 ? 40 : -40)).toFixed(1) + 'px) scaleY(' + (1 + ce * 1.4).toFixed(3) + ') skewX(' + (dir * ce * 18).toFixed(1) + 'deg)';
         });
       });
       var q = clamp01(p);
