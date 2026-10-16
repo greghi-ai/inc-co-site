@@ -436,6 +436,16 @@ main,footer{position:relative;z-index:1}
 .trusted-head .pill-label.swap{opacity:0;transform:translateY(6px)}
 .svc-btn:hover .ast .asti{animation:none}
 .zfx{position:absolute;inset:0;width:100%;height:100%;display:block}
+
+/* v4: & da marca (serifado reto) e logo oficial */
+.amp{font-style:normal!important}
+.brand-logo{display:block;height:100%;width:auto}
+.brand-logo .lamp{fill:var(--accent)}
+.logo-svg{display:block;height:22px;color:var(--paper)}
+.foot-logo{margin:clamp(48px,7vw,96px) 0 24px;color:var(--paper)}
+.foot-logo .brand-logo{width:100%;height:auto}
+.loader-amp{font-size:min(40vmin,300px);line-height:1;color:var(--accent);fill:initial;stroke:none;width:auto;animation:ampIn 1.4s cubic-bezier(.2,.8,.2,1) both}
+@keyframes ampIn{from{opacity:0;transform:scale(.6) rotate(-8deg)}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){
   .marquee-track{animation-duration:90s}
 }
@@ -446,12 +456,12 @@ main,footer{position:relative;z-index:1}
 <a class="skip" href="#sobre">Pular para o conteúdo</a>
 
 <div class="loader wrap" id="loader" aria-hidden="true">
-  <svg class="loader-amp" viewBox="33.74647887323944 -716 657.2535211267606 732"><path transform="scale(1,-1)" d="M286 -16Q213 -16 154.5 6.0Q96 28 63.5 72.5Q31 117 34 185Q37 232 58.5 274.5Q80 317 121.5 347.0Q163 377 223 385Q139 403 110.5 443.5Q82 484 86 536Q90 592 120.0 632.5Q150 673 198.5 694.5Q247 716 307 716Q361 716 399.5 700.0Q438 684 458.5 659.0Q479 634 479 605Q479 587 468.5 573.0Q458 559 438 558Q422 557 409.0 567.0Q396 577 396 594Q395 602 397.5 611.0Q400 620 404 627Q400 648 374.0 664.5Q348 681 310 681Q268 681 238.5 662.0Q209 643 192.5 612.0Q176 581 174 544Q173 526 176.5 502.0Q180 478 192.5 455.0Q205 432 230.5 416.5Q256 401 298 401Q319 401 324.0 401.0Q329 401 338 402L336 358L298 359Q250 359 218.0 343.0Q186 327 167.0 302.5Q148 278 139.0 251.5Q130 225 129 205Q126 145 152.5 106.5Q179 68 219.5 49.5Q260 31 299 31Q377 31 425.0 60.5Q473 90 495.0 138.5Q517 187 517 243Q491 243 470.0 243.0Q449 243 428.5 236.0Q408 229 381 208L361 228Q384 262 407.0 278.5Q430 295 460.0 301.0Q490 307 532 307Q572 307 604.5 312.5Q637 318 669 349L691 332Q675 308 660.0 289.5Q645 271 622.5 260.0Q600 249 560 245Q561 205 548.0 159.5Q535 114 504.0 74.0Q473 34 420.0 9.0Q367 -16 286 -16Z"/></svg>
+  <span class="loader-amp amp">&amp;</span>
   <div class="loader-foot"><span class="brand-tag">Inc&amp;Co · Strategic marketing for brands</span><span class="loader-num"><span id="loaderNum">0</span>%</span></div>
 </div>
 
 <header class="nav wrap">
-  <a class="logo" href="#inicio" aria-label="Inc&amp;Co, início">Inc<span class="amp">&amp;</span>Co.</a>
+  <a class="logo logo-svg" href="#inicio" aria-label="Inc&amp;Co, início"><svg class="brand-logo" viewBox="1315.37 830.95 472.10 105.16" role="img" aria-label="Inc&amp;Co"><g fill="currentColor"><path d="M 1315.36 832.98 L 1337.67 832.98 L 1337.67 934.37 L 1315.36 934.37 Z M 1315.36 832.98"/><path d="M 1345.70 856.73 L 1367.72 856.73 L 1367.72 867.74 C 1372.79 861.22 1379.31 855.28 1390.46 855.28 C 1407.12 855.28 1416.82 866.29 1416.82 884.11 L 1416.82 934.37 L 1394.81 934.37 L 1394.81 891.06 C 1394.81 880.63 1389.88 875.27 1381.48 875.27 C 1373.08 875.27 1367.72 880.63 1367.72 891.06 L 1367.72 934.37 L 1345.70 934.37 Z M 1345.70 856.73"/><path d="M 1423.49 895.99 L 1423.49 895.70 C 1423.49 873.53 1440.43 855.28 1464.19 855.28 C 1478.82 855.28 1487.94 860.21 1495.19 868.32 L 1481.71 882.81 C 1476.79 877.59 1471.87 874.26 1464.04 874.26 C 1453.03 874.26 1445.21 883.96 1445.21 895.41 L 1445.21 895.70 C 1445.21 907.57 1452.89 917.14 1464.91 917.14 C 1472.30 917.14 1477.37 913.95 1482.73 908.88 L 1495.62 921.91 C 1488.09 930.17 1479.40 936.11 1463.90 936.11 C 1440.58 936.11 1423.49 918.15 1423.49 895.99"/><path class="lamp" d="M 1561.89 854.71 L 1561.89 854.41 C 1561.89 846.30 1555.81 840.37 1547.55 840.37 C 1538.43 840.37 1532.20 846.74 1532.20 855 L 1532.20 855.28 C 1532.20 861.22 1534.66 865.71 1542.34 873.97 C 1555.23 869.62 1561.89 863.40 1561.89 854.71 M 1564.94 912.64 L 1537.85 884.69 C 1524.38 889.61 1518.44 897.87 1518.44 906.42 L 1518.44 906.71 C 1518.44 917.57 1527.13 925.83 1539.59 925.83 C 1549.15 925.83 1557.55 920.75 1564.94 912.64 M 1571.89 919.74 C 1562.62 929.74 1551.90 935.53 1538.72 935.53 C 1520.47 935.53 1506.85 924.08 1506.85 907.14 L 1506.85 906.85 C 1506.85 893.38 1515.83 883.67 1531.33 877.59 C 1524.38 869.48 1521.19 863.25 1521.19 855.28 L 1521.19 855 C 1521.19 841.67 1531.91 830.95 1547.99 830.95 C 1562.18 830.95 1572.61 841.23 1572.61 853.83 L 1572.61 854.12 C 1572.61 867.02 1563.49 875.27 1548.71 880.49 L 1571.89 904.10 C 1576.38 897.58 1580.44 889.90 1584.06 881.50 L 1593.47 885.85 C 1588.98 895.41 1584.35 904.10 1578.84 911.34 L 1596.51 929.44 L 1587.82 936.11 Z M 1571.89 919.74"/><path d="M 1608.28 883.96 L 1608.28 883.67 C 1608.28 854.85 1630.01 831.24 1661.15 831.24 C 1680.27 831.24 1691.71 837.61 1701.13 846.88 L 1686.94 863.25 C 1679.12 856.15 1671.15 851.81 1661.01 851.81 C 1643.92 851.81 1631.60 866.00 1631.60 883.39 L 1631.60 883.67 C 1631.60 901.06 1643.63 915.54 1661.01 915.54 C 1672.60 915.54 1679.69 910.91 1687.66 903.66 L 1701.85 918.00 C 1691.42 929.16 1679.84 936.11 1660.28 936.11 C 1630.44 936.11 1608.28 913.08 1608.28 883.96"/><path d="M 1765.73 895.99 L 1765.73 895.70 C 1765.73 884.25 1757.48 874.26 1745.31 874.26 C 1732.71 874.26 1725.18 883.96 1725.18 895.41 L 1725.18 895.70 C 1725.18 907.14 1733.43 917.14 1745.60 917.14 C 1758.20 917.14 1765.73 907.43 1765.73 895.99 M 1703.45 895.99 L 1703.45 895.70 C 1703.45 873.39 1721.41 855.28 1745.60 855.28 C 1769.65 855.28 1787.46 873.10 1787.46 895.41 L 1787.46 895.70 C 1787.46 918.00 1769.50 936.11 1745.31 936.11 C 1721.27 936.11 1703.45 918.29 1703.45 895.99"/></g></svg></a>
   <div class="nav-right">
     <a class="pill hide-sm" href="#contato" data-cursor="link">Vamos conversar</a>
     <button class="pill" id="menuBtn" aria-expanded="false" aria-controls="menu" data-cursor="link"><span class="dot"></span>Menu</button>
@@ -643,16 +653,7 @@ main,footer{position:relative;z-index:1}
     <div><h4>Pilares</h4><ul><li><a href="#servicos">Branding</a></li><li><a href="#servicos">Audiovisual</a></li><li><a href="#servicos">Sports</a></li><li><a href="#servicos">Public</a></li></ul></div>
     <div><h4>Contato</h4><ul><li>agenciaavengers@hotmail.com</li><li>Av. Senador Feijó, 686 · Cj. 1910</li><li>The Blue Offices · Santos/SP</li></ul></div>
   </div>
-  <div class="liquid" aria-hidden="true">
-    <div class="wordmark"><span>Inc</span><span class="amp">&amp;</span><span>Co.</span></div>
-    <div class="wordmark wordmark-echo"><span>Inc</span><span class="amp">&amp;</span><span>Co.</span></div>
-  </div>
-  <svg class="fx-defs" width="0" height="0" aria-hidden="true" focusable="false"><defs>
-    <filter id="liquid" x="-5%" y="-20%" width="110%" height="140%" color-interpolation-filters="sRGB">
-      <feTurbulence id="liqTurb" type="fractalNoise" baseFrequency="0.0025 0.008" numOctaves="1" seed="11" result="n"/>
-      <feDisplacementMap id="liqDisp" in="SourceGraphic" in2="n" scale="26" xChannelSelector="R" yChannelSelector="G"/>
-    </filter>
-  </defs></svg>
+  <div class="foot-logo"><svg class="brand-logo" viewBox="1315.37 830.95 472.10 105.16" role="img" aria-label="Inc&amp;Co"><g fill="currentColor"><path d="M 1315.36 832.98 L 1337.67 832.98 L 1337.67 934.37 L 1315.36 934.37 Z M 1315.36 832.98"/><path d="M 1345.70 856.73 L 1367.72 856.73 L 1367.72 867.74 C 1372.79 861.22 1379.31 855.28 1390.46 855.28 C 1407.12 855.28 1416.82 866.29 1416.82 884.11 L 1416.82 934.37 L 1394.81 934.37 L 1394.81 891.06 C 1394.81 880.63 1389.88 875.27 1381.48 875.27 C 1373.08 875.27 1367.72 880.63 1367.72 891.06 L 1367.72 934.37 L 1345.70 934.37 Z M 1345.70 856.73"/><path d="M 1423.49 895.99 L 1423.49 895.70 C 1423.49 873.53 1440.43 855.28 1464.19 855.28 C 1478.82 855.28 1487.94 860.21 1495.19 868.32 L 1481.71 882.81 C 1476.79 877.59 1471.87 874.26 1464.04 874.26 C 1453.03 874.26 1445.21 883.96 1445.21 895.41 L 1445.21 895.70 C 1445.21 907.57 1452.89 917.14 1464.91 917.14 C 1472.30 917.14 1477.37 913.95 1482.73 908.88 L 1495.62 921.91 C 1488.09 930.17 1479.40 936.11 1463.90 936.11 C 1440.58 936.11 1423.49 918.15 1423.49 895.99"/><path class="lamp" d="M 1561.89 854.71 L 1561.89 854.41 C 1561.89 846.30 1555.81 840.37 1547.55 840.37 C 1538.43 840.37 1532.20 846.74 1532.20 855 L 1532.20 855.28 C 1532.20 861.22 1534.66 865.71 1542.34 873.97 C 1555.23 869.62 1561.89 863.40 1561.89 854.71 M 1564.94 912.64 L 1537.85 884.69 C 1524.38 889.61 1518.44 897.87 1518.44 906.42 L 1518.44 906.71 C 1518.44 917.57 1527.13 925.83 1539.59 925.83 C 1549.15 925.83 1557.55 920.75 1564.94 912.64 M 1571.89 919.74 C 1562.62 929.74 1551.90 935.53 1538.72 935.53 C 1520.47 935.53 1506.85 924.08 1506.85 907.14 L 1506.85 906.85 C 1506.85 893.38 1515.83 883.67 1531.33 877.59 C 1524.38 869.48 1521.19 863.25 1521.19 855.28 L 1521.19 855 C 1521.19 841.67 1531.91 830.95 1547.99 830.95 C 1562.18 830.95 1572.61 841.23 1572.61 853.83 L 1572.61 854.12 C 1572.61 867.02 1563.49 875.27 1548.71 880.49 L 1571.89 904.10 C 1576.38 897.58 1580.44 889.90 1584.06 881.50 L 1593.47 885.85 C 1588.98 895.41 1584.35 904.10 1578.84 911.34 L 1596.51 929.44 L 1587.82 936.11 Z M 1571.89 919.74"/><path d="M 1608.28 883.96 L 1608.28 883.67 C 1608.28 854.85 1630.01 831.24 1661.15 831.24 C 1680.27 831.24 1691.71 837.61 1701.13 846.88 L 1686.94 863.25 C 1679.12 856.15 1671.15 851.81 1661.01 851.81 C 1643.92 851.81 1631.60 866.00 1631.60 883.39 L 1631.60 883.67 C 1631.60 901.06 1643.63 915.54 1661.01 915.54 C 1672.60 915.54 1679.69 910.91 1687.66 903.66 L 1701.85 918.00 C 1691.42 929.16 1679.84 936.11 1660.28 936.11 C 1630.44 936.11 1608.28 913.08 1608.28 883.96"/><path d="M 1765.73 895.99 L 1765.73 895.70 C 1765.73 884.25 1757.48 874.26 1745.31 874.26 C 1732.71 874.26 1725.18 883.96 1725.18 895.41 L 1725.18 895.70 C 1725.18 907.14 1733.43 917.14 1745.60 917.14 C 1758.20 917.14 1765.73 907.43 1765.73 895.99 M 1703.45 895.99 L 1703.45 895.70 C 1703.45 873.39 1721.41 855.28 1745.60 855.28 C 1769.65 855.28 1787.46 873.10 1787.46 895.41 L 1787.46 895.70 C 1787.46 918.00 1769.50 936.11 1745.31 936.11 C 1721.27 936.11 1703.45 918.29 1703.45 895.99"/></g></svg></div>
   <div class="foot-bottom"><span>© <span id="year">2026</span> Inc&amp;Co. Todos os direitos reservados.</span><span class="brand-tag">Strategic marketing for brands</span><a href="#inicio">Voltar ao topo ↑</a></div>
 </footer>
 
@@ -1091,7 +1092,6 @@ main,footer{position:relative;z-index:1}
           var cp = clamp01((p - li * .06 - ord * .28) / .55), ce = cp * cp * (3 - 2 * cp);
           u.style.transformOrigin = '50% ' + (li % 2 ? '0%' : '100%');
           u.style.transform = 'translate(0,' + (ce * (li % 2 ? 40 : -40)).toFixed(1) + 'px) scaleY(' + (1 + ce * 2.2).toFixed(3) + ') skewX(' + (dir * ce * 18).toFixed(1) + 'deg)';
-          u.style.opacity = (1 - clamp01((cp - .45) / .55)).toFixed(3);
         });
       });
       var q = clamp01(p);
@@ -1158,25 +1158,6 @@ main,footer{position:relative;z-index:1}
     }
 
 
-    /* Letreiro do rodapé derrete e se recompõe */
-    (function(){
-      var ld = document.getElementById('liqDisp'), lt = document.getElementById('liqTurb'), box = document.querySelector('.liquid');
-      if (!ld || !box) return;
-      var st = { s: 160 };
-      function set(){ ld.setAttribute('scale', st.s.toFixed(1)); }
-      set();
-      gsap.to(st, { s: 34, ease: 'none', onUpdate: set, scrollTrigger: { trigger: box, start: 'top bottom', end: 'bottom bottom', scrub: 1 } });
-      var hov = 0, raf = 0, t0 = performance.now(), base = 22;
-      function loop(now){
-        raf = 0; var t = (now - t0) / 1000;
-        lt.setAttribute('baseFrequency', (0.0025 + Math.sin(t * .9) * .001).toFixed(4) + ' ' + (0.008 + Math.cos(t * 1.1) * .003).toFixed(4));
-        if (hov) { ld.setAttribute('scale', (base + 30 + Math.sin(t * 3) * 10).toFixed(1)); raf = requestAnimationFrame(loop); }
-        else { set(); }
-      }
-      box.addEventListener('pointerenter', function(){ hov = 1; base = st.s; if (!raf) raf = requestAnimationFrame(loop); });
-      box.addEventListener('pointerleave', function(){ hov = 0; });
-      box.style.pointerEvents = 'auto';
-    })();
 
     /* Contato: título letra a letra */
     document.querySelectorAll('[data-split-rows] .row').forEach(function(row){
@@ -1186,7 +1167,7 @@ main,footer{position:relative;z-index:1}
     gsap.from('.contact-big .amp', { rotate: -90, scale: .4, duration: 1.4, ease: 'expo.out', scrollTrigger: { trigger: '.contact-big', start: 'top 70%' } });
 
     /* Rodapé */
-    gsap.from('.liquid .wordmark:not(.wordmark-echo) span', { yPercent: 100, opacity: 0, stagger: .08, duration: 1.1, ease: 'expo.out', scrollTrigger: { trigger: '.wordmark', start: 'top 95%' } });
+    gsap.from('.foot-logo svg', { yPercent: 40, opacity: 0, duration: 1.2, ease: 'expo.out', scrollTrigger: { trigger: '.foot-logo', start: 'top 95%' } });
 
     /* Faixa acelera com a velocidade da rolagem */
     var track = document.querySelector('.marquee-track');
