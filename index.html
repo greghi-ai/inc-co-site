@@ -388,7 +388,7 @@ main,footer{position:relative;z-index:1}
 .pile{position:relative;z-index:1;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;width:100%;max-width:calc((100svh - 260px) * 4 / 3 + 20px);justify-self:end}
 .pile .card-media{aspect-ratio:4/3}
 .pile .card{will-change:transform}
-.pile .card-next{flex-direction:column;align-items:flex-start;justify-content:space-between;aspect-ratio:4/3;padding:clamp(18px,2vw,28px);background:var(--ink-2)}
+.pile .card-next{grid-column:auto;flex-direction:column;align-items:flex-start;justify-content:space-between;aspect-ratio:4/3;padding:clamp(18px,2vw,28px);background:var(--ink-2)}
 .pile .card-next .d{font-size:clamp(1.6rem,2.6vw,2.8rem)}
 .pile .card-meta p{margin:0;color:var(--mute);font-size:13px}
 .pile .card-meta .kind{color:var(--accent)}
