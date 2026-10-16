@@ -1008,22 +1008,39 @@ footer::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.
     (function(){
       var amp = document.getElementById('amp3d'); if (!amp) return;
       var inner = amp.querySelector('.amp3d-in');
-      function px(v){ return { x: function(){ return innerWidth * v.x; }, y: function(){ return innerHeight * v.y; }, rotation: v.r, scale: v.s, opacity: v.o }; }
       var start = { x: .31, y: .06, r: 8, s: .9, o: 1 };
-      gsap.set(amp, { x: innerWidth * start.x, y: innerHeight * start.y, rotation: start.r, scale: start.s });
-      gsap.to(amp, { opacity: 1, duration: 1.4, ease: 'power2.out', delay: 1.9 });
       var stops = [
         { t: '#sobre',    v: { x: .30,  y: .10, r: 14,  s: 1.15, o: 1 } },
         { t: '.trusted',  v: { x: -.32, y: -.02, r: -12, s: .85, o: 1 } },
         { t: '#projetos', v: { x: -.06, y: 0,   r: -6,  s: 1.7,  o: .55 } },
         { t: '#servicos', v: { x: -.06, y: 0,   r: -6,  s: 1.7,  o: 0 } }
       ];
-      var prev = start;
-      stops.forEach(function(st){
-        var from = px(prev), to = px(st.v);
-        gsap.fromTo(amp, from, Object.assign(to, { ease: 'power1.inOut', immediateRender: false, scrollTrigger: { trigger: st.t, start: 'top bottom', end: 'top 30%', scrub: 1, invalidateOnRefresh: true } }));
-        prev = st.v;
+      var prog = stops.map(function(){ return 0; });
+      function mix(a, b, k){ return a + (b - a) * k; }
+      function ease(k){ return k < .5 ? 2 * k * k : 1 - Math.pow(-2 * k + 2, 2) / 2; }
+      function state(){
+        var cur = start;
+        for (var i = 0; i < stops.length; i++) {
+          if (prog[i] <= 0) break;
+          var k = ease(prog[i]), from = cur, to = stops[i].v;
+          cur = { x: mix(from.x, to.x, k), y: mix(from.y, to.y, k), r: mix(from.r, to.r, k), s: mix(from.s, to.s, k), o: mix(from.o, to.o, k) };
+          if (prog[i] < 1) break;
+        }
+        return cur;
+      }
+      var shown = false;
+      function place(instant){
+        var c = state();
+        var v = { x: innerWidth * c.x, y: innerHeight * c.y, rotation: c.r, scale: c.s, overwrite: 'auto' };
+        if (shown) v.opacity = c.o;
+        if (instant) gsap.set(amp, v); else gsap.to(amp, Object.assign(v, { duration: .9, ease: 'power3.out' }));
+      }
+      place(true);
+      gsap.to(amp, { opacity: 1, duration: 1.4, ease: 'power2.out', delay: 1.9, onComplete: function(){ shown = true; place(); } });
+      stops.forEach(function(st, i){
+        ScrollTrigger.create({ trigger: st.t, start: 'top bottom', end: 'top 30%', onUpdate: function(self){ prog[i] = self.progress; place(); }, onRefresh: function(self){ prog[i] = self.progress; place(true); } });
       });
+      addEventListener('resize', function(){ place(true); });
 
       /* segue levemente o mouse */
       var qx = gsap.quickTo(inner, 'x', { duration: 1.2, ease: 'power3' }), qy = gsap.quickTo(inner, 'y', { duration: 1.2, ease: 'power3' });
