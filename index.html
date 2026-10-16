@@ -867,24 +867,34 @@ footer{border-top:1px solid var(--line);padding-block:clamp(48px,6vw,80px) calc(
     var units = splitChars(h1, '.hl');
     root.classList.add('split-ready');
     gsap.set(units, { yPercent: 110, opacity: 0 });
-    var introPlayed = false;
+    var introPlayed = false, introDone = false, applyHero = function(){};
     function intro(){
       if (introPlayed) return; introPlayed = true;
-      gsap.to(units, { yPercent: 0, opacity: 1, duration: 1.1, ease: 'expo.out', stagger: { each: .018, from: 'start' } });
-      gsap.from('.hero-amp', { scale: .6, rotate: -30, opacity: 0, duration: 1.8, ease: 'expo.out' });
-      gsap.from('.rings i', { scale: .6, opacity: 0, duration: 2, ease: 'expo.out', stagger: .12 });
+      gsap.to(units, { yPercent: 0, opacity: 1, duration: 1.1, ease: 'expo.out', stagger: { each: .018, from: 'start' }, onComplete: function(){ introDone = true; applyHero(); } });
+      gsap.fromTo('.hero-amp', { scale: .6, rotation: -30, opacity: 0 }, { scale: 1, rotation: 0, opacity: 1, duration: 1.6, ease: 'expo.out' });
+      gsap.fromTo('.rings i', { scale: .6, opacity: 0 }, { scale: 1, opacity: 1, duration: 1.6, ease: 'expo.out', stagger: .1 });
     }
     new MutationObserver(function(){ if (root.classList.contains('is-loaded')) intro(); }).observe(root, { attributes: true, attributeFilter: ['class'] });
     if (root.classList.contains('is-loaded')) intro();
     setTimeout(intro, 3600);
 
-    var heroTl = gsap.timeline({ scrollTrigger: { trigger: '.hero', start: 'top top', end: '+=110%', pin: true, scrub: .8 } });
-    units.forEach(function(u){
-      heroTl.fromTo(u, { y: 0, x: 0, rotate: 0, opacity: 1 }, { y: rand(-320, 220), x: rand(-60, 60), rotate: rand(-35, 35), opacity: 0, ease: 'none', duration: rand(.35, .7), immediateRender: false }, rand(0, .45));
-    });
-    heroTl.fromTo('.hero-amp', { scale: 1, xPercent: 0, rotate: 0, opacity: 1 }, { scale: 1.7, xPercent: 18, rotate: -24, ease: 'none', duration: 1, immediateRender: false }, 0)
-          .fromTo('.rings i', { scale: 1, opacity: 1 }, { scale: 1.35, ease: 'none', duration: 1, stagger: .05, immediateRender: false }, 0)
-          .fromTo('.hero-foot, .hero-tag, .scroll-hint', { opacity: 1, y: 0 }, { opacity: 0, y: -40, ease: 'none', duration: .4, immediateRender: false }, 0);
+    var scat = units.map(function(u){ return { u: u, x: rand(-60, 60), y: rand(-320, 220), r: rand(-35, 35), s: rand(0, .45), d: rand(.35, .7) }; });
+    var heroState = { p: 0 };
+    function clamp01(v){ return v < 0 ? 0 : v > 1 ? 1 : v; }
+    applyHero = function(){
+      if (!introDone) return;
+      var p = heroState.p * 1.15;
+      scat.forEach(function(o){
+        var lp = clamp01((p - o.s) / o.d);
+        gsap.set(o.u, { x: o.x * lp, y: o.y * lp, rotation: o.r * lp, opacity: 1 - lp });
+      });
+      var q = clamp01(heroState.p);
+      gsap.set('.hero-amp', { scale: 1 + .7 * q, xPercent: 18 * q, rotation: -24 * q });
+      gsap.set('.rings i', { scale: 1 + .35 * q });
+      var f = clamp01(q / .35);
+      gsap.set('.hero-foot, .hero-tag, .scroll-hint', { opacity: 1 - f, y: -40 * f });
+    };
+    gsap.to(heroState, { p: 1, ease: 'none', onUpdate: applyHero, scrollTrigger: { trigger: '.hero', start: 'top top', end: '+=110%', pin: true, scrub: .8 } });
 
     /* Sobre: palavras acendem com a rolagem */
     var st = document.getElementById('statement');
