@@ -461,6 +461,14 @@ main,footer{position:relative;z-index:1}
 .wk3d .work-side h2,.wk3d .work-side > .small{display:none}
 .wk3d .work-side p{font-size:14px}
 .wk3d .pile{position:absolute;z-index:2;left:50%;top:50%;translate:-50% -50%;width:min(52vw,calc((100svh - 260px) * 4 / 3));max-width:none;margin:0}
+
+.wk3d .rb{backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.wk3d .pile{grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;width:min(72vw,calc((100svh - 330px) * 2));translate:-50% -56%}
+.wk3d .pile .card-meta p{font-size:12px}
+.card-soon{cursor:default}
+.card-soon .card-media{display:grid;place-items:center;background:var(--ink-2);border:1px dashed rgba(255,255,255,.18)}
+.soon-mark{color:var(--accent);width:22%;opacity:1}
+.soon-mark .asti{width:100%;height:auto;animation:astspin 14s linear infinite}
 @media (prefers-reduced-motion:reduce){
   .marquee-track{animation-duration:90s}
 }
@@ -580,6 +588,14 @@ main,footer{position:relative;z-index:1}
           <div class="card-media"><img src="assets/lanota-capa.jpg" alt="Logotipo La Nota em creme sobre textura de gelato de chocolate" loading="lazy"><span class="card-label">La Nota</span><span class="card-plus" aria-hidden="true">+</span></div>
           <div class="card-meta"><p>Branding e expansão no Mercadão e na Liberdade</p><span class="kind">Franquia</span></div>
         </button>
+        <div class="card card-soon" data-cat="soon" aria-label="Case em breve">
+          <div class="card-media"><span class="soon-mark" aria-hidden="true"><svg class="asti" viewBox="0 0 270 270"><use href="#ast"/></svg></span><span class="card-label">Case em breve</span></div>
+          <div class="card-meta"><p>Capa e detalhes em produção</p><span class="kind">Em breve</span></div>
+        </div>
+        <div class="card card-soon" data-cat="soon" aria-label="Case em breve">
+          <div class="card-media"><span class="soon-mark" aria-hidden="true"><svg class="asti" viewBox="0 0 270 270"><use href="#ast"/></svg></span><span class="card-label">Case em breve</span></div>
+          <div class="card-meta"><p>Capa e detalhes em produção</p><span class="kind">Em breve</span></div>
+        </div>
         <a class="card-next" href="#contato" data-cursor="link">
           <span class="d">O próximo case pode ser o seu.</span>
           <span class="arrow" aria-hidden="true">→</span>
@@ -1148,8 +1164,8 @@ main,footer{position:relative;z-index:1}
         var Rr = vw * (.34 + .22 * zoom), gy = -lift * vh * 1.25;
         for (var i = 0; i < N; i++) {
           var u = phase - i * .9, th = u * .5;
-          var vis = u > -3.6 && u < 4.2;
-          var x = Rr * Math.sin(th), z = Rr * (Math.cos(th) - 1), y = -u * vh * (.07 - .03 * zoom) + vh * .12 + gy;
+          var vis = flow > .005 && u > -3.6 && u < 4.2;
+          var x = Rr * Math.sin(th), z = Rr * (Math.cos(th) - 1), y = -u * vh * (.07 - .03 * zoom) + vh * .12 + gy + (u < -1.4 ? Math.pow(-1.4 - u, 2) * vh * .22 : 0);
           rbs[i].style.opacity = vis ? 1 : 0;
           rbs[i].style.transform = 'translate3d(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px,' + z.toFixed(1) + 'px) rotateY(' + (th * 57.3).toFixed(1) + 'deg) rotateZ(' + (-6 + 4 * zoom).toFixed(1) + 'deg)';
         }
@@ -1160,7 +1176,7 @@ main,footer{position:relative;z-index:1}
         w2.style.transform = 'translateX(' + (-sp * (vw * 1.1)).toFixed(1) + 'px)';
         /* capas caem do alto e se encaixam na grade */
         items.forEach(function(el, i){
-          var kx = seg(p, .48 + i * .055, .74 + i * .055), k = 1 - Math.pow(1 - kx, 3), t = tilts[i];
+          var kx = seg(p, .48 + i * .04, .72 + i * .04), k = 1 - Math.pow(1 - kx, 3), t = tilts[i];
           el.style.transform = 'translate3d(0,' + ((1 - k) * -vh * .85).toFixed(1) + 'px,0) rotateX(' + ((1 - k) * t[1]).toFixed(1) + 'deg) rotateY(' + ((1 - k) * t[0]).toFixed(1) + 'deg) rotateZ(' + ((1 - k) * t[2]).toFixed(1) + 'deg)';
           el.style.visibility = k > 0 ? 'visible' : 'hidden';
         });
