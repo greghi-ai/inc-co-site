@@ -263,11 +263,11 @@ footer{border-top:1px solid var(--line);padding-block:clamp(48px,6vw,80px) calc(
 .cursor.link{width:40px;height:40px;margin:-20px 0 0 -20px}
 
 /* Textura orgânica revelada pelo cursor (imagem + máscara, sem WebGL) */
-.organic{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;
+.organic{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;mix-blend-mode:screen;
   --m0:-50% -50%;--m1:-50% -50%;--m2:-50% -50%;--m3:-50% -50%;--m4:-50% -50%;--m5:-50% -50%;--r:26vmax;
   -webkit-mask-image:radial-gradient(circle var(--r) at var(--m0),#000 0,#000 28%,rgba(0,0,0,.5) 50%,transparent 72%),radial-gradient(circle calc(var(--r)*.9) at var(--m1),rgba(0,0,0,.7) 0,transparent 65%),radial-gradient(circle calc(var(--r)*.8) at var(--m2),rgba(0,0,0,.55) 0,transparent 62%),radial-gradient(circle calc(var(--r)*.7) at var(--m3),rgba(0,0,0,.4) 0,transparent 60%),radial-gradient(circle calc(var(--r)*.6) at var(--m4),rgba(0,0,0,.28) 0,transparent 58%),radial-gradient(circle calc(var(--r)*.5) at var(--m5),rgba(0,0,0,.16) 0,transparent 55%);
   mask-image:radial-gradient(circle var(--r) at var(--m0),#000 0,#000 28%,rgba(0,0,0,.5) 50%,transparent 72%),radial-gradient(circle calc(var(--r)*.9) at var(--m1),rgba(0,0,0,.7) 0,transparent 65%),radial-gradient(circle calc(var(--r)*.8) at var(--m2),rgba(0,0,0,.55) 0,transparent 62%),radial-gradient(circle calc(var(--r)*.7) at var(--m3),rgba(0,0,0,.4) 0,transparent 60%),radial-gradient(circle calc(var(--r)*.6) at var(--m4),rgba(0,0,0,.28) 0,transparent 58%),radial-gradient(circle calc(var(--r)*.5) at var(--m5),rgba(0,0,0,.16) 0,transparent 55%)}
-.organic-tex{position:absolute;inset:-12%;background:#000 url("assets/organic.jpg") center/cover no-repeat;animation:organicDrift 38s ease-in-out infinite alternate}
+.organic-tex{position:absolute;inset:-12%;background:url("assets/organic.jpg") center/cover no-repeat;animation:organicDrift 38s ease-in-out infinite alternate}
 @keyframes organicDrift{0%{transform:translate(0,0) scale(1) rotate(0)}50%{transform:translate(-4%,3%) scale(1.08) rotate(2deg)}100%{transform:translate(3%,-3%) scale(1.04) rotate(-2deg)}}
 .hero > .hero-tag,.hero > .scroll-hint,.hero > .hero-foot{position:relative;z-index:2}
 /* Conteúdo real da apresentação */
