@@ -446,6 +446,21 @@ main,footer{position:relative;z-index:1}
 .foot-logo .brand-logo{width:100%;height:auto}
 .loader-amp{font-size:min(40vmin,300px);line-height:1;color:var(--accent);fill:initial;stroke:none;width:auto;animation:ampIn 1.4s cubic-bezier(.2,.8,.2,1) both}
 @keyframes ampIn{from{opacity:0;transform:scale(.6) rotate(-8deg)}to{opacity:1;transform:none}}
+
+/* Cases: fita 3D de capas que gira, sobe e as capas caem na grade */
+.wk-title,.wk-ribbon{display:none}
+.wk3d .work-stage{display:block;position:relative;height:100vh;height:100svh;min-height:0;padding:0;overflow:hidden;perspective:1600px;perspective-origin:50% 45%}
+.wk3d .wk-title{display:flex;position:absolute;inset:0;flex-direction:column;justify-content:center;gap:.04em;margin:0;font-size:clamp(4rem,10.5vw,12.5rem);line-height:.92;pointer-events:none;z-index:0;white-space:nowrap}
+.wk3d .wt{display:block;width:max-content}
+.wk3d .wt1{margin-left:12vw}
+.wk3d .wt2{align-self:flex-end;margin-right:12vw}
+.wk3d .wk-ribbon{display:block;position:absolute;left:50%;top:50%;width:0;height:0;transform-style:preserve-3d;z-index:1;pointer-events:none}
+.wk3d .rb{position:absolute;width:21vw;aspect-ratio:4/3;left:-10.5vw;top:-7.9vw;border-radius:6px;overflow:hidden;background:var(--ink-2);box-shadow:0 30px 60px rgba(0,0,0,.45);opacity:0}
+.wk3d .rb img{width:100%;height:100%;object-fit:cover;display:block}
+.wk3d .work-side{position:absolute;left:0;bottom:28px;z-index:3;gap:12px;max-width:min(420px,32vw)}
+.wk3d .work-side h2,.wk3d .work-side > .small{display:none}
+.wk3d .work-side p{font-size:14px}
+.wk3d .pile{position:absolute;z-index:2;left:50%;top:50%;translate:-50% -54%;width:min(64vw,calc((100svh - 250px) * 4 / 3 + 20px));max-width:none;margin:0}
 @media (prefers-reduced-motion:reduce){
   .marquee-track{animation-duration:90s}
 }
@@ -539,10 +554,12 @@ main,footer{position:relative;z-index:1}
 
   <section class="work wrap" id="projetos">
     <div class="work-stage">
+      <h2 class="wk-title d" aria-hidden="true"><span class="wt wt1">Principais</span><span class="wt wt2"><span class="hl">cases</span></span></h2>
+      <div class="wk-ribbon" aria-hidden="true"><div class="rb"><img src="assets/guaruja-capa.jpg" alt="" decoding="async"></div><div class="rb"><img src="assets/robinho-capa.jpg" alt="" decoding="async"></div><div class="rb"><img src="assets/lanota-capa.jpg" alt="" decoding="async"></div><div class="rb"><img src="assets/guaruja-pecas.jpg" alt="" decoding="async"></div><div class="rb"><img src="assets/robinho-midiakit.jpg" alt="" decoding="async"></div><div class="rb"><img src="assets/lanota-cartazes.jpg" alt="" decoding="async"></div><div class="rb"><img src="assets/robinho-produtos.jpg" alt="" decoding="async"></div><div class="rb"><img src="assets/lanota-loja.jpg" alt="" decoding="async"></div><div class="rb"><img src="assets/guaruja-capa.jpg" alt="" decoding="async"></div><div class="rb"><img src="assets/robinho-capa.jpg" alt="" decoding="async"></div><div class="rb"><img src="assets/lanota-capa.jpg" alt="" decoding="async"></div><div class="rb"><img src="assets/guaruja-pecas.jpg" alt="" decoding="async"></div><div class="rb"><img src="assets/robinho-midiakit.jpg" alt="" decoding="async"></div><div class="rb"><img src="assets/lanota-cartazes.jpg" alt="" decoding="async"></div></div>
       <aside class="work-side">
         <span class="small">Cases</span>
         <h2 class="d">Principais<br><span class="hl">cases</span></h2>
-        <p>Público, esporte, franquia e saúde. Role para abrir a pilha e clique para ver o desafio, a solução e o resultado.</p>
+        <p>Público, esporte, franquia e saúde. Role para ver os trabalhos e clique para ver o desafio, a solução e o resultado.</p>
         <div class="filters" role="group" aria-label="Filtrar cases">
           <button type="button" data-filter="all" aria-pressed="true">Todos</button>
           <button type="button" data-filter="publico" aria-pressed="false">Público</button>
@@ -1111,25 +1128,53 @@ main,footer{position:relative;z-index:1}
     /* Quem já confia: células aparecem em sequência */
     gsap.from('.logo-grid li', { opacity: 0, y: 24, duration: .9, ease: 'expo.out', stagger: { each: .07, grid: 'auto', from: 'start' }, scrollTrigger: { trigger: '.logo-grid', start: 'top 85%' } });
 
-    /* Cases: capas embaralhadas numa pilha que se abre com a rolagem */
+    /* Cases: fita 3D de capas entra, gira, sobe, o título se parte e as capas caem na grade */
     mm.add('(min-width: 861px)', function(){
-      var pile = document.querySelector('.pile');
-      var items = Array.prototype.slice.call(pile.children);
-      var rots = items.map(function(_, i){ return [-14, 9, -5, 16][i % 4] + rand(-3, 3); });
-      function delta(el, axis){
-        var pr = pile.getBoundingClientRect(), r = el.getBoundingClientRect();
-        // posição sem transformações: usa o layout do grid
-        var cx = pr.left + pr.width / 2, cy = pr.top + pr.height / 2;
-        var ex = el.offsetLeft + el.offsetWidth / 2 + pr.left, ey = el.offsetTop + el.offsetHeight / 2 + pr.top;
-        return axis === 'x' ? cx - ex : cy - ey;
+      var sec = document.getElementById('projetos'); sec.classList.add('wk3d');
+      var stage = sec.querySelector('.work-stage'), side = sec.querySelector('.work-side');
+      var rbs = Array.prototype.slice.call(sec.querySelectorAll('.rb')), N = rbs.length;
+      var items = Array.prototype.slice.call(sec.querySelectorAll('.pile > *'));
+      var w1 = sec.querySelector('.wt1'), w2 = sec.querySelector('.wt2');
+      var tilts = items.map(function(){ return [rand(-25, 25), rand(30, 70), rand(-12, 12)]; });
+      var st = { p: 0 };
+      function c01(v){ return v < 0 ? 0 : v > 1 ? 1 : v; }
+      function seg(p, a, b){ return c01((p - a) / (b - a)); }
+      function io(k){ return k < .5 ? 4 * k * k * k : 1 - Math.pow(-2 * k + 2, 3) / 2; }
+      function draw(){
+        var p = st.p, vw = innerWidth, vh = innerHeight;
+        /* fita: as capas correm por uma hélice da esquerda-baixo para a direita-cima */
+        var flow = seg(p, .02, .66), zoom = io(seg(p, .28, .56)), lift = io(seg(p, .5, .7));
+        var phase = -3.2 + flow * (N * .9 + 4.5);
+        var Rr = vw * (.34 + .22 * zoom), gy = -lift * vh * 1.25;
+        for (var i = 0; i < N; i++) {
+          var u = phase - i * .9, th = u * .5;
+          var vis = u > -3.6 && u < 4.2;
+          var x = Rr * Math.sin(th), z = Rr * (Math.cos(th) - 1), y = -u * vh * (.07 - .03 * zoom) + vh * .12 + gy;
+          rbs[i].style.opacity = vis ? 1 : 0;
+          rbs[i].style.transform = 'translate3d(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px,' + z.toFixed(1) + 'px) rotateY(' + (th * 57.3).toFixed(1) + 'deg) rotateZ(' + (-6 + 4 * zoom).toFixed(1) + 'deg)';
+        }
+        sec.querySelector('.wk-ribbon').style.transform = 'rotateX(' + (14 - 8 * zoom).toFixed(1) + 'deg) rotateZ(' + (-10 + 6 * zoom).toFixed(1) + 'deg)';
+        /* título se parte: primeira linha vai para a direita, segunda para a esquerda */
+        var sp = io(seg(p, .36, .62));
+        w1.style.transform = 'translateX(' + (sp * (vw * 1.1)).toFixed(1) + 'px)';
+        w2.style.transform = 'translateX(' + (-sp * (vw * 1.1)).toFixed(1) + 'px)';
+        /* capas caem do alto e se encaixam na grade */
+        items.forEach(function(el, i){
+          var k = io(seg(p, .64 + i * .05, .86 + i * .05)), t = tilts[i];
+          el.style.transform = 'translate3d(0,' + ((1 - k) * -vh * 1.1).toFixed(1) + 'px,0) rotateX(' + ((1 - k) * t[1]).toFixed(1) + 'deg) rotateY(' + ((1 - k) * t[0]).toFixed(1) + 'deg) rotateZ(' + ((1 - k) * t[2]).toFixed(1) + 'deg)';
+          el.style.visibility = k > 0 ? 'visible' : 'hidden';
+        });
+        var sk = io(seg(p, .86, 1));
+        side.style.transform = 'translateY(' + ((1 - sk) * 40).toFixed(1) + 'px)';
+        side.style.opacity = sk.toFixed(3);
       }
-      var tl = gsap.timeline({ scrollTrigger: { trigger: '.work-stage', start: 'top top', end: '+=140%', pin: true, scrub: .8, invalidateOnRefresh: true } });
-      items.forEach(function(el, i){
-        tl.fromTo(el,
-          { x: function(){ return delta(el, 'x') + rand(-30, 30); }, y: function(){ return delta(el, 'y') + rand(-20, 20); }, rotation: rots[i], scale: .78, zIndex: items.length - i },
-          { x: 0, y: 0, rotation: 0, scale: 1, ease: 'power3.inOut', duration: 1 }, i * .12);
-      });
-      return function(){ gsap.set(items, { clearProps: 'transform,zIndex' }); };
+      draw();
+      var tw = gsap.to(st, { p: 1, ease: 'none', onUpdate: draw, scrollTrigger: { trigger: stage, start: 'top top', end: '+=420%', pin: true, scrub: .8, invalidateOnRefresh: true, onRefresh: draw } });
+      addEventListener('resize', draw);
+      return function(){
+        sec.classList.remove('wk3d'); removeEventListener('resize', draw);
+        rbs.concat(items, [w1, w2, side, sec.querySelector('.wk-ribbon')]).forEach(function(el){ el.style.transform = ''; el.style.opacity = ''; el.style.visibility = ''; });
+      };
     });
 
     /* Pilares: nomes sobem letra a letra */
