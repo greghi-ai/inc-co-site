@@ -1143,7 +1143,7 @@ main,footer{position:relative;z-index:1}
       function draw(){
         var p = st.p, vw = innerWidth, vh = innerHeight;
         /* fita: as capas correm por uma hélice da esquerda-baixo para a direita-cima */
-        var flow = seg(p, .02, .66), zoom = io(seg(p, .28, .56)), lift = io(seg(p, .44, .62));
+        var flow = seg(p, .02, .66), zoom = io(seg(p, .28, .56)), lift = io(seg(p, .42, .66));
         var phase = -3.2 + flow * (N * .9 + 4.5);
         var Rr = vw * (.34 + .22 * zoom), gy = -lift * vh * 1.25;
         for (var i = 0; i < N; i++) {
@@ -1160,8 +1160,8 @@ main,footer{position:relative;z-index:1}
         w2.style.transform = 'translateX(' + (-sp * (vw * 1.1)).toFixed(1) + 'px)';
         /* capas caem do alto e se encaixam na grade */
         items.forEach(function(el, i){
-          var k = io(seg(p, .5 + i * .055, .76 + i * .055)), t = tilts[i];
-          el.style.transform = 'translate3d(0,' + ((1 - k) * -vh * 1.1).toFixed(1) + 'px,0) rotateX(' + ((1 - k) * t[1]).toFixed(1) + 'deg) rotateY(' + ((1 - k) * t[0]).toFixed(1) + 'deg) rotateZ(' + ((1 - k) * t[2]).toFixed(1) + 'deg)';
+          var kx = seg(p, .48 + i * .055, .74 + i * .055), k = 1 - Math.pow(1 - kx, 3), t = tilts[i];
+          el.style.transform = 'translate3d(0,' + ((1 - k) * -vh * .85).toFixed(1) + 'px,0) rotateX(' + ((1 - k) * t[1]).toFixed(1) + 'deg) rotateY(' + ((1 - k) * t[0]).toFixed(1) + 'deg) rotateZ(' + ((1 - k) * t[2]).toFixed(1) + 'deg)';
           el.style.visibility = k > 0 ? 'visible' : 'hidden';
         });
         var sk = io(seg(p, .82, .96));
