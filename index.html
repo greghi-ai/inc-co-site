@@ -1008,18 +1008,21 @@ footer::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.
     (function(){
       var amp = document.getElementById('amp3d'); if (!amp) return;
       var inner = amp.querySelector('.amp3d-in');
-      gsap.set(amp, { x: '22vw', y: '2vh', rotation: 0, scale: 1 });
+      function px(v){ return { x: function(){ return innerWidth * v.x; }, y: function(){ return innerHeight * v.y; }, rotation: v.r, scale: v.s, opacity: v.o }; }
+      var start = { x: .24, y: .04, r: 0, s: 1, o: 1 };
+      gsap.set(amp, { x: innerWidth * start.x, y: innerHeight * start.y, rotation: 0, scale: 1 });
       gsap.to(amp, { opacity: 1, duration: 1.4, ease: 'power2.out', delay: 1.9 });
       var stops = [
-        { t: '#sobre',     v: { x: '32vw',  y: '8vh',  rotation: 14,  scale: 1.15, opacity: 1 } },
-        { t: '.trusted',   v: { x: '-30vw', y: '-2vh', rotation: -12, scale: .85,  opacity: 1 } },
-        { t: '#projetos',  v: { x: '-6vw',  y: '0vh',  rotation: -6,  scale: 1.7,  opacity: .55 } },
-        { t: '#servicos',  v: { x: '-6vw',  y: '0vh',  rotation: -6,  scale: 1.7,  opacity: 0 } }
+        { t: '#sobre',    v: { x: .30,  y: .10, r: 14,  s: 1.15, o: 1 } },
+        { t: '.trusted',  v: { x: -.32, y: -.02, r: -12, s: .85, o: 1 } },
+        { t: '#projetos', v: { x: -.06, y: 0,   r: -6,  s: 1.7,  o: .55 } },
+        { t: '#servicos', v: { x: -.06, y: 0,   r: -6,  s: 1.7,  o: 0 } }
       ];
-      var prev = { x: '22vw', y: '2vh', rotation: 0, scale: 1, opacity: 1 };
-      stops.forEach(function(s){
-        gsap.fromTo(amp, Object.assign({}, prev), Object.assign({ ease: 'power1.inOut', immediateRender: false, scrollTrigger: { trigger: s.t, start: 'top bottom', end: 'top 30%', scrub: 1 } }, s.v));
-        prev = s.v;
+      var prev = start;
+      stops.forEach(function(st){
+        var from = px(prev), to = px(st.v);
+        gsap.fromTo(amp, from, Object.assign(to, { ease: 'power1.inOut', immediateRender: false, scrollTrigger: { trigger: st.t, start: 'top bottom', end: 'top 30%', scrub: 1, invalidateOnRefresh: true } }));
+        prev = st.v;
       });
 
       /* segue levemente o mouse */
