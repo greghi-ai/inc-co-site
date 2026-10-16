@@ -457,10 +457,10 @@ main,footer{position:relative;z-index:1}
 .wk3d .wk-ribbon{display:block;position:absolute;left:50%;top:50%;width:0;height:0;transform-style:preserve-3d;z-index:1;pointer-events:none}
 .wk3d .rb{position:absolute;width:21vw;aspect-ratio:4/3;left:-10.5vw;top:-7.9vw;border-radius:6px;overflow:hidden;background:var(--ink-2);box-shadow:0 30px 60px rgba(0,0,0,.45);opacity:0}
 .wk3d .rb img{width:100%;height:100%;object-fit:cover;display:block}
-.wk3d .work-side{position:absolute;left:0;bottom:28px;z-index:3;gap:12px;max-width:min(420px,32vw)}
+.wk3d .work-side{position:absolute;left:0;bottom:28px;z-index:3;gap:12px;max-width:min(330px,22vw)}
 .wk3d .work-side h2,.wk3d .work-side > .small{display:none}
 .wk3d .work-side p{font-size:14px}
-.wk3d .pile{position:absolute;z-index:2;left:50%;top:50%;translate:-50% -54%;width:min(64vw,calc((100svh - 250px) * 4 / 3 + 20px));max-width:none;margin:0}
+.wk3d .pile{position:absolute;z-index:2;left:50%;top:50%;translate:-50% -50%;width:min(52vw,calc((100svh - 260px) * 4 / 3));max-width:none;margin:0}
 @media (prefers-reduced-motion:reduce){
   .marquee-track{animation-duration:90s}
 }
@@ -1143,7 +1143,7 @@ main,footer{position:relative;z-index:1}
       function draw(){
         var p = st.p, vw = innerWidth, vh = innerHeight;
         /* fita: as capas correm por uma hélice da esquerda-baixo para a direita-cima */
-        var flow = seg(p, .02, .66), zoom = io(seg(p, .28, .56)), lift = io(seg(p, .5, .7));
+        var flow = seg(p, .02, .66), zoom = io(seg(p, .28, .56)), lift = io(seg(p, .46, .64));
         var phase = -3.2 + flow * (N * .9 + 4.5);
         var Rr = vw * (.34 + .22 * zoom), gy = -lift * vh * 1.25;
         for (var i = 0; i < N; i++) {
@@ -1160,11 +1160,11 @@ main,footer{position:relative;z-index:1}
         w2.style.transform = 'translateX(' + (-sp * (vw * 1.1)).toFixed(1) + 'px)';
         /* capas caem do alto e se encaixam na grade */
         items.forEach(function(el, i){
-          var k = io(seg(p, .64 + i * .05, .86 + i * .05)), t = tilts[i];
+          var k = io(seg(p, .56 + i * .05, .8 + i * .05)), t = tilts[i];
           el.style.transform = 'translate3d(0,' + ((1 - k) * -vh * 1.1).toFixed(1) + 'px,0) rotateX(' + ((1 - k) * t[1]).toFixed(1) + 'deg) rotateY(' + ((1 - k) * t[0]).toFixed(1) + 'deg) rotateZ(' + ((1 - k) * t[2]).toFixed(1) + 'deg)';
           el.style.visibility = k > 0 ? 'visible' : 'hidden';
         });
-        var sk = io(seg(p, .86, 1));
+        var sk = io(seg(p, .82, .96));
         side.style.transform = 'translateY(' + ((1 - sk) * 40).toFixed(1) + 'px)';
         side.style.opacity = sk.toFixed(3);
       }
