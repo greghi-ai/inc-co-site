@@ -968,10 +968,9 @@ footer::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.
       var tl = gsap.timeline({ scrollTrigger: { trigger: '.work-stage', start: 'top top', end: '+=140%', pin: true, scrub: .8, invalidateOnRefresh: true } });
       items.forEach(function(el, i){
         tl.fromTo(el,
-          { x: function(){ return delta(el, 'x') + rand(-30, 30); }, y: function(){ return delta(el, 'y') + rand(-20, 20); }, rotation: rots[i], scale: .62, zIndex: items.length - i },
+          { x: function(){ return delta(el, 'x') + rand(-30, 30); }, y: function(){ return delta(el, 'y') + rand(-20, 20); }, rotation: rots[i], scale: .78, zIndex: items.length - i },
           { x: 0, y: 0, rotation: 0, scale: 1, ease: 'power3.inOut', duration: 1 }, i * .12);
       });
-      tl.from('.work-side > *', { y: 40, opacity: 0, stagger: .06, duration: .4, ease: 'power2.out' }, 0);
       return function(){ gsap.set(items, { clearProps: 'transform,zIndex' }); };
     });
 
