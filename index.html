@@ -151,7 +151,7 @@ section{position:relative}
 .svc{border-bottom:1px solid var(--ink)}
 .svc-btn{width:100%;display:flex;justify-content:space-between;align-items:center;gap:20px;text-align:left;padding-block:clamp(16px,2.4vw,30px);position:relative;overflow:hidden}
 .svc-btn::before{content:"";position:absolute;inset:0;background:var(--ink);transform:scaleY(0);transform-origin:bottom;transition:transform .55s var(--ease);z-index:0}
-.svc-name{position:relative;z-index:1;font-family:var(--f-display);font-weight:800;font-stretch:70%;text-transform:uppercase;font-size:clamp(2.2rem,7.4vw,8rem);line-height:.88;transition:transform .55s var(--ease),color .3s}
+.svc-name{position:relative;z-index:1;font-family:var(--f-display);font-weight:800;font-stretch:70%;text-transform:uppercase;font-size:clamp(1.9rem,5.4vw,6rem);line-height:.92;transition:transform .55s var(--ease),color .3s}
 .svc-plus{position:relative;z-index:1;width:clamp(40px,5vw,64px);aspect-ratio:1;border:1px solid currentColor;border-radius:50%;display:grid;place-items:center;flex:none;transition:transform .5s var(--ease)}
 .svc-plus::before,.svc-plus::after{content:"";position:absolute;width:38%;height:1.5px;background:currentColor}
 .svc-plus::after{transform:rotate(90deg);transition:transform .5s var(--ease)}
@@ -425,7 +425,7 @@ footer::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.
 .svc-btn:hover .ast .asti{animation:astspin 2.4s linear infinite}
 /* Pilares girando como um cilindro */
 .svc-title{display:flex;flex-direction:column;gap:.5em;position:relative;z-index:1}
-.svc-sub{font-family:var(--f-display);font-weight:800;font-stretch:80%;text-transform:uppercase;letter-spacing:.04em;font-size:clamp(13px,1.3vw,18px);line-height:1;padding-left:calc(clamp(2.2rem,7.4vw,8rem) * .85);transition:transform .55s var(--ease)}
+.svc-sub{font-family:var(--f-display);font-weight:800;font-stretch:80%;text-transform:uppercase;letter-spacing:.04em;font-size:clamp(13px,1.3vw,18px);line-height:1;padding-left:calc(clamp(1.9rem,5.4vw,6rem) * .85);transition:transform .55s var(--ease)}
 @media (hover:hover){.svc-btn:hover .svc-sub{transform:translateX(clamp(8px,1.5vw,24px))}}
 .rl .ch{display:inline-block;transform-origin:50% 50%;will-change:transform}
 /* Objeto de partículas */
