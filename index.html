@@ -471,7 +471,6 @@ main,footer{position:relative;z-index:1}
 .wk3d .work-side p{font-size:14px}
 .wk3d .pile{position:absolute;z-index:2;left:50%;top:50%;translate:-50% -50%;width:min(52vw,calc((100svh - 260px) * 4 / 3));max-width:none;margin:0}
 
-.wk3d .rb{backface-visibility:hidden;-webkit-backface-visibility:hidden}
 .wk3d .pile{grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;width:min(68vw,calc((100svh - 380px) * 2));translate:-50% -60%}
 .wk3d .pile .card-meta p{font-size:12px}
 .card-soon{cursor:default}
@@ -1201,7 +1200,7 @@ main,footer{position:relative;z-index:1}
         var Rr = vw * (.34 + .22 * zoom), gy = -lift * vh * 1.25;
         for (var i = 0; i < N; i++) {
           var u = phase - i * .9, th = u * .78;
-          var vis = flow > .005 && u > -3.6 && u < 4.2;
+          var vis = flow > .005 && u > -3.6 && u < 4.2 && Math.cos(th) > .08;
           var x = Rr * Math.sin(th), z = Rr * (Math.cos(th) - 1), y = -u * vh * (.07 - .03 * zoom) + vh * .12 + gy + (u < -1.4 ? Math.pow(-1.4 - u, 2) * vh * .22 : 0);
           rbs[i].style.opacity = vis ? 1 : 0;
           rbs[i].style.transform = 'translate3d(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px,' + z.toFixed(1) + 'px) rotateY(' + (th * 57.3).toFixed(1) + 'deg) rotateZ(' + (-6 + 4 * zoom).toFixed(1) + 'deg)';
