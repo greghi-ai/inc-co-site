@@ -11,6 +11,12 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Instrument+Sans:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap">
 <style>
 /* Layout: tipografia condensada gigante em blocos que ocupam a largura; o "&" em serifa itálica é o elemento-assinatura que costura as seções. */
+@font-face{font-family:"Nadea";src:url("assets/fonts/Nadea-Regular.woff") format("woff");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"Nadea";src:url("assets/fonts/Nadea-Medium.woff") format("woff");font-weight:500;font-style:normal;font-display:swap}
+@font-face{font-family:"Nadea";src:url("assets/fonts/Nadea-SemiBold.woff") format("woff");font-weight:600;font-style:normal;font-display:swap}
+@font-face{font-family:"Nadea";src:url("assets/fonts/Nadea-Bold.woff") format("woff");font-weight:700;font-style:normal;font-display:swap}
+@font-face{font-family:"Nadea";src:url("assets/fonts/Nadea-ExtraBold.woff") format("woff");font-weight:800;font-style:normal;font-display:swap}
+@font-face{font-family:"Nadea";src:url("assets/fonts/Nadea-Black.woff") format("woff");font-weight:900;font-style:normal;font-display:swap}
 :root{
   --ink:#000000;
   --ink-2:#121212;
@@ -20,7 +26,7 @@
   --accent:#FFDD00;
   --accent-ink:#000000;
   --mute-on-accent:#5C4F00;
-  --f-display:"Archivo","Arial Narrow",Impact,sans-serif;
+  --f-display:"Nadea","Metropolis","Gotham","Archivo",sans-serif;
   --f-body:"Instrument Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
   --f-serif:"Instrument Serif",Georgia,"Times New Roman",serif;
   --gutter-l:max(16px, env(safe-area-inset-left, 0px));
@@ -358,7 +364,7 @@ footer{border-top:1px solid var(--line);padding-block:clamp(48px,6vw,80px) calc(
 .zoom-stage{position:relative;height:100vh;height:100svh;overflow:hidden;background:var(--ink)}
 .zoom-fill{position:absolute;inset:0;
   background:#FFDD00;
-  -webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 270 270%22%3E%3Cg transform=%22translate(135 135)%22%3E%3Crect x=%22-24.5%22 y=%22-135%22 width=%2249%22 height=%22270%22/%3E%3Crect x=%22-24.5%22 y=%22-135%22 width=%2249%22 height=%22270%22 transform=%22rotate(60)%22/%3E%3Crect x=%22-24.5%22 y=%22-135%22 width=%2249%22 height=%22270%22 transform=%22rotate(120)%22/%3E%3C/g%3E%3C/svg%3E");mask-image:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 270 270%22%3E%3Cg transform=%22translate(135 135)%22%3E%3Crect x=%22-24.5%22 y=%22-135%22 width=%2249%22 height=%22270%22/%3E%3Crect x=%22-24.5%22 y=%22-135%22 width=%2249%22 height=%22270%22 transform=%22rotate(60)%22/%3E%3Crect x=%22-24.5%22 y=%22-135%22 width=%2249%22 height=%22270%22 transform=%22rotate(120)%22/%3E%3C/g%3E%3C/svg%3E");
+  -webkit-mask-image:url("assets/amp-logo.svg")%22%3E%3Crect x=%22-24.5%22 y=%22-135%22 width=%2249%22 height=%22270%22/%3E%3Crect x=%22-24.5%22 y=%22-135%22 width=%2249%22 height=%22270%22 transform=%22rotate(60)%22/%3E%3Crect x=%22-24.5%22 y=%22-135%22 width=%2249%22 height=%22270%22 transform=%22rotate(120)%22/%3E%3C/g%3E%3C/svg%3E");mask-image:url("assets/amp-logo.svg")%22%3E%3Crect x=%22-24.5%22 y=%22-135%22 width=%2249%22 height=%22270%22/%3E%3Crect x=%22-24.5%22 y=%22-135%22 width=%2249%22 height=%22270%22 transform=%22rotate(60)%22/%3E%3Crect x=%22-24.5%22 y=%22-135%22 width=%2249%22 height=%22270%22 transform=%22rotate(120)%22/%3E%3C/g%3E%3C/svg%3E");
   -webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;
   -webkit-mask-size:var(--ms,300px) auto;mask-size:var(--ms,300px) auto;
   -webkit-mask-position:var(--mx,center) var(--my,center);mask-position:var(--mx,center) var(--my,center)}
@@ -458,7 +464,7 @@ main,footer{position:relative;z-index:1}
 .wk3d .wt1{margin-left:12vw}
 .wk3d .wt2{align-self:flex-end;margin-right:12vw}
 .wk3d .wk-ribbon{display:block;position:absolute;left:50%;top:50%;width:0;height:0;transform-style:preserve-3d;z-index:1;pointer-events:none}
-.wk3d .rb{position:absolute;width:21vw;aspect-ratio:4/3;left:-10.5vw;top:-7.9vw;border-radius:6px;overflow:hidden;background:var(--ink-2);box-shadow:0 30px 60px rgba(0,0,0,.45);opacity:0}
+.wk3d .rb{position:absolute;width:17vw;aspect-ratio:4/3;left:-8.5vw;top:-6.4vw;border-radius:6px;overflow:hidden;background:var(--ink-2);box-shadow:0 30px 60px rgba(0,0,0,.45);opacity:0}
 .wk3d .rb img{width:100%;height:100%;object-fit:cover;display:block}
 .wk3d .work-side{position:absolute;left:0;bottom:28px;z-index:3;gap:12px;max-width:min(330px,22vw)}
 .wk3d .work-side h2,.wk3d .work-side > .small{display:none}
@@ -476,6 +482,11 @@ main,footer{position:relative;z-index:1}
 /* Logos reais dos clientes */
 .lg-logo{display:flex;align-items:center;justify-content:center;width:100%;height:clamp(44px,5vw,72px)}
 .lg-svg{height:100%;width:auto;max-width:82%;display:block;transition:color .35s}
+
+/* v5: Nadea + & do logo */
+.d,.marquee span,.statement,.belief h3,.svc-name,.card-meta h3,.case-body h3,.menu-links a,.logo,.wordmark{font-stretch:normal}
+.svc-name .amp{color:inherit;font-size:1.04em;margin:0 .06em}
+.svc-btn:hover .svc-name .amp{color:inherit}
 @media (prefers-reduced-motion:reduce){
   .marquee-track{animation-duration:90s}
 }
@@ -619,28 +630,28 @@ main,footer{position:relative;z-index:1}
     </div>
     <div class="svc-list" id="svcList">
       <div class="svc" data-open>
-        <button class="svc-btn" aria-expanded="true" aria-controls="svc1" id="svc1b"><span class="svc-title"><span class="svc-name"><span class="ast" aria-hidden="true"><svg class="asti" viewBox="0 0 270 270" aria-hidden="true"><use href="#ast"/></svg></span>Branding</span><span class="svc-sub">Marca, propósito e expansão</span></span><span class="svc-plus" aria-hidden="true"></span></button>
+        <button class="svc-btn" aria-expanded="true" aria-controls="svc1" id="svc1b"><span class="svc-title"><span class="svc-name"><span class="ast" aria-hidden="true"><svg class="asti" viewBox="0 0 270 270" aria-hidden="true"><use href="#ast"/></svg></span>Branding <span class="amp">&amp;</span> Co.</span><span class="svc-sub">Marca, propósito e expansão</span></span><span class="svc-plus" aria-hidden="true"></span></button>
         <div class="svc-panel" id="svc1" role="region" aria-labelledby="svc1b"><div><div class="svc-body">
           <p>Construção de marca e propósito. Da identidade visual à expansão da marca em novos pontos e franquias.</p>
           <ul class="tags"><li>Identidade visual</li><li>Naming e logotipo</li><li>Expansão de marca</li><li>Trade marketing</li></ul>
         </div></div></div>
       </div>
       <div class="svc">
-        <button class="svc-btn" aria-expanded="false" aria-controls="svc2" id="svc2b"><span class="svc-title"><span class="svc-name"><span class="ast" aria-hidden="true"><svg class="asti" viewBox="0 0 270 270" aria-hidden="true"><use href="#ast"/></svg></span>Audiovisual</span><span class="svc-sub">Foto, vídeo, motion e 3D</span></span><span class="svc-plus" aria-hidden="true"></span></button>
+        <button class="svc-btn" aria-expanded="false" aria-controls="svc2" id="svc2b"><span class="svc-title"><span class="svc-name"><span class="ast" aria-hidden="true"><svg class="asti" viewBox="0 0 270 270" aria-hidden="true"><use href="#ast"/></svg></span>Audio <span class="amp">&amp;</span> Visual</span><span class="svc-sub">Foto, vídeo, motion e 3D</span></span><span class="svc-plus" aria-hidden="true"></span></button>
         <div class="svc-panel" id="svc2" role="region" aria-labelledby="svc2b"><div><div class="svc-body">
           <p>Foto, vídeo, motion graphics e 3D. Roteiro e identidade para filmes de 30 e 60 segundos, TV e redes sociais.</p>
           <ul class="tags"><li>Foto</li><li>Vídeo</li><li>Motion graphics</li><li>3D</li></ul>
         </div></div></div>
       </div>
       <div class="svc">
-        <button class="svc-btn" aria-expanded="false" aria-controls="svc3" id="svc3b"><span class="svc-title"><span class="svc-name"><span class="ast" aria-hidden="true"><svg class="asti" viewBox="0 0 270 270" aria-hidden="true"><use href="#ast"/></svg></span>Sports</span><span class="svc-sub">Imagem, patrocínio e licenciamento</span></span><span class="svc-plus" aria-hidden="true"></span></button>
+        <button class="svc-btn" aria-expanded="false" aria-controls="svc3" id="svc3b"><span class="svc-title"><span class="svc-name"><span class="ast" aria-hidden="true"><svg class="asti" viewBox="0 0 270 270" aria-hidden="true"><use href="#ast"/></svg></span>Sports <span class="amp">&amp;</span> Talents</span><span class="svc-sub">Imagem, patrocínio e licenciamento</span></span><span class="svc-plus" aria-hidden="true"></span></button>
         <div class="svc-panel" id="svc3" role="region" aria-labelledby="svc3b"><div><div class="svc-body">
           <p>Gestão de imagem e patrocínios. Marca pessoal de atletas, mídia kit, media training e licenciamento de produtos.</p>
           <ul class="tags"><li>Personal branding</li><li>Mídia kit</li><li>Media training</li><li>Licenciamento</li></ul>
         </div></div></div>
       </div>
       <div class="svc">
-        <button class="svc-btn" aria-expanded="false" aria-controls="svc4" id="svc4b"><span class="svc-title"><span class="svc-name"><span class="ast" aria-hidden="true"><svg class="asti" viewBox="0 0 270 270" aria-hidden="true"><use href="#ast"/></svg></span>Public</span><span class="svc-sub">Comunicação para governos e cidades</span></span><span class="svc-plus" aria-hidden="true"></span></button>
+        <button class="svc-btn" aria-expanded="false" aria-controls="svc4" id="svc4b"><span class="svc-title"><span class="svc-name"><span class="ast" aria-hidden="true"><svg class="asti" viewBox="0 0 270 270" aria-hidden="true"><use href="#ast"/></svg></span>Public <span class="amp">&amp;</span> Government</span><span class="svc-sub">Comunicação para governos e cidades</span></span><span class="svc-plus" aria-hidden="true"></span></button>
         <div class="svc-panel" id="svc4" role="region" aria-labelledby="svc4b"><div><div class="svc-body">
           <p>Comunicação para prefeituras e governos: marketing territorial, prestação de contas e campanhas multicanal.</p>
           <ul class="tags"><li>Comunicação pública</li><li>Marketing territorial</li><li>Prestação de contas</li><li>Campanhas multicanal</li></ul>
@@ -662,9 +673,10 @@ main,footer{position:relative;z-index:1}
   <section class="contact wrap" id="contato">
     <div class="sec-head"><span class="sh"><svg class="asti" viewBox="0 0 270 270" aria-hidden="true"><use href="#ast"/></svg>Vamos conversar</span><span class="k">Abertos a novas conexões</span></div>
     <h2 class="d contact-big" data-split-rows>
-      <span class="row">Grandes marcas</span>
-      <span class="row">começam com</span>
-      <span class="row">uma boa <span class="amp">&amp;</span> conversa.</span>
+      <span class="row">Sua visão <span class="amp">&amp;</span></span>
+      <span class="row">nossa estratégia:</span>
+      <span class="row">grandes marcas</span>
+      <span class="row">nascem aqui.</span>
     </h2>
     <div class="contact-grid">
       <div>
@@ -690,7 +702,7 @@ main,footer{position:relative;z-index:1}
   <div class="foot-grid">
     <p class="foot-tag">Onde a essência da marca encontra a estratégia de alta performance.</p>
     <div><h4>Explore</h4><ul><li><a href="#sobre">A Inc&amp;Co</a></li><li><a href="#servicos">Pilares</a></li><li><a href="#projetos">Cases</a></li></ul></div>
-    <div><h4>Pilares</h4><ul><li><a href="#servicos">Branding</a></li><li><a href="#servicos">Audiovisual</a></li><li><a href="#servicos">Sports</a></li><li><a href="#servicos">Public</a></li></ul></div>
+    <div><h4>Pilares</h4><ul><li><a href="#servicos">Branding &amp; Co.</a></li><li><a href="#servicos">Audio &amp; Visual</a></li><li><a href="#servicos">Sports &amp; Talents</a></li><li><a href="#servicos">Public &amp; Government</a></li></ul></div>
     <div><h4>Contato</h4><ul><li>agenciaavengers@hotmail.com</li><li>Av. Senador Feijó, 686 · Cj. 1910</li><li>The Blue Offices · Santos/SP</li></ul></div>
   </div>
   <div class="foot-logo"><svg class="brand-logo" viewBox="1315.37 830.95 472.10 105.16" role="img" aria-label="Inc&amp;Co"><g fill="currentColor"><path d="M 1315.36 832.98 L 1337.67 832.98 L 1337.67 934.37 L 1315.36 934.37 Z M 1315.36 832.98"/><path d="M 1345.70 856.73 L 1367.72 856.73 L 1367.72 867.74 C 1372.79 861.22 1379.31 855.28 1390.46 855.28 C 1407.12 855.28 1416.82 866.29 1416.82 884.11 L 1416.82 934.37 L 1394.81 934.37 L 1394.81 891.06 C 1394.81 880.63 1389.88 875.27 1381.48 875.27 C 1373.08 875.27 1367.72 880.63 1367.72 891.06 L 1367.72 934.37 L 1345.70 934.37 Z M 1345.70 856.73"/><path d="M 1423.49 895.99 L 1423.49 895.70 C 1423.49 873.53 1440.43 855.28 1464.19 855.28 C 1478.82 855.28 1487.94 860.21 1495.19 868.32 L 1481.71 882.81 C 1476.79 877.59 1471.87 874.26 1464.04 874.26 C 1453.03 874.26 1445.21 883.96 1445.21 895.41 L 1445.21 895.70 C 1445.21 907.57 1452.89 917.14 1464.91 917.14 C 1472.30 917.14 1477.37 913.95 1482.73 908.88 L 1495.62 921.91 C 1488.09 930.17 1479.40 936.11 1463.90 936.11 C 1440.58 936.11 1423.49 918.15 1423.49 895.99"/><path class="lamp" d="M 1561.89 854.71 L 1561.89 854.41 C 1561.89 846.30 1555.81 840.37 1547.55 840.37 C 1538.43 840.37 1532.20 846.74 1532.20 855 L 1532.20 855.28 C 1532.20 861.22 1534.66 865.71 1542.34 873.97 C 1555.23 869.62 1561.89 863.40 1561.89 854.71 M 1564.94 912.64 L 1537.85 884.69 C 1524.38 889.61 1518.44 897.87 1518.44 906.42 L 1518.44 906.71 C 1518.44 917.57 1527.13 925.83 1539.59 925.83 C 1549.15 925.83 1557.55 920.75 1564.94 912.64 M 1571.89 919.74 C 1562.62 929.74 1551.90 935.53 1538.72 935.53 C 1520.47 935.53 1506.85 924.08 1506.85 907.14 L 1506.85 906.85 C 1506.85 893.38 1515.83 883.67 1531.33 877.59 C 1524.38 869.48 1521.19 863.25 1521.19 855.28 L 1521.19 855 C 1521.19 841.67 1531.91 830.95 1547.99 830.95 C 1562.18 830.95 1572.61 841.23 1572.61 853.83 L 1572.61 854.12 C 1572.61 867.02 1563.49 875.27 1548.71 880.49 L 1571.89 904.10 C 1576.38 897.58 1580.44 889.90 1584.06 881.50 L 1593.47 885.85 C 1588.98 895.41 1584.35 904.10 1578.84 911.34 L 1596.51 929.44 L 1587.82 936.11 Z M 1571.89 919.74"/><path d="M 1608.28 883.96 L 1608.28 883.67 C 1608.28 854.85 1630.01 831.24 1661.15 831.24 C 1680.27 831.24 1691.71 837.61 1701.13 846.88 L 1686.94 863.25 C 1679.12 856.15 1671.15 851.81 1661.01 851.81 C 1643.92 851.81 1631.60 866.00 1631.60 883.39 L 1631.60 883.67 C 1631.60 901.06 1643.63 915.54 1661.01 915.54 C 1672.60 915.54 1679.69 910.91 1687.66 903.66 L 1701.85 918.00 C 1691.42 929.16 1679.84 936.11 1660.28 936.11 C 1630.44 936.11 1608.28 913.08 1608.28 883.96"/><path d="M 1765.73 895.99 L 1765.73 895.70 C 1765.73 884.25 1757.48 874.26 1745.31 874.26 C 1732.71 874.26 1725.18 883.96 1725.18 895.41 L 1725.18 895.70 C 1725.18 907.14 1733.43 917.14 1745.60 917.14 C 1758.20 917.14 1765.73 907.43 1765.73 895.99 M 1703.45 895.99 L 1703.45 895.70 C 1703.45 873.39 1721.41 855.28 1745.60 855.28 C 1769.65 855.28 1787.46 873.10 1787.46 895.41 L 1787.46 895.70 C 1787.46 918.00 1769.50 936.11 1745.31 936.11 C 1721.27 936.11 1703.45 918.29 1703.45 895.99"/></g></svg></div>
@@ -909,13 +921,30 @@ main,footer{position:relative;z-index:1}
 
 
   /* Campo de partículas com glitch (asterisco da home e planeta da assinatura) */
+  var AMP_D = 'M 55.05 23.76 L 55.05 23.47 C 55.05 15.36 48.97 9.42 40.71 9.42 C 31.58 9.42 25.36 15.79 25.36 24.05 L 25.36 24.34 C 25.36 30.28 27.82 34.77 35.49 43.02 C 48.39 38.68 55.05 32.45 55.05 23.76 M 58.09 81.70 L 31.01 53.75 C 17.53 58.67 11.60 66.92 11.60 75.47 L 11.60 75.76 C 11.60 86.62 20.29 94.88 32.74 94.88 C 42.30 94.88 50.70 89.81 58.09 81.70 M 65.04 88.80 C 55.78 98.79 45.06 104.59 31.87 104.59 C 13.62 104.59 0.01 93.14 0.01 76.19 L 0.01 75.91 C 0.01 62.43 8.99 52.73 24.49 46.64 C 17.53 38.53 14.35 32.30 14.35 24.34 L 14.35 24.05 C 14.35 10.72 25.07 0.00 41.15 0.00 C 55.34 0.00 65.77 10.29 65.77 22.89 L 65.77 23.18 C 65.77 36.07 56.64 44.33 41.87 49.54 L 65.04 73.15 C 69.53 66.64 73.59 58.96 77.21 50.56 L 86.63 54.90 C 82.13 64.46 77.50 73.15 72.00 80.39 L 89.67 98.50 L 80.98 105.16Z M 65.04 88.80';
   function particleField(cv, cfg){
     if (!cv || !cv.getContext) return;
     var ctx = cv.getContext('2d'), buf = document.createElement('canvas'), bx = buf.getContext('2d');
     var W = 0, H = 0, dpr = 1, i;
     function rnd(a, b){ return a + Math.random() * (b - a); }
     var pts = [];
-    if (cfg.shape === 'asterisk') {
+    if (cfg.shape === 'amp') {
+      /* & do logo: amostra pontos do contorno e do miolo, extrudado em 3D */
+      var oc = document.createElement('canvas'), CW = 300, CH = Math.round(300 * 105.16 / 89.66); oc.width = CW; oc.height = CH;
+      var ox2 = oc.getContext('2d'); ox2.scale(CW / 89.66, CH / 105.16); ox2.fill(new Path2D(AMP_D));
+      var px = ox2.getImageData(0, 0, CW, CH).data, fill = [], edge = [];
+      function on(x, y){ return x >= 0 && y >= 0 && x < CW && y < CH && px[(y * CW + x) * 4 + 3] > 128; }
+      for (var yy0 = 0; yy0 < CH; yy0 += 2) for (var xx0 = 0; xx0 < CW; xx0 += 2) if (on(xx0, yy0)) {
+        if (!on(xx0 - 3, yy0) || !on(xx0 + 3, yy0) || !on(xx0, yy0 - 3) || !on(xx0, yy0 + 3)) edge.push([xx0, yy0]); else fill.push([xx0, yy0]);
+      }
+      var HD = .17;
+      for (i = 0; i < 2700; i++) {
+        var isE = Math.random() < .62, src = isE ? edge : fill, q0 = src[(Math.random() * src.length) | 0];
+        var nx = (q0[0] + rnd(-1, 1) - CW / 2) / (CH / 2), ny = (q0[1] + rnd(-1, 1) - CH / 2) / (CH / 2);
+        var nz = isE ? rnd(-HD, HD) : (Math.random() < .5 ? -HD : HD);
+        pts.push({ x: nx, y: ny, z: nz, b: isE ? rnd(.7, 1) : rnd(.4, .8), k: 0 });
+      }
+    } else if (cfg.shape === 'asterisk') {
       for (var arm = 0; arm < 3; arm++) {
         var ang = arm * Math.PI / 3, ca = Math.cos(ang), sa = Math.sin(ang);
         for (i = 0; i < 900; i++) {
@@ -975,7 +1004,8 @@ main,footer{position:relative;z-index:1}
       if (hasMouse) { tiltX += (((my / H) - .5) * .7 - tiltX) * .05; tiltY += (((mx / W) - .5) * .9 - tiltY) * .05; }
       var k = tg.k || 0;
       var ry, rx, rz;
-      if (cfg.shape === 'asterisk') { ry = Math.sin(t * .3) * .55 + Math.sin(k * 1.1) * .9 + tiltY; rx = .25 + Math.sin(t * .21) * .2 + tiltX; rz = t * .12 + k * .7; }
+      if (cfg.shape === 'amp') { ry = Math.sin(t * .3) * .6 + Math.sin(k * 1.1) * .8 + tiltY; rx = .12 + Math.sin(t * .21) * .15 + tiltX; rz = Math.sin(t * .17) * .12 + Math.sin(k * .9) * .18; }
+      else if (cfg.shape === 'asterisk') { ry = Math.sin(t * .3) * .55 + Math.sin(k * 1.1) * .9 + tiltY; rx = .25 + Math.sin(t * .21) * .2 + tiltX; rz = t * .12 + k * .7; }
       else { ry = t * .25 + tiltY; rx = .35 + tiltX; rz = .2; }
       var cyR = Math.cos(ry), syR = Math.sin(ry), cxR = Math.cos(rx), sxR = Math.sin(rx), czR = Math.cos(rz), szR = Math.sin(rz);
       var F = 3.2, rep = R * .55, rep2 = rep * rep;
@@ -993,7 +1023,7 @@ main,footer{position:relative;z-index:1}
         var dx = px - mx, dy = py - my, d2 = dx * dx + dy * dy, tox = 0, toy = 0;
         if (d2 < rep2) { var dd = Math.sqrt(d2) || 1, push = (1 - dd / rep) * R * .35; tox = dx / dd * push; toy = dy / dd * push; }
         ox[j] += (tox - ox[j]) * .1; oy[j] += (toy - oy[j]) * .1;
-        sx[j] = (px + ox[j]) * dpr; sy[j] = (py + oy[j]) * dpr; sz[j] = zc > .2 && cfg.shape !== 'asterisk' && p.k === 0 ? s * .55 : s;
+        sx[j] = (px + ox[j]) * dpr; sy[j] = (py + oy[j]) * dpr; sz[j] = zc > .2 && cfg.shape === 'sphere' && p.k === 0 ? s * .55 : s;
       }
       bx.globalCompositeOperation = 'source-over'; bx.clearRect(0, 0, buf.width, buf.height);
       bx.globalCompositeOperation = dark ? 'source-over' : 'lighter';
@@ -1033,7 +1063,7 @@ main,footer{position:relative;z-index:1}
 
   /* Home: asterisco grande à direita; descendo, troca de lado e alterna tamanho */
   var heroField = particleField(document.getElementById('pfx'), {
-    shape: 'asterisk', mode: 'onBlack',
+    shape: 'amp', mode: 'onBlack',
     place: function(W, H){
       var k = scrollY / H, mob = W < 760, c = Math.cos(k * Math.PI * .75);
       return { k: k, x: W * (.5 + (mob ? .26 : .33) * c), y: H * (.5 + .05 * Math.sin(k * 2.1)), r: Math.min(W, H) * (mob ? .7 : 1) * (.2 + .27 * Math.abs(c)) };
@@ -1170,7 +1200,7 @@ main,footer{position:relative;z-index:1}
         var phase = -3.2 + flow * (N * .9 + 4.5);
         var Rr = vw * (.34 + .22 * zoom), gy = -lift * vh * 1.25;
         for (var i = 0; i < N; i++) {
-          var u = phase - i * .9, th = u * .5;
+          var u = phase - i * .9, th = u * .78;
           var vis = flow > .005 && u > -3.6 && u < 4.2;
           var x = Rr * Math.sin(th), z = Rr * (Math.cos(th) - 1), y = -u * vh * (.07 - .03 * zoom) + vh * .12 + gy + (u < -1.4 ? Math.pow(-1.4 - u, 2) * vh * .22 : 0);
           rbs[i].style.opacity = vis ? 1 : 0;
@@ -1206,11 +1236,11 @@ main,footer{position:relative;z-index:1}
     /* Assinatura: "&" cresce até encher a tela */
     var zf = document.querySelector('.zoom-fill'), stage = document.querySelector('.zoom-stage');
     if (zf && stage) {
-      var AW = 270, AH = 270, P0 = [.5, .5], P1 = [.5, .5];
+      var AW = 89.66, AH = 105.16, P0 = [.5, .5], P1 = [.627, .683];
       var z = { p: 0 };
       function drawZoom(){
         var w = stage.clientWidth, h = stage.clientHeight, p = z.p;
-        var start = Math.min(w, h) * .5, end = Math.hypot(w, h) * 6.5;
+        var start = Math.min(w, h) * .42, end = Math.hypot(w, h) * 9;
         var k = start * Math.pow(end / start, p);
         var e = Math.min(1, p * 1.6), ax = P0[0] + (P1[0] - P0[0]) * e, ay = P0[1] + (P1[1] - P0[1]) * e;
         var mh = k * AH / AW;
